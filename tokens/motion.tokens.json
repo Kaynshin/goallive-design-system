@@ -1,0 +1,8 @@
+{
+  "motion": {
+    "fast": { "$value": "150ms", "$type": "duration", "$description": "Micro-interactions (button hover/active)." },
+    "base": { "$value": "220ms", "$type": "duration", "$description": "Default transition duration (switches, slide-ins)." },
+    "slow": { "$value": "360ms", "$type": "duration", "$description": "Slide-in / unlock reveal animations." },
+    "ease": { "$value": "cubic-bezier(.3,.7,.2,1)", "$type": "other", "$description": "Default easing curve for all Goallive motion." }
+  }
+}

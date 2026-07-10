@@ -1,0 +1,25 @@
+{
+  "font": {
+    "display": { "$value": "'Unbounded', sans-serif", "$type": "fontFamily", "$description": "Wordmark & display headlines. Weight 800 (extrabold)." },
+    "display-alt": { "$value": "'Bricolage Grotesque', sans-serif", "$type": "fontFamily", "$description": "Alternate display face for secondary titles." },
+    "sans": { "$value": "'Space Grotesk', sans-serif", "$type": "fontFamily", "$description": "Body/UI typeface." },
+    "mono": { "$value": "ui-monospace, SFMono-Regular, Menlo, monospace", "$type": "fontFamily", "$description": "Code / token labels." },
+    "weight": {
+      "regular": { "$value": 400, "$type": "fontWeight" },
+      "medium": { "$value": 500, "$type": "fontWeight" },
+      "semibold": { "$value": 600, "$type": "fontWeight" },
+      "bold": { "$value": 700, "$type": "fontWeight" },
+      "extrabold": { "$value": 800, "$type": "fontWeight" },
+      "black": { "$value": 900, "$type": "fontWeight" }
+    }
+  },
+  "fontSize": {
+    "display-xl": { "$value": "clamp(48px,8vw,104px)", "$type": "dimension", "$description": "Hero display. Unbounded 800." },
+    "h2": { "$value": "clamp(30px,4vw,44px)", "$type": "dimension" },
+    "h3": { "$value": "clamp(20px,2.4vw,24px)", "$type": "dimension" },
+    "lg": { "$value": "18px", "$type": "dimension" },
+    "body": { "$value": "16px", "$type": "dimension" },
+    "sm": { "$value": "14px", "$type": "dimension" },
+    "caption": { "$value": "12px", "$type": "dimension" }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "color": {
+    "ink": { "$value": "#0B0B0C", "$type": "color", "$description": "Base ink swatch, same value as ink-900. Reserved for the GOAL part of the wordmark and dark canvas." },
+    "ink-900": { "$value": "#0B0B0C", "$type": "color", "$description": "Darkest ink. Default canvas in the dark (default) theme." },
+    "ink-800": { "$value": "#141417", "$type": "color", "$description": "Default surface in the dark theme." },
+    "ink-700": { "$value": "#1E1E22", "$type": "color", "$description": "Elevated surface in the dark theme." },
+    "ink-600": { "$value": "#2A2A30", "$type": "color", "$description": "Hairline border in the dark theme." },
+
+    "grey-400": { "$value": "#8A8A93", "$type": "color", "$description": "Muted text on ink (dark theme)." },
+    "grey-600": { "$value": "#6B6B74", "$type": "color", "$description": "Muted text on paper (light theme)." },
+
+    "paper": { "$value": "#FFFFFF", "$type": "color", "$description": "Pure white. Canvas in the light theme, text-on-signal." },
+    "paper-50": { "$value": "#F5F6FB", "$type": "color", "$description": "Off-white. Default text on ink (dark theme)." },
+    "line": { "$value": "#E6E8F0", "$type": "color", "$description": "Hairline border in the light theme." },
+
+    "signal": { "$value": "#FF3B1F", "$type": "color", "$description": "Unique brand accent. No secondary accent color exists. Non-text usage: gauge, halo, live dot, wordmark 'live'." },
+    "signal-deep": { "$value": "#D92C10", "$type": "color", "$description": "Signal variant used behind white text (buttons, CTAs)." },
+    "signal-deep-hover": { "$value": "#B8240C", "$type": "color", "$description": "Hover/active state of signal-deep." },
+    "signal-hover": { "$value": "#E63216", "$type": "color", "$description": "Hover state of signal (non signal-deep usages, e.g. ghost border)." },
+    "signal-soft": { "$value": "rgba(255,59,31,0.12)", "$type": "color", "$description": "Signal tint background for pills/badges/chips." },
+
+    "ok": { "$value": "#1F8A3B", "$type": "color", "$description": "Functional success state." },
+
+    "canvas-dark": { "$value": "#0B0B0C", "$type": "color", "$description": "Theme alias source — canvas, dark (default) theme. Same as ink-900." },
+    "canvas-light": { "$value": "#FFFFFF", "$type": "color", "$description": "Theme alias source — canvas, light theme. Same as paper." },
+    "surface-dark": { "$value": "#141417", "$type": "color", "$description": "Theme alias source — surface, dark (default) theme. Same as ink-800." },
+    "surface-light": { "$value": "#F5F6FB", "$type": "color", "$description": "Theme alias source — surface, light theme. Same as paper-50." },
+    "surface-elevated-dark": { "$value": "#1E1E22", "$type": "color", "$description": "Theme alias source — elevated surface, dark (default) theme. Same as ink-700." },
+    "surface-elevated-light": { "$value": "#FFFFFF", "$type": "color", "$description": "Theme alias source — elevated surface, light theme. Same as paper." },
+    "text-dark": { "$value": "#F5F6FB", "$type": "color", "$description": "Theme alias source — text, dark (default) theme. Same as paper-50." },
+    "text-light": { "$value": "#0B0B0C", "$type": "color", "$description": "Theme alias source — text, light theme. Same as ink-900." },
+    "text-muted-dark": { "$value": "#8A8A93", "$type": "color", "$description": "Theme alias source — muted text, dark (default) theme. Same as grey-400." },
+    "text-muted-light": { "$value": "#6B6B74", "$type": "color", "$description": "Theme alias source — muted text, light theme. Same as grey-600." },
+    "hairline-dark": { "$value": "#2A2A30", "$type": "color", "$description": "Theme alias source — hairline, dark (default) theme. Same as ink-600." },
+    "hairline-light": { "$value": "#E6E8F0", "$type": "color", "$description": "Theme alias source — hairline, light theme. Same as line." }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "effect": {
+    "halo": { "$value": "radial-gradient(900px 440px at 80% -15%, rgba(255,59,31,0.14), transparent 60%)", "$type": "other", "$description": "Primary signature halo. Discreet, top-right. Reserved for large surfaces (hero, section backgrounds)." },
+    "halo-soft": { "$value": "radial-gradient(620px 360px at 6% 118%, rgba(255,59,31,0.06), transparent 60%)", "$type": "other", "$description": "Secondary, lower-opacity halo layered under `halo` on hero-scale surfaces." },
+    "halo-strong": { "$value": "radial-gradient(900px 440px at 80% -15%, rgba(255,59,31,0.16), transparent 60%)", "$type": "other", "$description": "Higher-opacity halo variant (0.16), used on the hero section." },
+    "shadow-drop": { "$value": "0 8px 24px rgba(0,0,0,.45)", "$type": "other", "$description": "Default drop shadow for elevated dark-surface cards." },
+    "glow-signal": { "$value": "0 0 26px rgba(255,59,31,.5)", "$type": "other", "$description": "Signal-colored glow, e.g. behind the live dot / signal CTA." }
+  }
+}

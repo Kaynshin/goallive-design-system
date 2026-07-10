@@ -1,0 +1,151 @@
+/* Goallive primitives — hand-ported from "Goallive Design System (standalone).html",
+   prefixed `gl-`, wired to generated --gl-* variables (see dist/_gl-tokens.css).
+   Dark theme is the default surface (:root aliases); light is an explicit override
+   via .gl-light / [data-theme="light"]. Halo is reserved for hero/large surfaces. */
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--gl-color-canvas);
+  color:var(--gl-color-text);
+  font-family:var(--gl-font-sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+::selection{background:rgba(255,59,31,.28)}
+
+:focus-visible{outline:2px solid var(--gl-color-signal);outline-offset:2px}
+
+.gl-anchor{scroll-margin-top:78px}
+
+/* ---------- Keyframes ---------- */
+@keyframes glpulse{0%{box-shadow:0 0 0 0 rgba(255,59,31,.5)}70%{box-shadow:0 0 0 9px rgba(255,59,31,0)}100%{box-shadow:0 0 0 0 rgba(255,59,31,0)}}
+@keyframes glshimmer{0%{background-position:-180% 0}100%{background-position:180% 0}}
+@keyframes glfloat{0%{opacity:0;transform:translateY(0)}15%{opacity:1}100%{opacity:0;transform:translateY(-26px)}}
+@keyframes glslidein{0%{opacity:0;transform:translateY(14px) scale(.96)}100%{opacity:1;transform:translateY(0) scale(1)}}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important;transition:none!important}
+}
+
+/* ---------- Wordmark ---------- */
+/* "Goallive": "Goal" inherits the surrounding text color, "live" is always the signal
+   accent — never the text color. Use <span class="gl-wordmark__live"> around "live". */
+.gl-wordmark{
+  font-family:var(--gl-font-display);
+  font-weight:var(--gl-font-weight-extrabold);
+  font-size:21px;
+  letter-spacing:-.02em;
+  line-height:1;
+}
+.gl-wordmark__live{color:var(--gl-color-signal)}
+/* Hero scale, matching the source bundle's display-xl clamp. */
+.gl-wordmark--hero{
+  font-size:var(--gl-font-size-display-xl);
+  letter-spacing:-.03em;
+  line-height:.95;
+}
+
+/* ---------- Halo ---------- */
+/* Discreet signature gradient, reserved for large surfaces (hero, section backgrounds). */
+.gl-halo{position:relative;overflow:hidden}
+.gl-halo::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:var(--gl-effect-halo);
+}
+.gl-halo--soft::before{background:var(--gl-effect-halo-soft)}
+.gl-halo--strong::before{background:var(--gl-effect-halo-strong)}
+
+/* ---------- Live dot ---------- */
+.gl-live-dot{
+  display:inline-block;
+  width:9px;height:9px;
+  border-radius:var(--gl-radius-pill);
+  background:var(--gl-color-signal);
+  animation:glpulse 1.3s infinite;
+  flex:none;
+}
+.gl-live-dot--sm{width:7px;height:7px}
+.gl-live-dot--lg{width:16px;height:16px}
+
+/* ---------- Buttons ---------- */
+.gl-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  height:44px;padding:0 20px;border-radius:var(--gl-radius-sm);
+  font-family:var(--gl-font-sans);font-size:var(--gl-font-size-body);font-weight:var(--gl-font-weight-bold);
+  border:none;cursor:pointer;line-height:1;
+  transition:background-color var(--gl-motion-fast) var(--gl-motion-ease), border-color var(--gl-motion-fast) var(--gl-motion-ease), transform var(--gl-motion-fast) var(--gl-motion-ease);
+}
+.gl-btn:active{transform:scale(.97)}
+.gl-btn--primary{background:var(--gl-color-signal-deep);color:var(--gl-color-paper)}
+.gl-btn--primary:hover{background:var(--gl-color-signal-deep-hover)}
+.gl-btn--ghost{background:transparent;color:var(--gl-color-text);border:1px solid var(--gl-color-hairline)}
+.gl-btn--ghost:hover{border-color:var(--gl-color-signal)}
+.gl-btn--link{background:transparent;color:var(--gl-color-text-muted);border:none;padding:0;height:auto;text-decoration:underline;text-decoration-color:var(--gl-color-signal);text-underline-offset:4px}
+.gl-btn:disabled{background:var(--gl-color-surface-elevated);color:var(--gl-color-text-muted);border:1px solid var(--gl-color-hairline);cursor:not-allowed;opacity:.6}
+
+.gl-btn--sm{height:34px;padding:0 14px;font-size:var(--gl-font-size-sm);border-radius:var(--gl-radius-sm)}
+.gl-btn--lg{height:48px;padding:0 24px;font-size:var(--gl-font-size-lg)}
+
+/* ---------- Input ---------- */
+.gl-input{
+  height:44px;padding:0 14px;border-radius:var(--gl-radius-sm);
+  background:var(--gl-color-canvas);color:var(--gl-color-text);
+  border:1px solid var(--gl-color-hairline);
+  font-family:var(--gl-font-sans);font-size:var(--gl-font-size-sm);
+  width:100%;
+  transition:border-color var(--gl-motion-fast) var(--gl-motion-ease);
+}
+.gl-input:focus{outline:none;border-color:var(--gl-color-signal)}
+.gl-input--error{border-color:var(--gl-color-signal)}
+.gl-input--success{border-color:var(--gl-color-ok)}
+.gl-input-label{
+  font-family:var(--gl-font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--gl-color-text-muted);margin-bottom:8px;display:block;
+}
+
+/* ---------- Badge / Chip / Tag ---------- */
+.gl-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:5px 11px;border-radius:var(--gl-radius-pill);
+  font-family:var(--gl-font-sans);font-size:12px;font-weight:var(--gl-font-weight-bold);line-height:1.4;
+  background:var(--gl-color-surface-elevated);color:var(--gl-color-text);
+  border:1px solid var(--gl-color-hairline);
+}
+.gl-badge--signal{
+  background:var(--gl-color-signal-soft);color:var(--gl-color-signal);
+  border:1px solid rgba(255,59,31,.4);
+}
+
+.gl-chip{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 14px;border-radius:var(--gl-radius-pill);
+  font-family:var(--gl-font-sans);font-size:var(--gl-font-size-sm);font-weight:var(--gl-font-weight-bold);
+  background:var(--gl-color-surface-elevated);color:var(--gl-color-text);
+  border:1px solid var(--gl-color-hairline);
+}
+.gl-chip--signal{
+  background:var(--gl-color-signal-soft);color:var(--gl-color-signal);
+  border:1px solid rgba(255,59,31,.4);
+}
+
+.gl-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  border-radius:8px;padding:5px 10px;
+  font-family:var(--gl-font-sans);font-size:12px;font-weight:var(--gl-font-weight-bold);
+  background:var(--gl-color-surface-elevated);color:var(--gl-color-text-muted);
+  border:1px solid var(--gl-color-hairline);
+}
+.gl-tag--active{
+  background:var(--gl-color-signal-soft);color:var(--gl-color-signal);
+  border:1px solid rgba(255,59,31,.4);
+}
+.gl-tag--refused{
+  background:var(--gl-color-canvas);color:var(--gl-color-signal);
+  border:1px dashed rgba(255,59,31,.5);
+}
+
+/* ---------- Surfaces ---------- */
+.gl-surface{background:var(--gl-color-surface);border:1px solid var(--gl-color-hairline);border-radius:var(--gl-radius-md)}
+.gl-surface--elevated{background:var(--gl-color-surface-elevated);border:1px solid var(--gl-color-hairline);border-radius:var(--gl-radius-md);box-shadow:var(--gl-effect-shadow-drop)}
