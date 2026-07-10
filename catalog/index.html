@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Goallive — Design System Catalog</title>
+<link rel="stylesheet" href="../dist/goallive.css" />
+<style>
+  .catalog-header{
+    position:sticky;top:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;gap:var(--gl-space-4);
+    padding:var(--gl-space-3) var(--gl-space-6);
+    background:var(--gl-color-canvas);
+    border-bottom:1px solid var(--gl-color-hairline);
+  }
+  .catalog-header__brand{display:flex;align-items:center;gap:var(--gl-space-3);}
+  .catalog-eyebrow{
+    font-family:var(--gl-font-mono);font-size:11px;font-weight:600;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--gl-color-text-muted);
+    padding:4px 9px;border:1px solid var(--gl-color-hairline);border-radius:var(--gl-radius-pill);
+  }
+  .catalog-section{padding:var(--gl-space-16) var(--gl-space-6);border-bottom:1px solid var(--gl-color-hairline);max-width:1180px;margin:0 auto;}
+  .catalog-kicker{
+    font-family:var(--gl-font-mono);font-size:12px;font-weight:700;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--gl-color-signal);margin-bottom:var(--gl-space-3);
+  }
+  .catalog-section h2{
+    font-family:var(--gl-font-display);font-weight:var(--gl-font-weight-extrabold);
+    font-size:var(--gl-font-size-h2);line-height:1;letter-spacing:-.02em;
+    margin:0 0 var(--gl-space-3);color:var(--gl-color-text);
+  }
+  .catalog-section h3{
+    font-family:var(--gl-font-sans);font-size:13px;font-weight:700;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--gl-color-text-muted);margin:var(--gl-space-8) 0 var(--gl-space-4);
+  }
+  .catalog-section h3:first-of-type{margin-top:0;}
+  .catalog-lede{max-width:60ch;font-size:16px;line-height:1.55;color:var(--gl-color-text-muted);margin:0;}
+  .catalog-row{display:flex;gap:var(--gl-space-4);flex-wrap:wrap;align-items:flex-start;}
+  .catalog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:var(--gl-space-3);}
+  .catalog-grid--brand{grid-template-columns:repeat(3,minmax(200px,1fr));}
+  .swatch{border:1px solid var(--gl-color-hairline);border-radius:var(--gl-radius-md);overflow:hidden;background:var(--gl-color-surface);}
+  .swatch .chip{height:72px;}
+  .swatch .meta{padding:var(--gl-space-2) var(--gl-space-3);}
+  .swatch .meta .name{font-family:var(--gl-font-sans);font-weight:700;font-size:13px;color:var(--gl-color-text);margin-bottom:2px;}
+  .swatch .meta .hex{font-family:var(--gl-font-mono);font-size:11px;color:var(--gl-color-signal);}
+  .type-row{display:flex;align-items:baseline;gap:var(--gl-space-4);padding:var(--gl-space-4) 0;border-bottom:1px dashed var(--gl-color-hairline);}
+  .type-row:last-child{border-bottom:none;}
+  .type-row .label{
+    font-family:var(--gl-font-mono);font-size:11px;color:var(--gl-color-text-muted);
+    width:120px;flex:none;text-transform:uppercase;letter-spacing:.06em;
+  }
+  .catalog-card{
+    border:1px solid var(--gl-color-hairline);border-radius:var(--gl-radius-md);
+    background:var(--gl-color-surface);padding:var(--gl-space-5);
+  }
+  .catalog-hero{
+    position:relative;overflow:hidden;padding:var(--gl-space-24) var(--gl-space-6);
+    text-align:center;
+  }
+  .catalog-hero .gl-wordmark--hero{position:relative;}
+  .catalog-hero p{position:relative;color:var(--gl-color-text-muted);max-width:46ch;margin:var(--gl-space-4) auto 0;font-size:16px;line-height:1.55;}
+  .radius-demo, .motion-demo{display:flex;align-items:center;gap:var(--gl-space-4);flex-wrap:wrap;}
+  .radius-tile{width:56px;height:56px;background:var(--gl-color-surface-elevated);border:1px solid var(--gl-color-hairline);}
+  .theme-toggle{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--gl-font-sans);font-size:13px;font-weight:700;color:var(--gl-color-text);
+    background:transparent;border:1px solid var(--gl-color-hairline);border-radius:var(--gl-radius-pill);
+    padding:8px 14px;cursor:pointer;
+  }
+  .theme-toggle:hover{border-color:var(--gl-color-signal);}
+  .gauge-track{
+    height:14px;border-radius:var(--gl-radius-pill);
+    background:var(--gl-color-surface-elevated);overflow:hidden;flex:1;
+  }
+  .gauge-fill{
+    height:100%;border-radius:var(--gl-radius-pill);
+    background:linear-gradient(90deg, var(--gl-color-signal-deep), var(--gl-color-signal));
+  }
+  .catalog-footer{
+    padding:var(--gl-space-8) var(--gl-space-6);
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--gl-space-3);
+    max-width:1180px;margin:0 auto;
+    color:var(--gl-color-text-muted);font-size:13px;
+  }
+</style>
+</head>
+<body>
+
+<header class="catalog-header">
+  <div class="catalog-header__brand">
+    <p class="gl-wordmark" style="margin:0;">Goal<span class="gl-wordmark__live">live</span></p>
+    <span class="catalog-eyebrow">Design System</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:var(--gl-space-3);">
+    <span class="gl-live-dot" aria-hidden="true"></span>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false">
+      Basculer en clair
+    </button>
+  </div>
+</header>
+
+<section class="catalog-hero gl-halo">
+  <p class="gl-wordmark gl-wordmark--hero">Goal<span class="gl-wordmark__live">live</span></p>
+  <p>Catalogue statique des tokens et primitives Goallive — tricolore encre / papier / signal. N'importe que <code>../dist/goallive.css</code>.</p>
+</section>
+
+<section class="catalog-section" id="palette">
+  <div class="catalog-kicker">01 / Tokens</div>
+  <h2>Palette</h2>
+  <p class="catalog-lede">Accent unique — le signal. Aucune bichromie : signal-deep / signal-deep-hover sont des états du même accent, jamais une seconde couleur.</p>
+
+  <h3>Encre · Papier · Signal</h3>
+  <div class="catalog-grid catalog-grid--brand">
+    <div class="swatch">
+      <div class="chip" style="background:#0B0B0C;"></div>
+      <div class="meta"><div class="name">Encre</div><div class="hex">--gl-color-ink · #0B0B0C</div></div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#FFFFFF;border-bottom:1px solid var(--gl-color-hairline);"></div>
+      <div class="meta"><div class="name">Papier</div><div class="hex">--gl-color-paper · #FFFFFF</div></div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#FF3B1F;"></div>
+      <div class="meta"><div class="name">Signal</div><div class="hex">--gl-color-signal · #FF3B1F</div></div>
+    </div>
+  </div>
+
+  <h3>Rampe neutre &amp; états signal</h3>
+  <div class="catalog-grid">
+    <div class="swatch">
+      <div class="chip" style="background:#0B0B0C;"></div>
+      <div class="meta"><div class="name">ink-900</div><div class="hex">#0B0B0C</div></div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#141417;"></div>
+      <div class="meta"><div class="name">ink-800</div><div class="hex">#141417</div></div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#1E1E22;"></div>
+      <div class="meta"><div class="name">ink-700</div><div class="hex">#1E1E22</div></div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#2A2A30;"></div>
+      <div class="meta"><div class="name">ink-600</div><div class="hex">#2A2A30</div></div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#8A8A93;"></div>
+      <div class="meta"><div class="name">grey-400</div><div class="hex">#8A8A93</div></div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#6B6B74;"></div>
+      <div class="meta"><div class="name">grey-600</div><div class="hex">#6B6B74</div></div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#F5F6FB;"></div>
+      <div class="meta"><div class="name">paper-50</div><div class="hex">#F5F6FB</div></div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#E6E8F0;"></div>
+      <div class="meta"><div class="name">line</div><div class="hex">#E6E8F0</div></div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#D92C10;"></div>
+      <div class="meta"><div class="name">signal-deep</div><div class="hex">#D92C10</div></div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#B8240C;"></div>
+      <div class="meta"><div class="name">signal-deep-hover</div><div class="hex">#B8240C</div></div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#141417;position:relative;"><div style="position:absolute;inset:0;background:rgba(255,59,31,.12);"></div></div>
+      <div class="meta"><div class="name">signal-soft</div><div class="hex">rgba(255,59,31,.12)</div></div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#1F8A3B;"></div>
+      <div class="meta"><div class="name">ok</div><div class="hex">#1F8A3B</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="catalog-section" id="typography">
+  <div class="catalog-kicker">02 / Tokens</div>
+  <h2>Typographie</h2>
+  <p class="catalog-lede">Unbounded pour le display et le wordmark, Bricolage Grotesque en variante d'affichage alternative, Space Grotesk pour le corps et l'UI.</p>
+
+  <div class="catalog-card" style="margin-top:var(--gl-space-6);">
+    <div class="type-row">
+      <span class="label">Display XL</span>
+      <span style="font-family:var(--gl-font-display);font-weight:var(--gl-font-weight-extrabold);font-size:var(--gl-font-size-display-xl);line-height:.95;letter-spacing:-.03em;">Goallive</span>
+    </div>
+    <div class="type-row">
+      <span class="label">H2</span>
+      <span style="font-family:var(--gl-font-display);font-weight:var(--gl-font-weight-extrabold);font-size:var(--gl-font-size-h2);letter-spacing:-.02em;">Remplis le goal</span>
+    </div>
+    <div class="type-row">
+      <span class="label">H2 · Bricolage</span>
+      <span style="font-family:var(--gl-font-display-alt);font-weight:var(--gl-font-weight-extrabold);font-size:var(--gl-font-size-h2);letter-spacing:-.01em;">Variante d'affichage</span>
+    </div>
+    <div class="type-row">
+      <span class="label">H3</span>
+      <span style="font-family:var(--gl-font-sans);font-weight:var(--gl-font-weight-bold);font-size:var(--gl-font-size-h3);">Sous-titre de section</span>
+    </div>
+    <div class="type-row">
+      <span class="label">Corps</span>
+      <span style="font-family:var(--gl-font-sans);font-weight:var(--gl-font-weight-regular);font-size:var(--gl-font-size-body);line-height:1.55;max-width:440px;">La communauté vote puis finance le défi gagnant en tokens jusqu'à remplir le goal.</span>
+    </div>
+    <div class="type-row">
+      <span class="label">Caption</span>
+      <span style="font-family:var(--gl-font-sans);font-weight:var(--gl-font-weight-medium);font-size:var(--gl-font-size-caption);color:var(--gl-color-text-muted);text-transform:uppercase;letter-spacing:.06em;">Bouton / Label</span>
+    </div>
+  </div>
+</section>
+
+<section class="catalog-section" id="foundations">
+  <div class="catalog-kicker">03 / Tokens</div>
+  <h2>Rayons · Halo · Motion</h2>
+  <p class="catalog-lede">Rayons croissants jusqu'au pill, halo signature réservé aux grandes surfaces, motion courte et cohérente.</p>
+
+  <h3>Rayons</h3>
+  <div class="catalog-card radius-demo">
+    <div class="radius-tile" style="border-radius:var(--gl-radius-sm);"></div>
+    <div class="radius-tile" style="border-radius:var(--gl-radius-md);"></div>
+    <div class="radius-tile" style="border-radius:var(--gl-radius-lg);"></div>
+    <div class="radius-tile" style="border-radius:var(--gl-radius-pill);"></div>
+    <span style="font-family:var(--gl-font-mono);font-size:11px;color:var(--gl-color-text-muted);line-height:1.7;">
+      sm 11px · md 14px<br>lg 18px · pill 999px
+    </span>
+  </div>
+
+  <h3>Halo signature</h3>
+  <div class="gl-halo catalog-card" style="min-height:140px;display:flex;align-items:center;">
+    <span style="position:relative;font-family:var(--gl-font-mono);font-size:12px;color:var(--gl-color-text-muted);">
+      --gl-effect-halo · discret, en haut à droite, réservé aux grandes surfaces.
+    </span>
+  </div>
+
+  <h3>Motion</h3>
+  <div class="catalog-card motion-demo" style="font-family:var(--gl-font-mono);font-size:12px;color:var(--gl-color-text-muted);line-height:1.9;">
+    <div><span style="color:var(--gl-color-signal);">--gl-motion-fast</span> 150ms</div>
+    <div><span style="color:var(--gl-color-signal);">--gl-motion-base</span> 220ms</div>
+    <div><span style="color:var(--gl-color-signal);">--gl-motion-slow</span> 360ms</div>
+    <div style="color:var(--gl-color-text);">ease · --gl-motion-ease</div>
+  </div>
+</section>
+
+<section class="catalog-section" id="primitives">
+  <div class="catalog-kicker">04 / Primitives</div>
+  <h2>Aperçu des primitives</h2>
+  <p class="catalog-lede">Boutons, chips, badges, tags d'état, champ de saisie, jauge et alerte — toutes bâties sur les classes <code>.gl-*</code>.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--gl-space-4);margin-top:var(--gl-space-6);">
+
+    <div class="catalog-card">
+      <h3 style="margin-top:0;">Boutons</h3>
+      <div class="catalog-row">
+        <button class="gl-btn gl-btn--primary">Soutenir le défi</button>
+        <button class="gl-btn gl-btn--ghost">Ghost</button>
+      </div>
+      <div class="catalog-row" style="margin-top:var(--gl-space-3);">
+        <button class="gl-btn gl-btn--primary gl-btn--sm">Small</button>
+        <button class="gl-btn gl-btn--link">Lien signal</button>
+        <button class="gl-btn gl-btn--ghost" disabled>Désactivé</button>
+      </div>
+    </div>
+
+    <div class="catalog-card">
+      <h3 style="margin-top:0;">Boutons de soutien</h3>
+      <div class="catalog-row">
+        <span class="gl-chip">+5</span>
+        <span class="gl-chip">+10</span>
+        <span class="gl-chip">+25</span>
+        <span class="gl-chip">+50</span>
+        <span class="gl-chip gl-chip--signal">+100</span>
+      </div>
+      <p style="margin:var(--gl-space-3) 0 0;font-size:12px;color:var(--gl-color-text-muted);">Échelle 5 / 10 / 25 / 50 · palier épique +100.</p>
+    </div>
+
+    <div class="catalog-card">
+      <h3 style="margin-top:0;">Chip de solde</h3>
+      <div class="catalog-row">
+        <span class="gl-chip gl-chip--signal">
+          <span class="gl-live-dot gl-live-dot--sm"></span> 1 240 tok
+        </span>
+        <button class="gl-btn gl-btn--ghost gl-btn--sm">+ Recharger</button>
+      </div>
+    </div>
+
+    <div class="catalog-card">
+      <h3 style="margin-top:0;">Badges &amp; perks</h3>
+      <div class="catalog-row">
+        <span class="gl-badge gl-badge--signal">★ Patron du mois</span>
+        <span class="gl-badge">Sub Twitch</span>
+        <span class="gl-badge">⚔ Top challenger</span>
+        <span class="gl-badge">Vote pondéré ×2</span>
+      </div>
+    </div>
+
+    <div class="catalog-card">
+      <h3 style="margin-top:0;">Tags d'état de défi</h3>
+      <div class="catalog-row">
+        <span class="gl-tag">Proposé</span>
+        <span class="gl-tag">Au vote</span>
+        <span class="gl-tag gl-tag--active">Actif</span>
+        <span class="gl-tag gl-tag--active">Financé</span>
+        <span class="gl-tag">Honoré</span>
+        <span class="gl-tag gl-tag--refused">⛔ Refusé · modération</span>
+      </div>
+    </div>
+
+    <div class="catalog-card">
+      <h3 style="margin-top:0;">Champ de saisie</h3>
+      <label class="gl-input-label" for="catalog-input">Propose un défi</label>
+      <input class="gl-input" id="catalog-input" type="text" placeholder="Battre Margit sans soin" />
+    </div>
+
+    <div class="catalog-card" style="grid-column:span 2;">
+      <h3 style="margin-top:0;">Jauge de goal · statique</h3>
+      <div style="display:flex;align-items:center;gap:var(--gl-space-3);">
+        <div class="gauge-track">
+          <div class="gauge-fill" style="width:64%;"></div>
+        </div>
+        <span class="gl-live-dot"></span>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:var(--gl-space-2);font-family:var(--gl-font-mono);font-size:11px;color:var(--gl-color-text-muted);">
+        <span>Speedrun World 1 &lt; 4 min</span>
+        <span style="color:var(--gl-color-signal);font-weight:700;">64 / 100 tok</span>
+      </div>
+    </div>
+
+    <div class="catalog-card" style="grid-column:span 2;position:relative;overflow:hidden;background:var(--gl-color-canvas);border-color:rgba(255,59,31,.4);">
+      <div class="gl-halo" style="position:absolute;inset:0;"></div>
+      <div style="position:relative;display:flex;align-items:center;gap:var(--gl-space-3);">
+        <span class="gl-live-dot"></span>
+        <span style="font-family:var(--gl-font-display);font-weight:var(--gl-font-weight-extrabold);font-size:16px;letter-spacing:.02em;color:var(--gl-color-text);">
+          GOAL UNLOCKED · <span style="color:var(--gl-color-signal);">GO ALIVE</span>
+        </span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="catalog-footer">
+  <span class="gl-wordmark" style="font-size:16px;">Goal<span class="gl-wordmark__live">live</span></span>
+  <span>Design system · tricolore · catalog statique</span>
+</footer>
+
+<script>
+  (function () {
+    var toggle = document.getElementById('theme-toggle');
+    toggle.addEventListener('click', function () {
+      var isLight = document.documentElement.classList.toggle('gl-light');
+      toggle.setAttribute('aria-pressed', String(isLight));
+      toggle.textContent = isLight ? 'Basculer en sombre' : 'Basculer en clair';
+    });
+  })();
+</script>
+
+</body>
+</html>
