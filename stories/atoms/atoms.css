@@ -1,0 +1,207 @@
+/* Goallive — Storybook-only atom helpers.
+   Reuse --gl-* tokens exclusively (see dist/goallive.css). Extends the shipped
+   `.gl-*` primitives (build/primitives.css) with a handful of composite/interactive
+   atoms that are documented in the source bundle but don't yet have a published
+   class (support-button scale, input group, switch, tabs, tooltip, skeleton,
+   avatar). Never redefines an existing primitive; never introduces a second
+   accent hue — every accent here resolves to --gl-color-signal(-deep|-soft). */
+
+/* ---------- Support buttons: échelle de soutien +5 / +10 / +25 / +50 / +100 ---------- */
+.gl-support-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--gl-font-sans);
+  font-weight: var(--gl-font-weight-bold);
+  font-size: 14px;
+  border-radius: var(--gl-radius-sm);
+  padding: 10px 15px;
+  cursor: pointer;
+  border: none;
+  line-height: 1;
+  transition: transform var(--gl-motion-fast) var(--gl-motion-ease), border-color var(--gl-motion-fast) var(--gl-motion-ease), background-color var(--gl-motion-fast) var(--gl-motion-ease);
+}
+.gl-support-btn:active { transform: scale(0.95); }
+.gl-support-btn--primary { background: var(--gl-color-signal-deep); color: var(--gl-color-paper); }
+.gl-support-btn--primary:hover { background: var(--gl-color-signal-deep-hover); }
+.gl-support-btn--secondary { background: var(--gl-color-ink-700); color: var(--gl-color-paper); border: 1px solid var(--gl-color-ink-600); }
+.gl-support-btn--secondary:hover { border-color: var(--gl-color-signal); }
+.gl-support-btn--epic { background: var(--gl-color-signal-soft); color: var(--gl-color-signal); border: 1px solid rgba(255, 59, 31, 0.4); }
+
+/* ---------- Input group: champ de recherche avec icône (input interne sans bordure) ---------- */
+.gl-input-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gl-color-canvas);
+  border: 1px solid var(--gl-color-hairline);
+  border-radius: var(--gl-radius-sm);
+  padding: 0 14px;
+}
+.gl-input-group__icon { font-size: 14px; color: var(--gl-color-text-muted); flex: none; }
+.gl-input-group__input {
+  flex: 1;
+  font-family: var(--gl-font-sans);
+  font-size: var(--gl-font-size-sm);
+  color: var(--gl-color-text);
+  background: transparent;
+  border: none;
+  padding: 12px 0;
+  outline: none;
+  min-width: 0;
+}
+
+/* ---------- Field: wrapper + texte d'aide (erreur / succès) sous un .gl-input ---------- */
+.gl-field { display: flex; flex-direction: column; gap: 5px; }
+.gl-field-hint { font-family: var(--gl-font-sans); font-size: 12px; font-weight: 600; }
+.gl-field-hint--error { color: var(--gl-color-signal); }
+.gl-field-hint--success { color: var(--gl-color-ok); }
+
+/* ---------- Switch (interrupteur) ---------- */
+.gl-switch {
+  position: relative;
+  width: 46px;
+  height: 26px;
+  border-radius: var(--gl-radius-pill);
+  background: var(--gl-color-ink-700);
+  border: 1px solid var(--gl-color-ink-600);
+  cursor: pointer;
+  padding: 0;
+  transition: background-color var(--gl-motion-base) var(--gl-motion-ease), border-color var(--gl-motion-base) var(--gl-motion-ease);
+}
+.gl-switch--on { background: var(--gl-color-signal-deep); border-color: var(--gl-color-signal-deep); }
+.gl-switch:disabled { opacity: 0.5; cursor: not-allowed; }
+.gl-switch__knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--gl-radius-pill);
+  background: var(--gl-color-paper);
+  transition: left var(--gl-motion-base) var(--gl-motion-ease);
+}
+.gl-switch--on .gl-switch__knob { left: 22px; }
+
+/* ---------- Tabs ---------- */
+.gl-tabs {
+  display: flex;
+  gap: 6px;
+  background: var(--gl-color-canvas);
+  border: 1px solid var(--gl-color-hairline);
+  border-radius: 12px;
+  padding: 5px;
+}
+.gl-tabs__tab {
+  flex: 1;
+  text-align: center;
+  font-family: var(--gl-font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gl-color-text-muted);
+  padding: 8px 0;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+}
+.gl-tabs__tab--active {
+  color: var(--gl-color-paper);
+  font-weight: 700;
+  background: var(--gl-color-ink-700);
+  border-color: var(--gl-color-ink-600);
+}
+
+/* ---------- Tooltip ---------- */
+.gl-tooltip { position: relative; display: inline-flex; }
+.gl-tooltip__bubble {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gl-color-canvas);
+  border: 1px solid var(--gl-color-hairline);
+  border-radius: 9px;
+  padding: 8px 12px;
+  font-family: var(--gl-font-sans);
+  font-size: 12px;
+  color: var(--gl-color-text);
+  white-space: nowrap;
+  box-shadow: var(--gl-effect-shadow-drop);
+}
+.gl-tooltip__bubble::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px) rotate(45deg);
+  width: 8px;
+  height: 8px;
+  background: var(--gl-color-canvas);
+  border-right: 1px solid var(--gl-color-hairline);
+  border-bottom: 1px solid var(--gl-color-hairline);
+}
+
+/* ---------- Skeleton (chargement) ---------- */
+.gl-skeleton {
+  border-radius: 7px;
+  background: linear-gradient(90deg, var(--gl-color-ink-700) 25%, var(--gl-color-ink-600) 50%, var(--gl-color-ink-700) 75%);
+  background-size: 200% 100%;
+  animation: glshimmer 1.4s linear infinite;
+}
+.gl-skeleton--pill { border-radius: var(--gl-radius-pill); }
+
+/* ---------- Avatar (identité Twitch) ---------- */
+.gl-avatar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--gl-radius-pill);
+  background: linear-gradient(135deg, var(--gl-color-ink-600), var(--gl-color-ink-700));
+  border: 1px solid var(--gl-color-ink-600);
+  font-family: var(--gl-font-sans);
+  font-weight: var(--gl-font-weight-extrabold);
+  color: var(--gl-color-paper);
+  font-size: 15px;
+  flex: none;
+}
+.gl-avatar__badge {
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 11px;
+  height: 11px;
+  border-radius: var(--gl-radius-pill);
+  background: var(--gl-color-signal);
+  border: 2px solid var(--gl-color-surface);
+}
+
+/* ---------- Chip token icon (◆ solde) ---------- */
+.gl-chip__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--gl-radius-pill);
+  background: var(--gl-color-signal);
+  color: var(--gl-color-paper);
+  font-size: 10px;
+  font-weight: var(--gl-font-weight-black);
+  flex: none;
+}
+
+/* ---------- State tag text/background variants not covered by the shipped
+   .gl-tag / .gl-tag--active / .gl-tag--refused primitives (dist/goallive.css) ---------- */
+.gl-tag--soft { color: var(--gl-color-line); }
+.gl-tag--muted-bg { background: var(--gl-color-canvas); }
+
+/* ---------- Rolling number (compteur roulant, odomètre) ---------- */
+.gl-rolling-number { display: inline-flex; align-items: baseline; font-family: var(--gl-font-sans); line-height: 1; }
+.gl-rolling-number__col { display: inline-block; overflow: hidden; vertical-align: top; }
+.gl-rolling-number__track { display: block; will-change: transform; }
+.gl-rolling-number__digit { display: block; text-align: center; }
+.gl-rolling-number__sep { display: inline-block; }
