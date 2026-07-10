@@ -1,0 +1,130 @@
+/* GoalGauge — signature molecule. See goal-gauge.js for the stateful builder.
+   Wired to --gl-* tokens; rgba(255,59,31,…) below mirrors --gl-color-signal
+   (#FF3B1F) at the opacities used throughout the source bundle for hairlines/
+   fills that don't have a dedicated token (same approach as --gl-color-signal-soft
+   for backgrounds). */
+
+.gl-goalgauge {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: var(--gl-font-sans);
+}
+
+.gl-goalgauge__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.gl-goalgauge__label {
+  font-family: var(--gl-font-mono);
+  font-size: 11px;
+  font-weight: var(--gl-font-weight-bold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gl-color-text-muted);
+}
+
+.gl-goalgauge--failed .gl-goalgauge__label::after {
+  content: ' · échoué';
+  color: var(--gl-color-signal);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.gl-goalgauge__count {
+  font-size: 13px;
+  color: var(--gl-color-text-muted);
+  white-space: nowrap;
+}
+
+.gl-goalgauge__count-current {
+  font-family: var(--gl-font-display);
+  font-weight: var(--gl-font-weight-extrabold);
+  font-size: 16px;
+  color: var(--gl-color-text);
+}
+
+.gl-goalgauge__track {
+  position: relative;
+  height: 16px;
+  border-radius: var(--gl-radius-pill);
+  background: rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+  transition: box-shadow var(--gl-motion-base) var(--gl-motion-ease);
+}
+
+[data-theme='light'] .gl-goalgauge__track {
+  background: rgba(11, 11, 12, 0.07);
+}
+
+.gl-goalgauge--near .gl-goalgauge__track {
+  box-shadow: var(--gl-effect-glow-signal);
+}
+
+.gl-goalgauge__fill {
+  position: relative;
+  height: 100%;
+  width: 0%;
+  border-radius: var(--gl-radius-pill);
+  background: linear-gradient(90deg, var(--gl-color-signal), #ff6a4d);
+  transition: width var(--gl-motion-slow) var(--gl-motion-ease);
+  transform-origin: center;
+}
+
+.gl-goalgauge--failed .gl-goalgauge__fill {
+  background: var(--gl-color-text-muted);
+}
+
+.gl-goalgauge__fill--bump {
+  animation: glgaugebump var(--gl-motion-slow) var(--gl-motion-ease);
+}
+
+@keyframes glgaugebump {
+  0% {
+    transform: scaleY(1);
+  }
+  45% {
+    transform: scaleY(1.5);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+.gl-goalgauge__caption {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--gl-color-text-muted);
+}
+
+.gl-goalgauge__unlocked {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 2px;
+  padding: 12px 16px;
+  border-radius: var(--gl-radius-md);
+  background: var(--gl-color-signal-soft);
+  border: 1px solid rgba(255, 59, 31, 0.4);
+  animation: glslidein var(--gl-motion-base) var(--gl-motion-ease);
+}
+
+.gl-goalgauge__unlocked[hidden] {
+  display: none;
+}
+
+.gl-goalgauge__unlocked-text {
+  font-family: var(--gl-font-display);
+  font-weight: var(--gl-font-weight-extrabold);
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  color: var(--gl-color-text);
+}
+
+.gl-goalgauge__unlocked-accent {
+  color: var(--gl-color-signal);
+}

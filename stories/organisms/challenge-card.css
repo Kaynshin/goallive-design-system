@@ -1,0 +1,65 @@
+/* ChallengeCard organism — see challenge-card.js for the builder. */
+
+.gl-challenge-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--gl-color-hairline);
+  border-radius: var(--gl-radius-lg);
+  background: var(--gl-color-surface);
+  padding: 22px;
+  max-width: 420px;
+}
+
+.gl-challenge-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--gl-effect-halo);
+}
+
+.gl-challenge-card__tags,
+.gl-challenge-card__title,
+.gl-challenge-card__desc,
+.gl-challenge-card__gauge,
+.gl-challenge-card__actions {
+  position: relative;
+}
+
+.gl-challenge-card__tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.gl-challenge-card__title {
+  font-family: var(--gl-font-display);
+  font-weight: var(--gl-font-weight-extrabold);
+  font-size: 22px;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--gl-color-text);
+  margin: 0 0 8px;
+}
+
+.gl-challenge-card__desc {
+  font-family: var(--gl-font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--gl-color-text-muted);
+  margin: 0 0 18px;
+}
+
+.gl-challenge-card__gauge {
+  margin-bottom: 18px;
+}
+
+.gl-challenge-card__actions {
+  display: flex;
+  gap: 10px;
+}
+
+.gl-challenge-card__actions .gl-btn--primary {
+  flex: 1;
+}

@@ -1,0 +1,102 @@
+/* DisputeWindow organism — see dispute-window.js for the builder. */
+
+.gl-dispute-window {
+  font-family: var(--gl-font-sans);
+  border: 1px solid var(--gl-color-hairline);
+  border-radius: var(--gl-radius-lg);
+  background: var(--gl-color-surface);
+  padding: 20px;
+  max-width: 420px;
+}
+
+.gl-dispute-window__alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--gl-color-signal-soft);
+  border: 1px solid rgba(255, 59, 31, 0.35);
+  border-radius: var(--gl-radius-md);
+  padding: 14px;
+  margin-bottom: 14px;
+}
+
+.gl-dispute-window__alert-icon {
+  font-size: 16px;
+  flex: none;
+}
+
+.gl-dispute-window__alert-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--gl-color-text);
+  margin-bottom: 3px;
+}
+
+.gl-dispute-window__alert-desc {
+  font-size: 12px;
+  color: var(--gl-color-text-muted);
+  line-height: 1.5;
+}
+
+.gl-dispute-window__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 13px;
+  color: var(--gl-color-text);
+}
+
+.gl-dispute-window__count {
+  font-weight: 700;
+  color: var(--gl-color-signal);
+}
+
+.gl-dispute-window__track {
+  height: 8px;
+  border-radius: var(--gl-radius-pill);
+  background: rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.gl-dispute-window__fill {
+  height: 100%;
+  width: 0%;
+  background: var(--gl-color-signal);
+  border-radius: var(--gl-radius-pill);
+  transition: width var(--gl-motion-slow) var(--gl-motion-ease);
+}
+
+.gl-dispute-window__actions {
+  display: flex;
+  gap: 10px;
+}
+
+.gl-dispute-window__actions button {
+  flex: 1;
+}
+
+.gl-dispute-window__result {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: var(--gl-radius-md);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gl-color-text);
+  animation: glslidein var(--gl-motion-base) var(--gl-motion-ease);
+}
+
+.gl-dispute-window__result[hidden] {
+  display: none;
+}
+
+.gl-dispute-window__result--refunded {
+  background: rgba(31, 138, 59, 0.1);
+  border: 1px solid rgba(31, 138, 59, 0.4);
+}
+
+.gl-dispute-window__result--honored {
+  background: var(--gl-color-signal-soft);
+  border: 1px solid rgba(255, 59, 31, 0.4);
+}
