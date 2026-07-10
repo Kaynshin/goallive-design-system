@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Bricolage+Grotesque:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  :focus-visible{outline:2px solid #FF3B1F;outline-offset:2px}
+  body{margin:0;background:#0B0B0C}
+  ::selection{background:rgba(255,59,31,.28)}
+  .gl-anchor{scroll-margin-top:78px}
+  @keyframes glpulse{0%{box-shadow:0 0 0 0 rgba(255,59,31,.5)}70%{box-shadow:0 0 0 9px rgba(255,59,31,0)}100%{box-shadow:0 0 0 0 rgba(255,59,31,0)}}
+  @keyframes glshimmer{0%{background-position:-180% 0}100%{background-position:180% 0}}
+  @keyframes glfloat{0%{opacity:0;transform:translateY(0)}15%{opacity:1}100%{opacity:0;transform:translateY(-26px)}}
+  @keyframes glslidein{0%{opacity:0;transform:translateY(14px) scale(.96)}100%{opacity:1;transform:translateY(0) scale(1)}}
+  @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="background:#0B0B0C;color:#F5F6FB;font-family:'Space Grotesk',sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased">
+
+  <header style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 28px;background:rgba(11,11,12,.78);backdrop-filter:blur(14px);border-bottom:1px solid #1E1E22">
+    <div style="display:flex;align-items:center;gap:12px">
+      <span style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:21px;letter-spacing:-.02em;color:#FFFFFF">Goal<span style="color:#FF3B1F">live</span></span>
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8A8A93;padding:4px 9px;border:1px solid #2A2A30;border-radius:999px">Design System</span>
+    </div>
+    <nav style="display:flex;align-items:center;gap:4px">
+      <a href="#marque" style="font-size:13px;font-weight:600;color:#8A8A93;text-decoration:none;padding:7px 12px;border-radius:9px">Marque</a>
+      <a href="#tokens" style="font-size:13px;font-weight:600;color:#8A8A93;text-decoration:none;padding:7px 12px;border-radius:9px">Tokens</a>
+      <a href="#signatures" style="font-size:13px;font-weight:600;color:#8A8A93;text-decoration:none;padding:7px 12px;border-radius:9px">Signatures</a>
+      <a href="#atoms" style="font-size:13px;font-weight:600;color:#8A8A93;text-decoration:none;padding:7px 12px;border-radius:9px">Atoms</a>
+      <a href="#molecules" style="font-size:13px;font-weight:600;color:#8A8A93;text-decoration:none;padding:7px 12px;border-radius:9px">Molecules</a>
+      <a href="#organisms" style="font-size:13px;font-weight:600;color:#8A8A93;text-decoration:none;padding:7px 12px;border-radius:9px">Organisms</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:9px;padding:6px 12px;border:1px solid #2A2A30;border-radius:999px">
+      <span style="width:8px;height:8px;border-radius:999px;background:#FF3B1F;animation:glpulse 1.3s infinite"></span>
+      <span style="font-size:12px;font-weight:700;color:#F5F6FB">LIVE</span>
+      <span style="font-size:12px;font-weight:500;color:#8A8A93">·</span>
+      <dc-import name="RollingNumber" value="{{ viewers }}" font-size="12" color="#8A8A93" weight="600" hint-size="44px,16px"></dc-import>
+      <span style="font-size:12px;font-weight:500;color:#8A8A93">viewers</span>
+    </div>
+  </header>
+
+  <section style="position:relative;overflow:hidden;padding:96px 28px 84px">
+    <div style="position:absolute;inset:0;background:radial-gradient(900px 440px at 80% -15%, rgba(255,59,31,0.16), transparent 60%),radial-gradient(620px 360px at 6% 118%, rgba(255,59,31,0.06), transparent 60%);pointer-events:none"></div>
+    <div style="position:relative;max-width:1180px;margin:0 auto">
+      <div style="display:inline-flex;align-items:center;gap:9px;padding:6px 13px;border:1px solid #2A2A30;border-radius:999px;margin-bottom:26px">
+        <span style="width:7px;height:7px;border-radius:999px;background:#FF3B1F;animation:glpulse 1.3s infinite"></span>
+        <span style="font-size:12px;font-weight:600;letter-spacing:.08em;color:#8A8A93">TRICOLORE · ENCRE / PAPIER / SIGNAL</span>
+      </div>
+      <h1 style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:clamp(48px,8vw,104px);line-height:.95;letter-spacing:-.03em;margin:0 0 22px;color:#FFFFFF">Le système<br>qui remplit le <span style="color:#FF3B1F">goal</span>.</h1>
+      <p style="max-width:560px;font-size:18px;line-height:1.55;color:#8A8A93;margin:0 0 34px">La charte vivante de Goallive — la plateforme où la communauté finance en tokens les défis qu'un créateur réalise en live. Tokens, atoms, molecules et organisms, dans les deux thèmes.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:30px;align-items:center">
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <dc-import name="RollingNumber" value="{{ solde }}" font-size="40" color="#FF3B1F" weight="700" hint-size="120px,46px"></dc-import>
+          <span style="font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#8A8A93">tokens en jeu</span>
+        </div>
+        <div style="width:1px;height:48px;background:#2A2A30"></div>
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <dc-import name="RollingNumber" value="{{ contributeurs }}" font-size="40" color="#FFFFFF" weight="700" hint-size="80px,46px"></dc-import>
+          <span style="font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#8A8A93">contributeurs</span>
+        </div>
+        <div style="width:1px;height:48px;background:#2A2A30"></div>
+        <div style="min-width:300px;flex:1">
+          <dc-import name="GoalGauge" current="{{ gaugeCurrent }}" target="{{ gaugeTarget }}" label="GOAL EN COURS" caption="{{ challenge }}" theme="dark" hint-size="320px,90px"></dc-import>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="marque" class="gl-anchor" style="padding:66px 28px;border-top:1px solid #1E1E22">
+    <div style="max-width:1180px;margin:0 auto">
+      <div style="margin-bottom:38px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;color:#FF3B1F;margin-bottom:12px">00 / MARQUE</div>
+        <h2 style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:clamp(30px,4vw,44px);line-height:1;letter-spacing:-.02em;margin:0 0 12px;color:#FFFFFF">Goal + Live · go alive</h2>
+        <p style="max-width:560px;font-size:16px;line-height:1.55;color:#8A8A93;margin:0">Deux mots cachés partagent le « l ». GOAL en encre, LIVE en signal, le point du « i » est le voyant live. Ton de voix : direct, énergique, complice — jamais corporate.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:16px;align-items:stretch">
+        <div style="position:relative;overflow:hidden;border:1px solid #1E1E22;border-radius:18px;background:#141417;padding:40px 32px;display:flex;flex-direction:column;justify-content:center;gap:18px">
+          <div style="position:absolute;inset:0;background:radial-gradient(520px 280px at 86% -25%,rgba(255,59,31,.14),transparent 60%)"></div>
+          <div style="position:relative;font-family:'Unbounded',sans-serif;font-weight:800;font-size:clamp(44px,7vw,84px);line-height:.9;letter-spacing:-.03em;color:#FFFFFF">Goal<span style="color:#FF3B1F">live</span></div>
+          <div style="position:relative;display:flex;flex-wrap:wrap;gap:10px">
+            <span style="font-size:12px;font-weight:700;color:#E6E8F0;background:#1E1E22;border:1px solid #2A2A30;border-radius:999px;padding:6px 12px">GOAL = encre / papier</span>
+            <span style="font-size:12px;font-weight:700;color:#FF3B1F;background:rgba(255,59,31,.12);border:1px solid rgba(255,59,31,.4);border-radius:999px;padding:6px 12px">LIVE = signal</span>
+            <span style="font-size:12px;font-weight:700;color:#E6E8F0;background:#1E1E22;border:1px solid #2A2A30;border-radius:999px;padding:6px 12px">double « l » distinct</span>
+            <span style="font-size:12px;font-weight:700;color:#E6E8F0;background:#1E1E22;border:1px solid #2A2A30;border-radius:999px;padding:6px 12px">point « i » = voyant live</span>
+          </div>
+          <div style="position:relative;font-family:'Space Grotesk',sans-serif;font-size:13px;color:#8A8A93">Lectures : <span style="color:#fff;font-weight:700">GO</span> + <span style="color:#fff;font-weight:700">ALIVE</span> · <span style="color:#fff;font-weight:700">GOAL</span> + <span style="color:#FF3B1F;font-weight:700">LIVE</span></div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="border:1px solid #1E1E22;border-radius:18px;background:#141417;padding:24px;display:flex;align-items:center;gap:24px">
+            <div style="flex:none;display:flex;flex-direction:column;align-items:center;gap:8px">
+              <div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:52px;line-height:1;letter-spacing:-.02em;color:#fff;position:relative">g<span style="color:#FF3B1F;position:relative">l<span style="position:absolute;top:-6px;left:50%;transform:translateX(-50%);width:9px;height:9px;border-radius:999px;background:#FF3B1F;animation:glpulse 1.3s infinite"></span></span></div>
+              <span style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#8A8A93">SIGNE RÉDUIT</span>
+            </div>
+            <div style="font-size:13px;color:#8A8A93;line-height:1.5"><span style="color:#fff;font-weight:700">g + l</span> — « gl » = good luck en langage gamer, et G de Goal + L de Live. Point live au-dessus du « l ».</div>
+          </div>
+          <div style="border:1px solid #1E1E22;border-radius:18px;background:#141417;padding:24px;display:flex;align-items:center;gap:20px">
+            <div style="flex:none;width:60px;height:60px;border-radius:14px;background:#0B0B0C;border:1px solid #2A2A30;display:flex;align-items:center;justify-content:center;font-family:'Unbounded',sans-serif;font-weight:800;font-size:24px;color:#fff">G<span style="color:#FF3B1F">ll</span></div>
+            <div style="font-size:13px;color:#8A8A93;line-height:1.5"><span style="color:#fff;font-weight:700">Monogramme G l l</span> — favicon &amp; avatar. Double « l » jusque dans les très petits formats. Mini wordmark : 24 px de haut.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px">
+        <div style="border:1px solid #1E1E22;border-radius:14px;background:#141417;padding:20px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.12em;color:#8A8A93;margin-bottom:12px">✓ DO</div>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:13px;color:#E6E8F0">
+            <div>Garder le split GOAL (encre) / LIVE (signal).</div>
+            <div>Respecter la zone de protection (hauteur du « G »).</div>
+            <div>Bas-de-casse sauf le G initial.</div>
+          </div>
+        </div>
+        <div style="border:1px solid #1E1E22;border-radius:14px;background:#141417;padding:20px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.12em;color:#FF3B1F;margin-bottom:12px">✕ DON'T</div>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:13px;color:#E6E8F0">
+            <div>Pas de dégradé sur le wordmark.</div>
+            <div>Ne pas remettre de bleu — la marque est tricolore.</div>
+            <div>Ne pas déformer ni fusionner le double « l ».</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tokens" class="gl-anchor" style="padding:66px 28px;border-top:1px solid #1E1E22">
+    <div style="max-width:1180px;margin:0 auto">
+      <div style="margin-bottom:38px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;color:#FF3B1F;margin-bottom:12px">01 / TOKENS</div>
+        <h2 style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:clamp(30px,4vw,44px);line-height:1;letter-spacing:-.02em;margin:0 0 12px;color:#FFFFFF">Fondations</h2>
+        <p style="max-width:560px;font-size:16px;line-height:1.55;color:#8A8A93;margin:0">Une seule source de vérité. Tricolore strict — encre, papier, signal — aucun bleu. Tout le reste dérive.</p>
+      </div>
+
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin:0 0 16px">Palette de marque</h3>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:18px">
+        <div style="border:1px solid #2A2A30;border-radius:14px;overflow:hidden;background:#141417">
+          <div style="height:128px;background:#0B0B0C;border-bottom:1px solid #2A2A30"></div>
+          <div style="padding:16px"><div style="font-weight:700;font-size:15px;color:#fff">Encre</div><div style="font-family:ui-monospace,monospace;font-size:13px;color:#FF3B1F;margin:3px 0 8px">--ink · #0B0B0C</div><div style="font-size:13px;color:#8A8A93;line-height:1.4">Canvas sombre · texte sur clair · partie GOAL du logo</div></div>
+        </div>
+        <div style="border:1px solid #2A2A30;border-radius:14px;overflow:hidden;background:#141417">
+          <div style="height:128px;background:#FFFFFF"></div>
+          <div style="padding:16px"><div style="font-weight:700;font-size:15px;color:#fff">Papier</div><div style="font-family:ui-monospace,monospace;font-size:13px;color:#FF3B1F;margin:3px 0 8px">--paper · #FFFFFF</div><div style="font-size:13px;color:#8A8A93;line-height:1.4">Canvas clair · texte sur sombre</div></div>
+        </div>
+        <div style="border:1px solid #2A2A30;border-radius:14px;overflow:hidden;background:#141417">
+          <div style="height:128px;background:#FF3B1F;position:relative;overflow:hidden"><div style="position:absolute;inset:0;background:radial-gradient(220px 120px at 80% -20%,rgba(255,255,255,.35),transparent 60%)"></div></div>
+          <div style="padding:16px"><div style="font-weight:700;font-size:15px;color:#fff">Signal</div><div style="font-family:ui-monospace,monospace;font-size:13px;color:#FF3B1F;margin:3px 0 8px">--signal · #FF3B1F</div><div style="font-size:13px;color:#8A8A93;line-height:1.4">Accent unique · live / go · jauge · CTA · point « i »</div></div>
+        </div>
+      </div>
+
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin:28px 0 16px">Rampe neutre &amp; états signal</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-bottom:8px">
+        <div style="border:1px solid #2A2A30;border-radius:11px;overflow:hidden"><div style="height:62px;background:#0B0B0C;border-bottom:1px solid #2A2A30"></div><div style="padding:10px 12px"><div style="font-size:13px;font-weight:600;color:#fff">ink-900</div><div style="font-family:ui-monospace,monospace;font-size:11px;color:#8A8A93">#0B0B0C</div></div></div>
+        <div style="border:1px solid #2A2A30;border-radius:11px;overflow:hidden"><div style="height:62px;background:#141417"></div><div style="padding:10px 12px"><div style="font-size:13px;font-weight:600;color:#fff">ink-800</div><div style="font-family:ui-monospace,monospace;font-size:11px;color:#8A8A93">#141417</div></div></div>
+        <div style="border:1px solid #2A2A30;border-radius:11px;overflow:hidden"><div style="height:62px;background:#1E1E22"></div><div style="padding:10px 12px"><div style="font-size:13px;font-weight:600;color:#fff">ink-700</div><div style="font-family:ui-monospace,monospace;font-size:11px;color:#8A8A93">#1E1E22</div></div></div>
+        <div style="border:1px solid #2A2A30;border-radius:11px;overflow:hidden"><div style="height:62px;background:#2A2A30"></div><div style="padding:10px 12px"><div style="font-size:13px;font-weight:600;color:#fff">ink-600</div><div style="font-family:ui-monospace,monospace;font-size:11px;color:#8A8A93">#2A2A30</div></div></div>
+        <div style="border:1px solid #2A2A30;border-radius:11px;overflow:hidden"><div style="height:62px;background:#8A8A93"></div><div style="padding:10px 12px"><div style="font-size:13px;font-weight:600;color:#fff">grey-400</div><div style="font-family:ui-monospace,monospace;font-size:11px;color:#8A8A93">#8A8A93 · texte sur encre</div></div></div>
+        <div style="border:1px solid #2A2A30;border-radius:11px;overflow:hidden"><div style="height:62px;background:#6B6B74"></div><div style="padding:10px 12px"><div style="font-size:13px;font-weight:600;color:#fff">grey-600</div><div style="font-family:ui-monospace,monospace;font-size:11px;color:#8A8A93">#6B6B74 · texte sur papier</div></div></div>
+        <div style="border:1px solid #2A2A30;border-radius:11px;overflow:hidden"><div style="height:62px;background:#F5F6FB"></div><div style="padding:10px 12px"><div style="font-size:13px;font-weight:600;color:#fff">paper-50</div><div style="font-family:ui-monospace,monospace;font-size:11px;color:#8A8A93">#F5F6FB</div></div></div>
+        <div style="border:1px solid #2A2A30;border-radius:11px;overflow:hidden"><div style="height:62px;background:#E6E8F0"></div><div style="padding:10px 12px"><div style="font-size:13px;font-weight:600;color:#fff">line</div><div style="font-family:ui-monospace,monospace;font-size:11px;color:#8A8A93">#E6E8F0</div></div></div>
+        <div style="border:1px solid #2A2A30;border-radius:11px;overflow:hidden"><div style="height:62px;background:#D92C10"></div><div style="padding:10px 12px"><div style="font-size:13px;font-weight:600;color:#fff">signal-deep</div><div style="font-family:ui-monospace,monospace;font-size:11px;color:#8A8A93">#D92C10 · texte blanc</div></div></div>
+        <div style="border:1px solid #2A2A30;border-radius:11px;overflow:hidden"><div style="height:62px;background:#B8240C"></div><div style="padding:10px 12px"><div style="font-size:13px;font-weight:600;color:#fff">signal-deep-hover</div><div style="font-family:ui-monospace,monospace;font-size:11px;color:#8A8A93">#B8240C</div></div></div>
+        <div style="border:1px solid #2A2A30;border-radius:11px;overflow:hidden"><div style="height:62px;background:#141417;position:relative"><div style="position:absolute;inset:0;background:rgba(255,59,31,.12)"></div></div><div style="padding:10px 12px"><div style="font-size:13px;font-weight:600;color:#fff">signal-soft</div><div style="font-family:ui-monospace,monospace;font-size:11px;color:#8A8A93">rgba(…,.12)</div></div></div>
+        <div style="border:1px solid #2A2A30;border-radius:11px;overflow:hidden"><div style="height:62px;background:#1F8A3B"></div><div style="padding:10px 12px"><div style="font-size:13px;font-weight:600;color:#fff">ok · fonctionnel</div><div style="font-family:ui-monospace,monospace;font-size:11px;color:#8A8A93">#1F8A3B</div></div></div>
+      </div>
+
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin:28px 0 16px">Contraste · WCAG AA</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px">
+        <div style="border:1px solid #2A2A30;border-radius:11px;background:#0B0B0C;padding:14px"><div style="font-size:14px;font-weight:700;color:#F5F6FB;margin-bottom:6px">Papier sur encre</div><div style="font-family:ui-monospace,monospace;font-size:11px;color:#8A8A93">18,4 : 1 · AAA</div></div>
+        <div style="border:1px solid #2A2A30;border-radius:11px;background:#0B0B0C;padding:14px"><div style="font-size:14px;font-weight:700;color:#8A8A93;margin-bottom:6px">Grey-400 sur encre</div><div style="font-family:ui-monospace,monospace;font-size:11px;color:#8A8A93">5,6 : 1 · AA</div></div>
+        <div style="border:1px solid #2A2A30;border-radius:11px;background:#0B0B0C;padding:14px"><div style="font-size:14px;font-weight:700;color:#FF3B1F;margin-bottom:6px">Signal sur encre</div><div style="font-family:ui-monospace,monospace;font-size:11px;color:#8A8A93">5,5 : 1 · AA</div></div>
+        <div style="border:1px solid #2A2A30;border-radius:11px;background:#D92C10;padding:14px"><div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:6px">Blanc sur signal-deep</div><div style="font-family:ui-monospace,monospace;font-size:11px;color:rgba(255,255,255,.9)">4,9 : 1 · AA ✓</div></div>
+        <div style="border:1px solid #2A2A30;border-radius:11px;background:#F5F6FB;padding:14px"><div style="font-size:14px;font-weight:700;color:#6B6B74;margin-bottom:6px">Grey-600 sur papier</div><div style="font-family:ui-monospace,monospace;font-size:11px;color:#6B6B74">5,3 : 1 · AA ✓</div></div>
+      </div>
+      <p style="font-size:13px;color:#8A8A93;line-height:1.55;max-width:640px;margin:12px 0 0">Règles validées : le signal pur <span style="font-family:ui-monospace,monospace;color:#FF3B1F">#FF3B1F</span> reste réservé au non-texte (jauge, halo, point live), au wordmark et au texte sur fond sombre. Tout fond portant du texte blanc utilise <span style="font-family:ui-monospace,monospace;color:#E6E8F0">signal-deep #D92C10</span> (hover #B8240C). Sur fond clair, le petit texte n'est jamais signal — encre + marqueur signal (puce, soulignement) — et le texte secondaire passe en <span style="font-family:ui-monospace,monospace;color:#E6E8F0">grey-600</span>. Focus clavier : anneau signal 2 px, global via <span style="font-family:ui-monospace,monospace;color:#E6E8F0">:focus-visible</span>.</p>
+
+      <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:16px;margin-top:34px;align-items:start">
+        <div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin:0 0 16px">Typographie</h3>
+          <div style="border:1px solid #1E1E22;border-radius:14px;background:#141417;overflow:hidden">
+            <div style="padding:22px 22px 14px;border-bottom:1px solid #1E1E22"><div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:54px;line-height:.9;letter-spacing:-.03em;color:#fff">Go<span style="color:#FF3B1F">live</span></div><div style="font-size:12px;color:#8A8A93;margin-top:10px">Display XL · Unbounded 800 · 64–150px clamp</div></div>
+            <div style="padding:18px 22px;border-bottom:1px solid #1E1E22"><div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:30px;letter-spacing:-.02em;color:#fff">Remplis le goal</div><div style="font-size:12px;color:#8A8A93;margin-top:8px">Titre H2 · Unbounded 800 · 28–40px</div></div>
+            <div style="padding:18px 22px;border-bottom:1px solid #1E1E22"><div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:26px;letter-spacing:-.01em;color:#fff">Variante d'affichage</div><div style="font-size:12px;color:#8A8A93;margin-top:8px">Bricolage Grotesque 800 · titres alternatifs</div></div>
+            <div style="padding:18px 22px;border-bottom:1px solid #1E1E22"><div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:#fff">Sous-titre de section</div><div style="font-size:12px;color:#8A8A93;margin-top:8px">H3 · Space Grotesk 700 · 20–24px</div></div>
+            <div style="padding:18px 22px;border-bottom:1px solid #1E1E22"><div style="font-family:'Space Grotesk',sans-serif;font-weight:400;font-size:16px;line-height:1.55;color:#E6E8F0;max-width:440px">La communauté vote puis finance le défi gagnant en tokens jusqu'à remplir le goal.</div><div style="font-size:12px;color:#8A8A93;margin-top:8px">Corps · Space Grotesk 400–500 · 15–17px</div></div>
+            <div style="padding:18px 22px;display:flex;align-items:center;gap:18px;flex-wrap:wrap"><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff;text-transform:uppercase;letter-spacing:.04em">Bouton / Label</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;color:#8A8A93">Caption · 12–13px · 500</span></div>
+          </div>
+        </div>
+        <div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin:0 0 16px">Rayons · Ombres · Motion</h3>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="border:1px solid #1E1E22;border-radius:14px;background:#141417;padding:18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+              <div style="width:48px;height:48px;background:#1E1E22;border:1px solid #2A2A30;border-radius:11px"></div>
+              <div style="width:48px;height:48px;background:#1E1E22;border:1px solid #2A2A30;border-radius:14px"></div>
+              <div style="width:48px;height:48px;background:#1E1E22;border:1px solid #2A2A30;border-radius:18px"></div>
+              <div style="width:48px;height:48px;background:#1E1E22;border:1px solid #2A2A30;border-radius:999px"></div>
+              <div style="font-family:ui-monospace,monospace;font-size:11px;color:#8A8A93;line-height:1.7">sm 11 · md 14<br>lg 18 · pill 999</div>
+            </div>
+            <div style="border:1px solid #1E1E22;border-radius:14px;background:#141417;padding:18px;display:flex;align-items:center;gap:18px">
+              <div style="width:48px;height:48px;background:#1E1E22;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.45)"></div>
+              <div style="width:48px;height:48px;background:#FF3B1F;border-radius:12px;box-shadow:0 0 26px rgba(255,59,31,.5)"></div>
+              <div style="font-family:ui-monospace,monospace;font-size:11px;color:#8A8A93;line-height:1.7">ombre portée<br>lueur signal</div>
+            </div>
+            <div style="border:1px solid #1E1E22;border-radius:14px;background:#141417;padding:18px;font-family:ui-monospace,monospace;font-size:12px;color:#8A8A93;line-height:1.9">
+              <div><span style="color:#FF3B1F">--motion-fast</span> 150ms</div>
+              <div><span style="color:#FF3B1F">--motion</span> 220ms</div>
+              <div><span style="color:#FF3B1F">--motion-slow</span> 360ms</div>
+              <div style="margin-top:6px;color:#E6E8F0">ease · cubic-bezier(.3,.7,.2,1)</div>
+            </div>
+            <div style="border:1px solid #1E1E22;border-radius:14px;background:#141417;padding:18px;position:relative;overflow:hidden">
+              <div style="position:absolute;inset:0;background:radial-gradient(420px 200px at 85% -30%,rgba(255,59,31,.22),transparent 60%)"></div>
+              <div style="position:relative;font-family:ui-monospace,monospace;font-size:11px;color:#E6E8F0;line-height:1.6">--halo<br><span style="color:#8A8A93">radial-gradient(900px 440px at 80% -15%, rgba(255,59,31,.14), transparent 60%)</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="signatures" class="gl-anchor" style="position:relative;overflow:hidden;padding:66px 28px;border-top:1px solid #1E1E22">
+    <div style="position:absolute;inset:0;background:radial-gradient(820px 420px at 88% -12%,rgba(255,59,31,.13),transparent 60%);pointer-events:none"></div>
+    <div style="position:relative;max-width:1180px;margin:0 auto">
+      <div style="margin-bottom:38px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;color:#FF3B1F;margin-bottom:12px">02 / SIGNATURES</div>
+        <h2 style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:clamp(30px,4vw,44px);line-height:1;letter-spacing:-.02em;margin:0 0 12px;color:#FFFFFF">Non négociables, vivantes</h2>
+        <p style="max-width:560px;font-size:16px;line-height:1.55;color:#8A8A93;margin:0">Le halo, la jauge qui se remplit, le voyant live, et les compteurs roulants type odomètre. Chaque animation a une fonction — jamais décorative seule.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
+
+        <div style="grid-column:span 2;min-width:0;border:1px solid #1E1E22;border-radius:18px;background:#141417;padding:24px;position:relative;overflow:hidden">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin-bottom:18px">Jauge de goal · soutien en direct</div>
+          <dc-import name="GoalGauge" current="{{ demoCurrent }}" target="{{ demoTarget }}" label="DÉFI ACTIF" caption="Speedrun World 1 en moins de 4 min" theme="dark" hint-size="100%,90px"></dc-import>
+          <div style="position:relative;margin-top:22px;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+            <sc-for list="{{ floats }}" as="f" hint-placeholder-count="0">
+              <span style="position:absolute;left:30px;top:-6px;font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:16px;color:#FF3B1F;pointer-events:none;animation:glfloat .9s cubic-bezier(.3,.7,.2,1) forwards">+{{ f.amt }}</span>
+            </sc-for>
+            <button onClick="{{ bid5 }}" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#D92C10;border:none;border-radius:11px;padding:11px 16px;cursor:pointer;transition:transform 150ms cubic-bezier(.3,.7,.2,1)" style-active="transform:scale(.95)" style-hover="background:#B8240C">+5</button>
+            <button onClick="{{ bid10 }}" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#1E1E22;border:1px solid #2A2A30;border-radius:11px;padding:11px 16px;cursor:pointer;transition:transform 150ms cubic-bezier(.3,.7,.2,1)" style-active="transform:scale(.95)" style-hover="border-color:#FF3B1F">+10</button>
+            <button onClick="{{ bid25 }}" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#1E1E22;border:1px solid #2A2A30;border-radius:11px;padding:11px 16px;cursor:pointer;transition:transform 150ms cubic-bezier(.3,.7,.2,1)" style-active="transform:scale(.95)" style-hover="border-color:#FF3B1F">+25</button>
+            <button onClick="{{ bid50 }}" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#1E1E22;border:1px solid #2A2A30;border-radius:11px;padding:11px 16px;cursor:pointer;transition:transform 150ms cubic-bezier(.3,.7,.2,1)" style-active="transform:scale(.95)" style-hover="border-color:#FF3B1F">+50</button>
+            <button onClick="{{ resetDemo }}" style="margin-left:auto;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;color:#8A8A93;background:transparent;border:none;cursor:pointer">↺ reset</button>
+          </div>
+          <sc-if value="{{ demoUnlocked }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:18px;display:flex;align-items:center;gap:12px;background:rgba(255,59,31,.12);border:1px solid rgba(255,59,31,.4);border-radius:14px;padding:14px 18px;animation:glslidein .36s cubic-bezier(.3,.7,.2,1)">
+              <span style="width:10px;height:10px;border-radius:999px;background:#FF3B1F;animation:glpulse 1.3s infinite"></span>
+              <span style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:16px;letter-spacing:.02em;color:#fff">GOAL UNLOCKED · <span style="color:#FF3B1F">GO ALIVE</span></span>
+            </div>
+          </sc-if>
+        </div>
+
+        <div style="border:1px solid #1E1E22;border-radius:18px;background:#141417;padding:24px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin-bottom:18px">Compteurs roulants</div>
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div style="display:flex;align-items:baseline;gap:10px"><dc-import name="RollingNumber" value="{{ solde }}" font-size="38" color="#FF3B1F" weight="700" hint-size="120px,44px"></dc-import><span style="font-size:13px;color:#8A8A93">solde tok</span></div>
+            <div style="display:flex;align-items:baseline;gap:10px"><dc-import name="RollingNumber" value="{{ contributeurs }}" font-size="28" color="#fff" weight="700" hint-size="70px,32px"></dc-import><span style="font-size:13px;color:#8A8A93">contributeurs</span></div>
+            <div style="display:flex;align-items:baseline;gap:10px"><dc-import name="RollingNumber" value="{{ viewers }}" font-size="28" color="#fff" weight="700" hint-size="80px,32px"></dc-import><span style="font-size:13px;color:#8A8A93">viewers</span></div>
+          </div>
+          <div style="margin-top:18px;font-size:12px;color:#8A8A93;line-height:1.5">Chaque chiffre roule verticalement, stagger 28&nbsp;ms — odomètre mécanique.</div>
+        </div>
+
+        <div style="border:1px solid #1E1E22;border-radius:18px;background:#141417;padding:24px;display:flex;flex-direction:column">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin-bottom:18px">Point live</div>
+          <div style="display:flex;align-items:center;gap:26px;margin:auto 0">
+            <span style="width:10px;height:10px;border-radius:999px;background:#FF3B1F;animation:glpulse 1.3s infinite"></span>
+            <span style="width:16px;height:16px;border-radius:999px;background:#FF3B1F;animation:glpulse 1.3s infinite"></span>
+            <span style="display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;background:rgba(255,59,31,.12);border:1px solid rgba(255,59,31,.4)"><span style="width:8px;height:8px;border-radius:999px;background:#FF3B1F;animation:glpulse 1.3s infinite"></span><span style="font-size:12px;font-weight:700;color:#fff">EN DIRECT</span></span>
+          </div>
+          <div style="margin-top:18px;font-size:12px;color:#8A8A93;line-height:1.5">Le voyant du direct, repris du point sur le « i ». Pulse douce ~1,3&nbsp;s.</div>
+        </div>
+
+        <div style="grid-column:span 2;border:1px solid #1E1E22;border-radius:18px;background:#141417;padding:0;overflow:hidden;position:relative;min-height:150px">
+          <div style="position:absolute;inset:0;background:radial-gradient(620px 320px at 82% -18%,rgba(255,59,31,.18),transparent 60%)"></div>
+          <div style="position:absolute;left:0;bottom:0;width:60%;height:70%;background:radial-gradient(420px 240px at 12% 130%,rgba(255,59,31,.07),transparent 60%)"></div>
+          <div style="position:relative;padding:24px"><div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin-bottom:14px">Le halo signature</div><div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:30px;letter-spacing:-.02em;color:#fff;max-width:60%;line-height:1.05">Discret, en haut à droite. Partout.</div><div style="margin-top:12px;font-size:13px;color:#8A8A93;max-width:54%">Dégradé radial signal très peu opaque, jamais criard — l'ambiance moderne de chaque grande surface.</div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="atoms" class="gl-anchor" style="padding:66px 28px;border-top:1px solid #1E1E22">
+    <div style="max-width:1180px;margin:0 auto">
+      <div style="margin-bottom:38px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;color:#FF3B1F;margin-bottom:12px">03 / ATOMS</div>
+        <h2 style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:clamp(30px,4vw,44px);line-height:1;letter-spacing:-.02em;margin:0 0 12px;color:#FFFFFF">Les briques</h2>
+        <p style="max-width:560px;font-size:16px;line-height:1.55;color:#8A8A93;margin:0">Boutons, champs, chips, badges, tags d'état, interrupteurs, tabs, focus et skeletons — chaque atome porte le vocabulaire « soutien / défi / goal », jamais « pari / mise ».</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px">
+
+        <div style="border:1px solid #1E1E22;border-radius:16px;background:#141417;padding:22px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin-bottom:16px">Boutons</div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+            <button style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#fff;background:#D92C10;border:none;border-radius:11px;padding:12px 20px;cursor:pointer;transition:background 150ms" style-hover="background:#B8240C">Soutenir le défi</button>
+            <button style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#fff;background:transparent;border:1px solid #2A2A30;border-radius:11px;padding:12px 20px;cursor:pointer;transition:border-color 150ms" style-hover="border-color:#FF3B1F">Ghost</button>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px">
+            <button style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;color:#fff;background:#D92C10;border:none;border-radius:9px;padding:8px 14px;cursor:pointer">Small</button>
+            <button style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;color:#8A8A93;background:transparent;border:none;cursor:pointer;text-decoration:underline;text-decoration-color:#FF3B1F;text-underline-offset:4px">Lien signal</button>
+            <button disabled style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;color:#8A8A93;background:#1E1E22;border:1px solid #2A2A30;border-radius:9px;padding:8px 14px;cursor:not-allowed;opacity:.6">Désactivé</button>
+          </div>
+        </div>
+
+        <div style="border:1px solid #1E1E22;border-radius:16px;background:#141417;padding:22px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin-bottom:16px">Boutons de soutien</div>
+          <div style="display:flex;flex-wrap:wrap;gap:9px">
+            <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#D92C10;border-radius:11px;padding:10px 15px">+5</span>
+            <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#1E1E22;border:1px solid #2A2A30;border-radius:11px;padding:10px 15px">+10</span>
+            <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#1E1E22;border:1px solid #2A2A30;border-radius:11px;padding:10px 15px">+25</span>
+            <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#1E1E22;border:1px solid #2A2A30;border-radius:11px;padding:10px 15px">+50</span>
+            <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#FF3B1F;background:rgba(255,59,31,.12);border:1px solid rgba(255,59,31,.4);border-radius:11px;padding:10px 15px">+100</span>
+          </div>
+          <div style="margin-top:14px;font-size:12px;color:#8A8A93">Échelle 5 / 10 / 25 / 50 · palier épique +100.</div>
+        </div>
+
+        <div style="border:1px solid #1E1E22;border-radius:16px;background:#141417;padding:22px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin-bottom:16px">Champ de saisie</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <input placeholder="Propose un défi…" style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#fff;background:#0B0B0C;border:1px solid #2A2A30;border-radius:11px;padding:12px 14px;outline:none" style-focus="border-color:#FF3B1F">
+            <div style="display:flex;align-items:center;gap:8px;background:#0B0B0C;border:1px solid #2A2A30;border-radius:11px;padding:0 14px">
+              <span style="font-size:14px;color:#8A8A93">🔍</span>
+              <input placeholder="Rechercher un créateur" style="flex:1;font-family:'Space Grotesk',sans-serif;font-size:14px;color:#fff;background:transparent;border:none;padding:12px 0;outline:none">
+            </div>
+          </div>
+        </div>
+
+        <div style="border:1px solid #1E1E22;border-radius:16px;background:#141417;padding:22px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin-bottom:16px">Chip de solde</div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+            <span style="display:inline-flex;align-items:center;gap:8px;background:#1E1E22;border:1px solid #2A2A30;border-radius:999px;padding:8px 14px"><span style="width:16px;height:16px;border-radius:999px;background:#FF3B1F;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff">◆</span><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff">1 240</span><span style="font-size:12px;color:#8A8A93">tok</span></span>
+            <button style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;color:#FF3B1F;background:rgba(255,59,31,.12);border:1px solid rgba(255,59,31,.4);border-radius:999px;padding:8px 14px;cursor:pointer">+ Recharger</button>
+          </div>
+        </div>
+
+        <div style="border:1px solid #1E1E22;border-radius:16px;background:#141417;padding:22px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin-bottom:16px">Badges &amp; perks</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,59,31,.12);border:1px solid rgba(255,59,31,.4);border-radius:999px;padding:5px 11px;font-size:12px;font-weight:700;color:#FF3B1F">★ Patron du mois</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;background:#1E1E22;border:1px solid #2A2A30;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:700;color:#E6E8F0">Sub Twitch</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;background:#1E1E22;border:1px solid #2A2A30;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:700;color:#E6E8F0">⚔ Top challenger</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;background:#1E1E22;border:1px solid #2A2A30;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:700;color:#E6E8F0">Vote pondéré ×2</span>
+          </div>
+        </div>
+
+        <div style="border:1px solid #1E1E22;border-radius:16px;background:#141417;padding:22px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin-bottom:16px">Tags d'état de défi</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span style="border-radius:8px;padding:5px 10px;font-size:12px;font-weight:700;background:#1E1E22;border:1px solid #2A2A30;color:#8A8A93">Proposé</span>
+            <span style="border-radius:8px;padding:5px 10px;font-size:12px;font-weight:700;background:#1E1E22;border:1px solid #2A2A30;color:#E6E8F0">Au vote</span>
+            <span style="border-radius:8px;padding:5px 10px;font-size:12px;font-weight:700;background:rgba(255,59,31,.12);border:1px solid rgba(255,59,31,.4);color:#FF3B1F">Actif</span>
+            <span style="border-radius:8px;padding:5px 10px;font-size:12px;font-weight:700;background:rgba(255,59,31,.12);border:1px solid rgba(255,59,31,.4);color:#FF3B1F">Financé</span>
+            <span style="border-radius:8px;padding:5px 10px;font-size:12px;font-weight:700;background:#1E1E22;border:1px solid #2A2A30;color:#E6E8F0">Honoré</span>
+            <span style="border-radius:8px;padding:5px 10px;font-size:12px;font-weight:700;background:#1E1E22;border:1px solid #2A2A30;color:#8A8A93">Réglé</span>
+            <span style="border-radius:8px;padding:5px 10px;font-size:12px;font-weight:700;background:#0B0B0C;border:1px solid #2A2A30;color:#8A8A93">↺ Non financé · recrédit</span>
+            <span style="border-radius:8px;padding:5px 10px;font-size:12px;font-weight:700;background:#0B0B0C;border:1px dashed rgba(255,59,31,.5);color:#FF3B1F">⛔ Refusé · modération</span>
+          </div>
+        </div>
+
+        <div style="border:1px solid #1E1E22;border-radius:16px;background:#141417;padding:22px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin-bottom:16px">Identité Twitch</div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <span style="position:relative;width:40px;height:40px;border-radius:999px;background:linear-gradient(135deg,#2A2A30,#1E1E22);border:1px solid #2A2A30;display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:15px">N<span style="position:absolute;right:-1px;bottom:-1px;width:11px;height:11px;border-radius:999px;background:#FF3B1F;border:2px solid #141417"></span></span>
+            <div><div style="font-weight:700;font-size:14px;color:#fff">Nyxoraa</div><div style="font-size:12px;color:#8A8A93">sub depuis 9 mois</div></div>
+          </div>
+        </div>
+
+        <div style="border:1px solid #1E1E22;border-radius:16px;background:#141417;padding:22px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin-bottom:16px">Segment de jauge &amp; point live</div>
+          <div style="display:flex;align-items:center;gap:14px">
+            <div style="flex:1;height:12px;border-radius:999px;background:rgba(255,255,255,.07);overflow:hidden"><div style="width:64%;height:100%;border-radius:999px;background:linear-gradient(90deg,#FF3B1F,#FF6A4D)"></div></div>
+            <span style="width:9px;height:9px;border-radius:999px;background:#FF3B1F;animation:glpulse 1.3s infinite"></span>
+          </div>
+        </div>
+
+        <div style="border:1px solid #1E1E22;border-radius:16px;background:#141417;padding:22px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin-bottom:16px">États de champ</div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;flex-direction:column;gap:5px">
+              <input value="Boire 10 shots cul sec" style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#fff;background:#0B0B0C;border:1px solid #FF3B1F;border-radius:11px;padding:11px 14px;outline:none">
+              <span style="font-size:12px;font-weight:600;color:#FF3B1F">⛔ Refusé à la modération — dangereux IRL</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:5px">
+              <input value="Battre Margit sans soin" style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#fff;background:#0B0B0C;border:1px solid rgba(31,138,59,.6);border-radius:11px;padding:11px 14px;outline:none">
+              <span style="font-size:12px;font-weight:600;color:#1F8A3B">✓ Condition observable — prêt pour le vote</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="border:1px solid #1E1E22;border-radius:16px;background:#141417;padding:22px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin-bottom:16px">Interrupteur</div>
+          <div style="display:flex;align-items:center;gap:14px">
+            <button onClick="{{ toggle }}" aria-pressed="{{ toggleOn }}" style="position:relative;width:46px;height:26px;border-radius:999px;background:{{ switchBg }};border:1px solid {{ switchBorder }};cursor:pointer;padding:0;transition:background 220ms cubic-bezier(.3,.7,.2,1)">
+              <span style="position:absolute;top:2px;left:{{ knobLeft }}px;width:20px;height:20px;border-radius:999px;background:#fff;transition:left 220ms cubic-bezier(.3,.7,.2,1)"></span>
+            </button>
+            <span style="font-size:13px;font-weight:600;color:#E6E8F0">{{ switchLabel }}</span>
+          </div>
+          <div style="margin-top:14px;font-size:12px;color:#8A8A93">Réglages &amp; bascule de thème. Piste signal quand actif.</div>
+        </div>
+
+        <div style="border:1px solid #1E1E22;border-radius:16px;background:#141417;padding:22px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin-bottom:16px">Tabs</div>
+          <div style="display:flex;gap:6px;background:#0B0B0C;border:1px solid #2A2A30;border-radius:12px;padding:5px">
+            <span style="flex:1;text-align:center;font-size:13px;font-weight:700;color:#fff;background:#1E1E22;border:1px solid #2A2A30;border-radius:8px;padding:8px 0">Session</span>
+            <span style="flex:1;text-align:center;font-size:13px;font-weight:600;color:#8A8A93;padding:8px 0;border:1px solid transparent">Historique</span>
+            <span style="flex:1;text-align:center;font-size:13px;font-weight:600;color:#8A8A93;padding:8px 0;border:1px solid transparent">Réglages</span>
+          </div>
+          <div style="margin-top:14px;font-size:12px;color:#8A8A93">Onglet actif : fond ink-700, texte papier.</div>
+        </div>
+
+        <div style="border:1px solid #1E1E22;border-radius:16px;background:#141417;padding:22px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin-bottom:16px">Tooltip</div>
+          <div style="display:flex;align-items:center;justify-content:center;padding:46px 0 6px">
+            <div style="position:relative;display:inline-flex">
+              <button style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;color:#fff;background:transparent;border:1px solid #2A2A30;border-radius:9px;padding:9px 14px;cursor:pointer">Vote pondéré ×2</button>
+              <div style="position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);background:#0B0B0C;border:1px solid #2A2A30;border-radius:9px;padding:8px 12px;font-size:12px;color:#E6E8F0;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.45)">Réservé aux subs de la chaîne<span style="position:absolute;top:calc(100% - 4px);left:50%;transform:translateX(-50%) rotate(45deg);width:8px;height:8px;background:#0B0B0C;border-right:1px solid #2A2A30;border-bottom:1px solid #2A2A30"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="border:1px solid #1E1E22;border-radius:16px;background:#141417;padding:22px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin-bottom:16px">Skeleton · chargement</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="height:14px;width:60%;border-radius:7px;background:linear-gradient(90deg,#1E1E22 25%,#2A2A30 50%,#1E1E22 75%);background-size:200% 100%;animation:glshimmer 1.4s linear infinite"></div>
+            <div style="height:14px;width:85%;border-radius:7px;background:linear-gradient(90deg,#1E1E22 25%,#2A2A30 50%,#1E1E22 75%);background-size:200% 100%;animation:glshimmer 1.4s linear infinite"></div>
+            <div style="height:18px;width:100%;border-radius:999px;background:linear-gradient(90deg,#1E1E22 25%,#2A2A30 50%,#1E1E22 75%);background-size:200% 100%;animation:glshimmer 1.4s linear infinite"></div>
+          </div>
+          <div style="margin-top:14px;font-size:12px;color:#8A8A93">Jamais de spinner — la jauge se dessine en squelette.</div>
+        </div>
+
+        <div style="border:1px solid #1E1E22;border-radius:16px;background:#141417;padding:22px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin-bottom:16px">Focus visible</div>
+          <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+            <button style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#D92C10;border:none;border-radius:11px;padding:11px 18px;cursor:pointer;outline:2px solid #FF3B1F;outline-offset:3px">Soutenir</button>
+            <button style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff;background:transparent;border:1px solid #2A2A30;border-radius:11px;padding:11px 18px;cursor:pointer;outline:2px solid #FF3B1F;outline-offset:3px">Ghost</button>
+          </div>
+          <div style="margin-top:14px;font-size:12px;color:#8A8A93">Anneau signal 2 px, décalé 3 px — appliqué globalement sur :focus-visible (clavier, WCAG 2.2 AA).</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="molecules" class="gl-anchor" style="padding:66px 28px;border-top:1px solid #1E1E22">
+    <div style="max-width:1180px;margin:0 auto">
+      <div style="margin-bottom:38px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;color:#FF3B1F;margin-bottom:12px">04 / MOLECULES</div>
+        <h2 style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:clamp(30px,4vw,44px);line-height:1;letter-spacing:-.02em;margin:0 0 12px;color:#FFFFFF">Assemblages</h2>
+        <p style="max-width:560px;font-size:16px;line-height:1.55;color:#8A8A93;margin:0">Des atomes combinés en unités fonctionnelles : la jauge complète, l'alerte overlay, l'option de vote, la ligne de contributeur, le sélecteur de palier, le toast de confirmation et l'état vide.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px">
+
+        <div style="border:1px solid #1E1E22;border-radius:16px;background:#141417;padding:22px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin-bottom:18px">Jauge de goal complète</div>
+          <dc-import name="GoalGauge" current="{{ gaugeCurrent }}" target="{{ gaugeTarget }}" label="GOAL EN COURS" caption="{{ challenge }}" theme="dark" height="20" hint-size="100%,96px"></dc-import>
+        </div>
+
+        <div style="border:1px solid #1E1E22;border-radius:16px;background:#141417;padding:22px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin-bottom:18px">Alerte overlay</div>
+          <div style="position:relative;overflow:hidden;border-radius:14px;background:#0B0B0C;border:1px solid rgba(255,59,31,.4);padding:20px">
+            <div style="position:absolute;inset:0;background:radial-gradient(360px 200px at 80% -30%,rgba(255,59,31,.28),transparent 60%)"></div>
+            <div style="position:relative;display:flex;align-items:center;gap:12px">
+              <span style="width:12px;height:12px;border-radius:999px;background:#FF3B1F;animation:glpulse 1.3s infinite;flex:none"></span>
+              <div><div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:18px;letter-spacing:.01em;color:#fff;line-height:1">GOAL UNLOCKED</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;color:#FF3B1F;margin-top:4px;letter-spacing:.06em">GO ALIVE · Nyxoraa relève le défi</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="border:1px solid #1E1E22;border-radius:16px;background:#141417;padding:22px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin-bottom:18px">Option de vote</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;gap:12px;background:rgba(255,59,31,.12);border:1px solid rgba(255,59,31,.4);border-radius:12px;padding:13px 15px">
+              <span style="width:18px;height:18px;border-radius:999px;border:2px solid #FF3B1F;display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="width:8px;height:8px;border-radius:999px;background:#FF3B1F"></span></span>
+              <span style="flex:1;font-size:14px;font-weight:600;color:#fff">Speedrun World 1 &lt; 4 min</span>
+              <span style="font-size:13px;font-weight:700;color:#FF3B1F">58%</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;background:#0B0B0C;border:1px solid #2A2A30;border-radius:12px;padding:13px 15px">
+              <span style="width:18px;height:18px;border-radius:999px;border:2px solid #2A2A30;flex:none"></span>
+              <span style="flex:1;font-size:14px;font-weight:600;color:#E6E8F0">Finir le donjon sans mourir</span>
+              <span style="font-size:13px;font-weight:700;color:#8A8A93">42%</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="border:1px solid #1E1E22;border-radius:16px;background:#141417;padding:22px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin-bottom:18px">Mur des contributeurs</div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;align-items:center;gap:12px"><span style="width:34px;height:34px;border-radius:999px;background:linear-gradient(135deg,#D92C10,#FF3B1F);display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:13px;flex:none">K</span><div style="flex:1;min-width:0"><div style="font-weight:700;font-size:14px;color:#fff">Korrigan_TV <span style="font-size:11px;font-weight:700;color:#FF3B1F;margin-left:4px">★ patron</span></div></div><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff">340 <span style="font-size:11px;color:#8A8A93">tok</span></span></div>
+            <div style="display:flex;align-items:center;gap:12px"><span style="width:34px;height:34px;border-radius:999px;background:linear-gradient(135deg,#2A2A30,#1E1E22);display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:13px;flex:none">M</span><div style="flex:1;min-width:0"><div style="font-weight:700;font-size:14px;color:#fff">Maelyz</div></div><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff">185 <span style="font-size:11px;color:#8A8A93">tok</span></span></div>
+            <div style="display:flex;align-items:center;gap:12px"><span style="width:34px;height:34px;border-radius:999px;background:linear-gradient(135deg,#2A2A30,#1E1E22);display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:13px;flex:none">V</span><div style="flex:1;min-width:0"><div style="font-weight:700;font-size:14px;color:#fff">Vortakk</div></div><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff">120 <span style="font-size:11px;color:#8A8A93">tok</span></span></div>
+          </div>
+        </div>
+
+        <div style="border:1px solid #1E1E22;border-radius:16px;background:#141417;padding:22px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin-bottom:18px">Palier d'ambition</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div style="border:1px solid #2A2A30;border-radius:12px;padding:15px;background:#0B0B0C"><div style="font-weight:700;font-size:15px;color:#fff;margin-bottom:4px">Commun</div><div style="font-size:12px;color:#8A8A93;line-height:1.4">Cible modérée, ouvert à tous</div><div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff">100 tok</div></div>
+            <div style="border:1px solid rgba(255,59,31,.45);border-radius:12px;padding:15px;background:rgba(255,59,31,.08);position:relative"><span style="position:absolute;top:10px;right:12px;font-size:10px;font-weight:800;letter-spacing:.08em;color:#FF3B1F">SUB</span><div style="font-weight:700;font-size:15px;color:#fff;margin-bottom:4px">Épique</div><div style="font-size:12px;color:#8A8A93;line-height:1.4">Réservé aux abonnés</div><div style="margin-top:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#FF3B1F">300 tok</div></div>
+          </div>
+        </div>
+
+        <div style="border:1px solid #1E1E22;border-radius:16px;background:#141417;padding:22px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin-bottom:18px">Minuteur de vote</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:14px">
+            <div><div style="font-size:13px;color:#8A8A93;margin-bottom:6px">Fin du vote dans</div><div style="display:flex;align-items:baseline;gap:6px"><dc-import name="RollingNumber" value="{{ countdown }}" font-size="34" color="#fff" weight="700" group="{{ false }}" hint-size="40px,40px"></dc-import><span style="font-size:14px;color:#8A8A93">s</span></div></div>
+            <span style="display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:rgba(255,59,31,.12);border:1px solid rgba(255,59,31,.4)"><span style="width:8px;height:8px;border-radius:999px;background:#FF3B1F;animation:glpulse 1.3s infinite"></span><span style="font-size:12px;font-weight:700;color:#fff">VOTE OUVERT</span></span>
+          </div>
+        </div>
+
+        <div style="border:1px solid #1E1E22;border-radius:16px;background:#141417;padding:22px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin-bottom:18px">Toast · confirmation</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;gap:12px;background:#0B0B0C;border:1px solid #2A2A30;border-radius:12px;padding:12px 15px;box-shadow:0 8px 24px rgba(0,0,0,.45)">
+              <span style="width:26px;height:26px;border-radius:8px;background:rgba(255,59,31,.12);color:#FF3B1F;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:none">◆</span>
+              <div style="flex:1;min-width:0"><div style="font-weight:700;font-size:13px;color:#fff">Soutien confirmé · +25 tok</div><div style="font-size:11px;color:#8A8A93">séquestrés sur « Battre Margit sans soin »</div></div>
+              <span style="font-size:12px;color:#8A8A93;cursor:pointer;flex:none">✕</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;background:#0B0B0C;border:1px solid rgba(31,138,59,.4);border-radius:12px;padding:12px 15px">
+              <span style="width:26px;height:26px;border-radius:8px;background:rgba(31,138,59,.12);color:#1F8A3B;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:none">↺</span>
+              <div style="flex:1;min-width:0"><div style="font-weight:700;font-size:13px;color:#fff">Goal non financé · +46 tok recrédités</div><div style="font-size:11px;color:#8A8A93">jamais d'argent — uniquement des tokens</div></div>
+              <span style="font-size:12px;color:#8A8A93;cursor:pointer;flex:none">✕</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="border:1px solid #1E1E22;border-radius:16px;background:#141417;padding:22px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93;margin-bottom:18px">État vide</div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:14px 0 4px;text-align:center">
+            <span style="width:44px;height:44px;border-radius:14px;background:#1E1E22;border:1px solid #2A2A30;display:inline-flex;align-items:center;justify-content:center"><span style="width:9px;height:9px;border-radius:999px;background:#2A2A30"></span></span>
+            <div style="font-weight:700;font-size:15px;color:#fff">Aucun goal actif</div>
+            <div style="font-size:13px;color:#8A8A93;max-width:240px;line-height:1.5">La session n'a pas commencé. Propose 2-3 défis pour ouvrir le vote.</div>
+            <button style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;color:#fff;background:#D92C10;border:none;border-radius:9px;padding:9px 15px;cursor:pointer" style-hover="background:#B8240C">Composer les défis</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="organisms" class="gl-anchor" style="padding:66px 28px;border-top:1px solid #1E1E22">
+    <div style="max-width:1180px;margin:0 auto">
+      <div style="margin-bottom:38px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;color:#FF3B1F;margin-bottom:12px">05 / ORGANISMS</div>
+        <h2 style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:clamp(30px,4vw,44px);line-height:1;letter-spacing:-.02em;margin:0 0 12px;color:#FFFFFF">Les écrans qui font la boucle</h2>
+        <p style="max-width:560px;font-size:16px;line-height:1.55;color:#8A8A93;margin:0">Carte de défi, panneau de vote, overlay OBS, dashboard créateur, recharge, litige et back-office — assemblés depuis les molecules.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;align-items:start">
+
+        <div style="border:1px solid #1E1E22;border-radius:18px;background:#141417;overflow:hidden">
+          <div style="padding:14px 20px;border-bottom:1px solid #1E1E22;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93">Carte de défi</div>
+          <div style="position:relative;overflow:hidden;padding:22px">
+            <div style="position:absolute;inset:0;background:radial-gradient(420px 220px at 90% -30%,rgba(255,59,31,.1),transparent 60%)"></div>
+            <div style="position:relative">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+                <span style="border-radius:8px;padding:5px 10px;font-size:12px;font-weight:700;background:rgba(255,59,31,.12);border:1px solid rgba(255,59,31,.4);color:#FF3B1F">Actif</span>
+                <span style="border-radius:8px;padding:5px 10px;font-size:12px;font-weight:700;background:#1E1E22;border:1px solid #2A2A30;color:#E6E8F0">Épique · SUB</span>
+              </div>
+              <div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:22px;line-height:1.05;letter-spacing:-.01em;color:#fff;margin-bottom:8px">Finir le Nightmare<br>sans checkpoint</div>
+              <div style="font-size:14px;color:#8A8A93;line-height:1.5;margin-bottom:18px">Une seule run, zéro mort. Si la communauté remplit le goal, Nyxoraa tente le run en direct, immédiatement.</div>
+              <dc-import name="GoalGauge" current="{{ gaugeCurrent }}" target="{{ gaugeTarget }}" label="GOAL" caption="{{ challenge }}" theme="dark" hint-size="100%,90px"></dc-import>
+              <div style="display:flex;gap:10px;margin-top:18px">
+                <button style="flex:1;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#fff;background:#D92C10;border:none;border-radius:11px;padding:13px;cursor:pointer" style-hover="background:#B8240C">Soutenir · +25</button>
+                <button style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#fff;background:#1E1E22;border:1px solid #2A2A30;border-radius:11px;padding:13px 18px;cursor:pointer">Partager</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="border:1px solid #1E1E22;border-radius:18px;background:#141417;overflow:hidden">
+          <div style="padding:14px 20px;border-bottom:1px solid #1E1E22;display:flex;align-items:center;justify-content:space-between">
+            <span style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93">Panneau de vote</span>
+            <span style="display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;color:#fff"><span style="width:7px;height:7px;border-radius:999px;background:#FF3B1F;animation:glpulse 1.3s infinite"></span><dc-import name="RollingNumber" value="{{ countdown }}" font-size="13" color="#fff" weight="700" group="{{ false }}" hint-size="20px,16px"></dc-import>s</span>
+          </div>
+          <div style="padding:20px">
+            <div style="font-size:13px;color:#8A8A93;margin-bottom:14px">Quel défi Nyxoraa relève cette session ? <span style="color:#FF3B1F;font-weight:700">Sub = vote ×2</span></div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="position:relative;overflow:hidden;border:1px solid rgba(255,59,31,.4);border-radius:12px;padding:14px 15px;background:#0B0B0C">
+                <div style="position:absolute;left:0;top:0;bottom:0;width:58%;background:rgba(255,59,31,.12)"></div>
+                <div style="position:relative;display:flex;align-items:center;gap:10px"><span style="flex:1;font-size:14px;font-weight:600;color:#fff">Speedrun World 1 &lt; 4 min</span><span style="font-size:14px;font-weight:700;color:#FF3B1F">58%</span></div>
+              </div>
+              <div style="position:relative;overflow:hidden;border:1px solid #2A2A30;border-radius:12px;padding:14px 15px;background:#0B0B0C">
+                <div style="position:absolute;left:0;top:0;bottom:0;width:30%;background:rgba(255,255,255,.05)"></div>
+                <div style="position:relative;display:flex;align-items:center;gap:10px"><span style="flex:1;font-size:14px;font-weight:600;color:#E6E8F0">Donjon sans mourir</span><span style="font-size:14px;font-weight:700;color:#8A8A93">30%</span></div>
+              </div>
+              <div style="position:relative;overflow:hidden;border:1px solid #2A2A30;border-radius:12px;padding:14px 15px;background:#0B0B0C">
+                <div style="position:absolute;left:0;top:0;bottom:0;width:12%;background:rgba(255,255,255,.05)"></div>
+                <div style="position:relative;display:flex;align-items:center;gap:10px"><span style="flex:1;font-size:14px;font-weight:600;color:#E6E8F0">10 min en anglais</span><span style="font-size:14px;font-weight:700;color:#8A8A93">12%</span></div>
+              </div>
+            </div>
+            <button style="width:100%;margin-top:14px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#fff;background:#D92C10;border:none;border-radius:11px;padding:13px;cursor:pointer" style-hover="background:#B8240C">Voter</button>
+          </div>
+        </div>
+
+        <div style="grid-column:span 2;border:1px solid #1E1E22;border-radius:18px;background:#141417;overflow:hidden">
+          <div style="padding:14px 20px;border-bottom:1px solid #1E1E22;display:flex;align-items:center;justify-content:space-between">
+            <span style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93">Overlay OBS · à incruster sur le live</span>
+            <span style="font-size:11px;font-weight:600;color:#8A8A93">1920 × 1080 · fond transparent</span>
+          </div>
+          <div style="padding:20px">
+            <div style="position:relative;border-radius:14px;overflow:hidden;background:repeating-linear-gradient(45deg,#0e0e10,#0e0e10 14px,#121214 14px,#121214 28px);min-height:230px;border:1px solid #1E1E22">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#2A2A30;font-family:ui-monospace,monospace;font-size:13px">flux de jeu</div>
+              <div style="position:absolute;left:22px;bottom:22px;right:22px;display:flex;align-items:flex-end;justify-content:space-between;gap:18px">
+                <div style="background:rgba(11,11,12,.82);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px 18px;min-width:340px;max-width:440px;flex:1">
+                  <dc-import name="GoalGauge" current="{{ demoCurrent }}" target="{{ demoTarget }}" label="GOAL EN DIRECT" caption="Speedrun World 1 &lt; 4 min" theme="dark" hint-size="100%,90px"></dc-import>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-end">
+                  <span style="display:inline-flex;align-items:center;gap:8px;background:rgba(11,11,12,.82);backdrop-filter:blur(8px);border:1px solid rgba(255,59,31,.4);border-radius:999px;padding:8px 14px"><span style="width:8px;height:8px;border-radius:999px;background:#FF3B1F;animation:glpulse 1.3s infinite"></span><span style="font-size:12px;font-weight:700;color:#fff">EN DIRECT</span></span>
+                  <span style="display:inline-flex;align-items:center;gap:8px;background:rgba(11,11,12,.82);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:8px 14px"><span style="font-size:13px;color:#8A8A93">🎙 « plus 25 »</span></span>
+                </div>
+              </div>
+              <div style="position:absolute;left:22px;top:22px;right:22px;display:flex;justify-content:center">
+                <div style="display:flex;align-items:center;gap:10px;background:rgba(11,11,12,.82);backdrop-filter:blur(8px);border:1px solid rgba(255,59,31,.4);border-radius:12px;padding:10px 16px;animation:glslidein .36s cubic-bezier(.3,.7,.2,1)"><span style="width:9px;height:9px;border-radius:999px;background:#FF3B1F;animation:glpulse 1.3s infinite"></span><span style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:14px;color:#fff">GOAL UNLOCKED · <span style="color:#FF3B1F">GO ALIVE</span></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="grid-column:span 2;border:1px solid #1E1E22;border-radius:18px;background:#141417;overflow:hidden">
+          <div style="padding:14px 20px;border-bottom:1px solid #1E1E22;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93">Dashboard créateur</div>
+          <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:0">
+            <div style="padding:22px;border-right:1px solid #1E1E22">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px"><div style="font-weight:700;font-size:16px;color:#fff">Proposer un défi</div><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#FF3B1F;background:rgba(255,59,31,.12);border:1px solid rgba(255,59,31,.4);border-radius:999px;padding:5px 11px">✦ IA assist</span></div>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <input value="Finir le Nightmare sans checkpoint" style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#fff;background:#0B0B0C;border:1px solid #2A2A30;border-radius:11px;padding:12px 14px;outline:none" style-focus="border-color:#FF3B1F">
+                <div style="display:flex;gap:10px">
+                  <div style="flex:1;display:flex;align-items:center;gap:8px;background:#0B0B0C;border:1px solid #2A2A30;border-radius:11px;padding:0 14px"><span style="font-size:12px;color:#8A8A93">Cible</span><input value="300" style="flex:1;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff;background:transparent;border:none;padding:12px 0;outline:none"><span style="font-size:12px;color:#8A8A93">tok</span></div>
+                  <select style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:#fff;background:#0B0B0C;border:1px solid #2A2A30;border-radius:11px;padding:0 12px;outline:none"><option>Épique · sub</option><option>Commun</option></select>
+                </div>
+                <div style="display:flex;gap:10px;margin-top:2px"><button style="flex:1;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#D92C10;border:none;border-radius:11px;padding:12px;cursor:pointer" style-hover="background:#B8240C">Valider &amp; ouvrir au vote</button><button style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#8A8A93;background:#1E1E22;border:1px solid #2A2A30;border-radius:11px;padding:12px 16px;cursor:pointer">↻ IA</button></div>
+              </div>
+            </div>
+            <div style="padding:22px;display:flex;flex-direction:column;gap:16px">
+              <div><div style="font-size:12px;color:#8A8A93;margin-bottom:4px">Gains de la session</div><div style="display:flex;align-items:baseline;gap:6px"><span style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:30px;color:#fff">142</span><span style="font-size:14px;color:#8A8A93">€ libérés</span></div></div>
+              <div style="height:1px;background:#1E1E22"></div>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:13px;color:#E6E8F0">Défis honorés</span><span style="font-weight:700;font-size:14px;color:#fff">3 / 3</span></div>
+                <div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:13px;color:#E6E8F0">Taux de participation</span><span style="font-weight:700;font-size:14px;color:#FF3B1F">72%</span></div>
+                <div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:13px;color:#E6E8F0">En attente de validation</span><span style="font-weight:700;font-size:14px;color:#fff">2</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="border:1px solid #1E1E22;border-radius:18px;background:#141417;overflow:hidden">
+          <div style="padding:14px 20px;border-bottom:1px solid #1E1E22;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93">Modale de recharge</div>
+          <div style="position:relative;overflow:hidden;padding:22px">
+            <div style="position:absolute;inset:0;background:radial-gradient(380px 200px at 88% -30%,rgba(255,59,31,.1),transparent 60%)"></div>
+            <div style="position:relative">
+              <div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:20px;color:#fff;margin-bottom:4px">Recharge de tokens</div>
+              <div style="font-size:13px;color:#8A8A93;margin-bottom:18px">Paiement sécurisé via Stripe. 1 € = 10 tok.</div>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px">
+                <div style="border:1px solid #2A2A30;border-radius:12px;padding:13px 10px;text-align:center;background:#0B0B0C"><div style="font-weight:800;font-size:17px;color:#fff">2 €</div><div style="font-size:11px;color:#8A8A93">20 tok</div></div>
+                <div style="border:1px solid #2A2A30;border-radius:12px;padding:13px 10px;text-align:center;background:#0B0B0C"><div style="font-weight:800;font-size:17px;color:#fff">5 €</div><div style="font-size:11px;color:#8A8A93">50 tok</div></div>
+                <div style="border:1px solid rgba(255,59,31,.45);border-radius:12px;padding:13px 10px;text-align:center;background:rgba(255,59,31,.08);position:relative"><span style="position:absolute;top:-8px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:800;letter-spacing:.06em;color:#fff;background:#D92C10;border-radius:999px;padding:2px 7px">POPULAIRE</span><div style="font-weight:800;font-size:17px;color:#fff">10 €</div><div style="font-size:11px;color:#FF3B1F">100 tok</div></div>
+                <div style="border:1px solid #2A2A30;border-radius:12px;padding:13px 10px;text-align:center;background:#0B0B0C"><div style="font-weight:800;font-size:17px;color:#fff">20 €</div><div style="font-size:11px;color:#8A8A93">200 tok</div></div>
+                <div style="border:1px solid #2A2A30;border-radius:12px;padding:13px 10px;text-align:center;background:#0B0B0C"><div style="font-weight:800;font-size:17px;color:#fff">50 €</div><div style="font-size:11px;color:#8A8A93">500 tok</div></div>
+                <div style="border:1px solid #2A2A30;border-radius:12px;padding:13px 10px;text-align:center;background:#0B0B0C"><div style="font-weight:800;font-size:17px;color:#fff">100 €</div><div style="font-size:11px;color:#8A8A93">1000 tok</div></div>
+              </div>
+              <button style="width:100%;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#fff;background:#D92C10;border:none;border-radius:11px;padding:13px;cursor:pointer" style-hover="background:#B8240C">Payer 10 € · Stripe</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="border:1px solid #1E1E22;border-radius:18px;background:#141417;overflow:hidden">
+            <div style="padding:14px 20px;border-bottom:1px solid #1E1E22;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93">Fenêtre de litige</div>
+            <div style="padding:20px">
+              <div style="display:flex;align-items:flex-start;gap:12px;background:rgba(255,59,31,.08);border:1px solid rgba(255,59,31,.35);border-radius:12px;padding:14px;margin-bottom:14px">
+                <span style="font-size:16px;flex:none">⚠</span>
+                <div><div style="font-weight:700;font-size:14px;color:#fff;margin-bottom:3px">Défi signalé « non honoré »</div><div style="font-size:12px;color:#8A8A93;line-height:1.5">Supermajorité par tête requise. Si validée, recrédit automatique en tokens des contributeurs.</div></div>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px"><span style="font-size:13px;color:#E6E8F0">Signalements</span><span style="font-weight:700;font-size:14px;color:#FF3B1F">18 / 26 contributeurs</span></div>
+              <div style="height:8px;border-radius:999px;background:rgba(255,255,255,.07);overflow:hidden;margin-bottom:16px"><div style="width:69%;height:100%;background:#FF3B1F;border-radius:999px"></div></div>
+              <div style="display:flex;gap:10px"><button style="flex:1;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#1E1E22;border:1px solid #2A2A30;border-radius:11px;padding:11px;cursor:pointer">Honoré</button><button style="flex:1;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#D92C10;border:none;border-radius:11px;padding:11px;cursor:pointer" style-hover="background:#B8240C">Signaler</button></div>
+            </div>
+          </div>
+
+          <div style="border:1px solid #1E1E22;border-radius:18px;background:#141417;overflow:hidden">
+            <div style="padding:14px 20px;border-bottom:1px solid #1E1E22;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A8A93">Back-office · stats</div>
+            <div style="padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
+              <div><div style="font-size:12px;color:#8A8A93;margin-bottom:4px">Participation</div><div style="display:flex;align-items:baseline;gap:5px"><dc-import name="RollingNumber" value="{{ contributeurs }}" font-size="26" color="#fff" weight="700" hint-size="60px,30px"></dc-import><span style="font-size:13px;color:#8A8A93">/ session</span></div></div>
+              <div><div style="font-size:12px;color:#8A8A93;margin-bottom:4px">Tokens libérés</div><div style="display:flex;align-items:baseline;gap:5px"><dc-import name="RollingNumber" value="{{ solde }}" font-size="26" color="#FF3B1F" weight="700" hint-size="80px,30px"></dc-import></div></div>
+              <div style="grid-column:span 2;height:1px;background:#1E1E22"></div>
+              <div style="grid-column:span 2;display:flex;align-items:flex-end;gap:6px;height:64px">
+                <div style="flex:1;height:40%;background:#2A2A30;border-radius:5px 5px 0 0"></div>
+                <div style="flex:1;height:62%;background:#2A2A30;border-radius:5px 5px 0 0"></div>
+                <div style="flex:1;height:50%;background:#2A2A30;border-radius:5px 5px 0 0"></div>
+                <div style="flex:1;height:78%;background:#2A2A30;border-radius:5px 5px 0 0"></div>
+                <div style="flex:1;height:90%;background:#FF3B1F;border-radius:5px 5px 0 0"></div>
+                <div style="flex:1;height:100%;background:#FF3B1F;border-radius:5px 5px 0 0"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="light" class="gl-anchor" style="position:relative;overflow:hidden;background:#F5F6FB;color:#0B0B0C;padding:66px 28px;border-top:1px solid #1E1E22">
+    <div style="position:absolute;inset:0;background:radial-gradient(820px 420px at 88% -12%,rgba(255,59,31,.1),transparent 60%);pointer-events:none"></div>
+    <div style="position:relative;max-width:1180px;margin:0 auto">
+      <div style="margin-bottom:38px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;color:#0B0B0C;margin-bottom:12px">06 / THÈME CLAIR</div>
+        <h2 style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:clamp(30px,4vw,44px);line-height:1;letter-spacing:-.02em;margin:0 0 12px;color:#0B0B0C">Mêmes tokens, deux surfaces</h2>
+        <p style="max-width:560px;font-size:16px;line-height:1.55;color:#2A2A30;margin:0">Le clair sert le site, les pages créateur et les écrans de paiement — rassurant. Mêmes signal, halo et signatures, posés sur papier.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;align-items:start">
+
+        <div style="border:1px solid #E6E8F0;border-radius:18px;background:#fff;padding:22px;box-shadow:0 8px 24px rgba(11,11,12,.06)">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6B6B74;margin-bottom:18px">Jauge · thème clair</div>
+          <dc-import name="GoalGauge" current="{{ gaugeCurrent }}" target="{{ gaugeTarget }}" label="GOAL EN COURS" caption="{{ challenge }}" theme="light" hint-size="100%,96px"></dc-import>
+        </div>
+
+        <div style="border:1px solid #E6E8F0;border-radius:18px;background:#fff;padding:22px;box-shadow:0 8px 24px rgba(11,11,12,.06)">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6B6B74;margin-bottom:16px">Boutons &amp; chip</div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px">
+            <button style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#D92C10;border:none;border-radius:11px;padding:11px 18px;cursor:pointer" style-hover="background:#B8240C">Soutenir</button>
+            <button style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#0B0B0C;background:#fff;border:1px solid #E6E8F0;border-radius:11px;padding:11px 18px;cursor:pointer" style-hover="border-color:#FF3B1F">Ghost</button>
+          </div>
+          <span style="display:inline-flex;align-items:center;gap:8px;background:#F5F6FB;border:1px solid #E6E8F0;border-radius:999px;padding:8px 14px"><span style="width:16px;height:16px;border-radius:999px;background:#FF3B1F;display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#fff">◆</span><dc-import name="RollingNumber" value="{{ solde }}" font-size="15" color="#0B0B0C" weight="700" hint-size="60px,18px"></dc-import><span style="font-size:12px;color:#6B6B74">tok</span></span>
+        </div>
+
+        <div style="border:1px solid #E6E8F0;border-radius:18px;background:#fff;overflow:hidden;box-shadow:0 8px 24px rgba(11,11,12,.06)">
+          <div style="padding:14px 20px;border-bottom:1px solid #E6E8F0;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6B6B74">Carte de défi · clair</div>
+          <div style="padding:20px">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span style="border-radius:8px;padding:5px 10px;font-size:12px;font-weight:700;background:rgba(255,59,31,.1);border:1px solid rgba(255,59,31,.35);color:#0B0B0C">Au vote</span><span style="border-radius:8px;padding:5px 10px;font-size:12px;font-weight:700;background:#F5F6FB;border:1px solid #E6E8F0;color:#2A2A30">Commun</span></div>
+            <div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:19px;line-height:1.1;color:#0B0B0C;margin-bottom:8px">Cuisiner les yeux bandés</div>
+            <div style="font-size:13px;color:#6B6B74;line-height:1.5;margin-bottom:16px">Reconnu rassurant pour les écrans hors live et de paiement.</div>
+            <dc-import name="GoalGauge" current="{{ demoCurrent }}" target="{{ demoTarget }}" label="GOAL" caption="Cible commune" theme="light" height="14" hint-size="100%,84px"></dc-import>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#0B0B0C;color:#8A8A93;padding:40px 28px;border-top:1px solid #1E1E22">
+    <div style="max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+      <span style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:18px;color:#FFFFFF">Goal<span style="color:#FF3B1F">live</span></span>
+      <a href="Goallive Showcase.dc.html" style="font-size:13px;font-weight:700;color:#FF3B1F;text-decoration:none">Voir les écrans assemblés →</a>
+      <span style="font-size:13px">Design system · tricolore · goallive.gg</span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = {
+    solde: 1240, contributeurs: 87, viewers: 3142,
+    gaugeCurrent: 84, gaugeTarget: 120,
+    challenge: 'Finir le donjon sans mourir', unlocked: false,
+    demoCurrent: 55, demoTarget: 100, demoUnlocked: false, floats: [],
+    countdown: 30, toggleOn: true
+  };
+  _fid = 0;
+  placeBid(amt) {
+    const id = ++this._fid;
+    this.setState(s => {
+      let next = s.demoCurrent + amt;
+      let unlocked = s.demoUnlocked;
+      if (next >= s.demoTarget) { next = s.demoTarget; unlocked = true; }
+      const floats = [...s.floats, { id, amt }];
+      return { demoCurrent: next, demoUnlocked: unlocked, floats };
+    });
+    setTimeout(() => this.setState(s => ({ floats: s.floats.filter(f => f.id !== id) })), 900);
+  }
+  resetDemo() { this.setState({ demoCurrent: 30, demoUnlocked: false }); }
+  challenges = [
+    'Finir le donjon sans mourir',
+    'Speedrun World 1 en moins de 4 min',
+    '1v5 clutch sur la prochaine ronde',
+    'Parler en anglais pendant 10 min',
+    'Cuisiner les pâtes les yeux bandés'
+  ];
+  componentDidMount() {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    this.loop = setInterval(() => this.tick(), 2400);
+    this.cd = setInterval(() => this.setState(s => ({ countdown: s.countdown <= 0 ? 30 : s.countdown - 1 })), 1000);
+  }
+  componentWillUnmount() { clearInterval(this.loop); clearInterval(this.cd); clearTimeout(this._reset); }
+  tick() {
+    const bids = [5, 10, 25, 50];
+    const bid = bids[Math.floor(Math.random() * bids.length)];
+    this.setState(s => {
+      let next = s.gaugeCurrent + bid;
+      if (s.unlocked) return {};
+      if (next >= s.gaugeTarget) {
+        this._reset = setTimeout(() => {
+          const c = this.challenges[Math.floor(Math.random() * this.challenges.length)];
+          this.setState({ gaugeCurrent: Math.floor(Math.random() * 30) + 10, gaugeTarget: 100 + Math.floor(Math.random() * 6) * 20, challenge: c, unlocked: false });
+        }, 3200);
+        return { gaugeCurrent: s.gaugeTarget, unlocked: true, solde: s.solde + bid, contributeurs: s.contributeurs + 1, viewers: s.viewers + Math.floor(Math.random() * 40) - 12 };
+      }
+      return { gaugeCurrent: next, solde: s.solde + bid, contributeurs: s.contributeurs + (Math.random() > .5 ? 1 : 0), viewers: Math.max(2800, s.viewers + Math.floor(Math.random() * 60) - 26) };
+    });
+  }
+  renderVals() {
+    return {
+      solde: this.state.solde, contributeurs: this.state.contributeurs, viewers: this.state.viewers,
+      gaugeCurrent: this.state.gaugeCurrent, gaugeTarget: this.state.gaugeTarget,
+      challenge: this.state.challenge,
+      demoCurrent: this.state.demoCurrent, demoTarget: this.state.demoTarget,
+      demoUnlocked: this.state.demoUnlocked, floats: this.state.floats,
+      countdown: this.state.countdown,
+      bid5: () => this.placeBid(5), bid10: () => this.placeBid(10),
+      bid25: () => this.placeBid(25), bid50: () => this.placeBid(50),
+      resetDemo: () => this.resetDemo(),
+      toggleOn: this.state.toggleOn,
+      toggle: () => this.setState(s => ({ toggleOn: !s.toggleOn })),
+      switchBg: this.state.toggleOn ? '#FF3B1F' : '#1E1E22',
+      switchBorder: this.state.toggleOn ? 'rgba(255,59,31,.4)' : '#2A2A30',
+      knobLeft: this.state.toggleOn ? 23 : 2,
+      switchLabel: this.state.toggleOn ? 'Alertes overlay · activées' : 'Alertes overlay · coupées'
+    };
+  }
+}
+</script>
+</body>
+</html>

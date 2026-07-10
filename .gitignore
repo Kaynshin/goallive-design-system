@@ -1,0 +1,6 @@
+node_modules/
+dist/
+storybook-static/
+.claude/worktrees/
+.DS_Store
+*.log

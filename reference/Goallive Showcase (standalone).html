@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  :focus-visible{outline:2px solid #FF3B1F;outline-offset:2px}
+  body{margin:0;background:#0B0B0C}
+  ::selection{background:rgba(255,59,31,.28)}
+  @keyframes glpulse{0%{box-shadow:0 0 0 0 rgba(255,59,31,.5)}70%{box-shadow:0 0 0 9px rgba(255,59,31,0)}100%{box-shadow:0 0 0 0 rgba(255,59,31,0)}}
+  @keyframes glslidein{0%{opacity:0;transform:translateY(14px) scale(.96)}100%{opacity:1;transform:translateY(0) scale(1)}}
+  @keyframes glfloat{0%{opacity:0;transform:translateY(0)}15%{opacity:1}100%{opacity:0;transform:translateY(-26px)}}
+  .scr{scroll-margin-top:18px}
+  .idx{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:#8A8A93;text-decoration:none;padding:7px 12px;border:1px solid #2A2A30;border-radius:999px;transition:all 150ms}
+  .idx:hover{border-color:#FF3B1F;color:#fff}
+  @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="background:#0B0B0C;color:#F5F6FB;font-family:'Space Grotesk',sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased">
+
+  <div style="max-width:1280px;margin:0 auto;padding:30px 24px 70px">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:28px">
+      <span style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:21px;color:#FFFFFF">Goal<span style="color:#FF3B1F">live</span></span>
+      <div style="display:flex;align-items:center;gap:10px">
+        <a href="Goallive Design System.dc.html" style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:#8A8A93;text-decoration:none;padding:6px 12px;border:1px solid #2A2A30;border-radius:999px">← Design system</a>
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8A8A93;padding:4px 9px;border:1px solid #2A2A30;border-radius:999px">Showcase · écrans assemblés</span>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:34px">
+      <a class="idx" href="#s1">01 Viewer live</a>
+      <a class="idx" href="#s2">02 Dashboard</a>
+      <a class="idx" href="#s3">03 Recharge</a>
+      <a class="idx" href="#s4">04 Site</a>
+      <a class="idx" href="#s5">05 Connexion Twitch</a>
+      <a class="idx" href="#s6">06 Onboarding créateur</a>
+      <a class="idx" href="#s7">07 Onboarding viewer</a>
+      <a class="idx" href="#s8">08 Composer les défis</a>
+      <a class="idx" href="#s9">09 Cycle de vie &amp; litige</a>
+      <a class="idx" href="#s10">10 Solde &amp; historique</a>
+      <a class="idx" href="#s11">11 Back-office</a>
+      <a class="idx" href="#s12">12 Vote en direct</a>
+      <a class="idx" href="#s13">13 Overlay OBS</a>
+      <a class="idx" href="#s14">14 Modération &amp; recrédit</a>
+    </div>
+
+    <!-- SCREEN 1: LIVE VIEWER -->
+    <div id="s1" class="scr" data-screen-label="01 Viewer live" style="margin-bottom:14px;display:flex;align-items:center;gap:10px">
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.16em;color:#FF3B1F">01 · VIEWER EN LIVE</span>
+      <span style="font-size:12px;color:#8A8A93">thème sombre · immersif</span>
+    </div>
+    <div style="border:1px solid #1E1E22;border-radius:20px;overflow:hidden;background:#0B0B0C;box-shadow:0 20px 60px rgba(0,0,0,.5);margin-bottom:48px">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 18px;background:#0e0e10;border-bottom:1px solid #1E1E22">
+        <div style="display:flex;align-items:center;gap:12px">
+          <span style="display:flex;gap:6px"><span style="width:11px;height:11px;border-radius:999px;background:#2A2A30"></span><span style="width:11px;height:11px;border-radius:999px;background:#2A2A30"></span><span style="width:11px;height:11px;border-radius:999px;background:#2A2A30"></span></span>
+          <span style="font-size:12px;color:#8A8A93;font-family:ui-monospace,monospace">goallive.gg/nyxoraa</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="display:inline-flex;align-items:center;gap:8px;background:#1E1E22;border:1px solid #2A2A30;border-radius:999px;padding:6px 12px"><span style="width:14px;height:14px;border-radius:999px;background:#FF3B1F;display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:800;color:#fff">◆</span><dc-import name="RollingNumber" value="{{ solde }}" font-size="13" color="#fff" weight="700" hint-size="50px,16px"></dc-import><span style="font-size:11px;color:#8A8A93">tok</span></span>
+          <button style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:12px;color:#FF3B1F;background:rgba(255,59,31,.12);border:1px solid rgba(255,59,31,.4);border-radius:999px;padding:6px 12px;cursor:pointer">+ Recharger</button>
+          <span style="width:30px;height:30px;border-radius:999px;background:linear-gradient(135deg,#2A2A30,#1E1E22);border:1px solid #2A2A30;display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:12px">V</span>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1.9fr 1fr;gap:0">
+        <div style="position:relative;background:repeating-linear-gradient(45deg,#0e0e10,#0e0e10 14px,#121214 14px,#121214 28px);min-height:420px;border-right:1px solid #1E1E22">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#2A2A30;font-family:ui-monospace,monospace;font-size:13px">flux Twitch · Nyxoraa</div>
+          <div style="position:absolute;left:18px;top:18px;display:flex;gap:10px">
+            <span style="display:inline-flex;align-items:center;gap:8px;background:rgba(11,11,12,.82);backdrop-filter:blur(8px);border:1px solid rgba(255,59,31,.4);border-radius:999px;padding:7px 13px"><span style="width:8px;height:8px;border-radius:999px;background:#FF3B1F;animation:glpulse 1.3s infinite"></span><span style="font-size:12px;font-weight:700;color:#fff">EN DIRECT</span></span>
+            <span style="display:inline-flex;align-items:center;gap:7px;background:rgba(11,11,12,.82);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:7px 13px"><span style="font-size:12px;color:#8A8A93">👁</span><dc-import name="RollingNumber" value="{{ viewers }}" font-size="12" color="#fff" weight="700" hint-size="44px,16px"></dc-import></span>
+          </div>
+          <sc-if value="{{ demoUnlocked }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;left:50%;top:24px;transform:translateX(-50%);display:flex;align-items:center;gap:10px;background:rgba(11,11,12,.86);backdrop-filter:blur(8px);border:1px solid rgba(255,59,31,.45);border-radius:12px;padding:11px 18px;animation:glslidein .36s cubic-bezier(.3,.7,.2,1)"><span style="width:9px;height:9px;border-radius:999px;background:#FF3B1F;animation:glpulse 1.3s infinite"></span><span style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:15px;color:#fff">GOAL UNLOCKED · <span style="color:#FF3B1F">GO ALIVE</span></span></div>
+          </sc-if>
+          <div style="position:absolute;left:18px;right:18px;bottom:18px;background:rgba(11,11,12,.82);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px 18px">
+            <dc-import name="GoalGauge" current="{{ demoCurrent }}" target="{{ demoTarget }}" label="GOAL EN DIRECT" caption="{{ challenge }}" theme="dark" hint-size="100%,90px"></dc-import>
+          </div>
+        </div>
+        <div style="padding:18px;display:flex;flex-direction:column;gap:16px;background:#0e0e10">
+          <div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><span style="border-radius:8px;padding:4px 9px;font-size:11px;font-weight:700;background:rgba(255,59,31,.12);border:1px solid rgba(255,59,31,.4);color:#FF3B1F">Actif · épique</span></div>
+            <div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:17px;line-height:1.1;color:#fff;margin-bottom:14px">{{ challenge }}</div>
+            <div style="position:relative;display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ floats }}" as="f" hint-placeholder-count="0">
+                <span style="position:absolute;left:24px;top:-4px;font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:15px;color:#FF3B1F;pointer-events:none;animation:glfloat .9s cubic-bezier(.3,.7,.2,1) forwards">+{{ f.amt }}</span>
+              </sc-for>
+              <button onClick="{{ bid5 }}" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;color:#fff;background:#D92C10;border:none;border-radius:10px;padding:9px 13px;cursor:pointer;transition:transform 150ms" style-active="transform:scale(.95)">+5</button>
+              <button onClick="{{ bid10 }}" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;color:#fff;background:#1E1E22;border:1px solid #2A2A30;border-radius:10px;padding:9px 13px;cursor:pointer;transition:transform 150ms" style-active="transform:scale(.95)">+10</button>
+              <button onClick="{{ bid25 }}" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;color:#fff;background:#1E1E22;border:1px solid #2A2A30;border-radius:10px;padding:9px 13px;cursor:pointer;transition:transform 150ms" style-active="transform:scale(.95)">+25</button>
+              <button onClick="{{ bid50 }}" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;color:#fff;background:#1E1E22;border:1px solid #2A2A30;border-radius:10px;padding:9px 13px;cursor:pointer;transition:transform 150ms" style-active="transform:scale(.95)">+50</button>
+            </div>
+          </div>
+          <div style="height:1px;background:#1E1E22"></div>
+          <div>
+            <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8A8A93;margin-bottom:10px">Top contributeurs</div>
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <div style="display:flex;align-items:center;gap:10px"><span style="width:26px;height:26px;border-radius:999px;background:linear-gradient(135deg,#D92C10,#FF3B1F);display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:11px;flex:none">K</span><span style="flex:1;font-size:13px;font-weight:600;color:#fff">Korrigan_TV <span style="font-size:10px;color:#FF3B1F">★</span></span><span style="font-size:13px;font-weight:700;color:#fff">340</span></div>
+              <div style="display:flex;align-items:center;gap:10px"><span style="width:26px;height:26px;border-radius:999px;background:#1E1E22;display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:11px;flex:none">M</span><span style="flex:1;font-size:13px;font-weight:600;color:#E6E8F0">Maelyz</span><span style="font-size:13px;font-weight:700;color:#fff">185</span></div>
+              <div style="display:flex;align-items:center;gap:10px"><span style="width:26px;height:26px;border-radius:999px;background:#1E1E22;display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:11px;flex:none">V</span><span style="flex:1;font-size:13px;font-weight:600;color:#E6E8F0">Vortakk</span><span style="font-size:13px;font-weight:700;color:#fff">120</span></div>
+            </div>
+          </div>
+          <button style="margin-top:auto;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#D92C10;border:none;border-radius:11px;padding:12px;cursor:pointer" style-hover="background:#B8240C">Proposer un défi</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 2: CREATOR DASHBOARD -->
+    <div id="s2" class="scr" data-screen-label="02 Dashboard créateur" style="margin-bottom:14px;display:flex;align-items:center;gap:10px">
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.16em;color:#FF3B1F">02 · DASHBOARD CRÉATEUR</span>
+      <span style="font-size:12px;color:#8A8A93">piloter la boucle</span>
+    </div>
+    <div style="border:1px solid #1E1E22;border-radius:20px;overflow:hidden;background:#0e0e10;box-shadow:0 20px 60px rgba(0,0,0,.5);margin-bottom:48px">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 22px;border-bottom:1px solid #1E1E22">
+        <div style="display:flex;align-items:center;gap:12px">
+          <span style="width:34px;height:34px;border-radius:999px;background:linear-gradient(135deg,#D92C10,#FF3B1F);display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:14px">N</span>
+          <div><div style="font-weight:700;font-size:15px;color:#fff">Nyxoraa</div><div style="font-size:12px;color:#8A8A93">Tableau de bord créateur</div></div>
+        </div>
+        <span style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,59,31,.12);border:1px solid rgba(255,59,31,.4);border-radius:999px;padding:7px 13px"><span style="width:8px;height:8px;border-radius:999px;background:#FF3B1F;animation:glpulse 1.3s infinite"></span><span style="font-size:12px;font-weight:700;color:#fff">Session en direct</span></span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-bottom:1px solid #1E1E22">
+        <div style="padding:20px 22px;border-right:1px solid #1E1E22"><div style="font-size:12px;color:#8A8A93;margin-bottom:6px">Gains libérés</div><div style="display:flex;align-items:baseline;gap:5px"><span style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:28px;color:#fff">142</span><span style="font-size:14px;color:#8A8A93">€</span></div></div>
+        <div style="padding:20px 22px;border-right:1px solid #1E1E22"><div style="font-size:12px;color:#8A8A93;margin-bottom:6px">Participation</div><div style="display:flex;align-items:baseline;gap:5px"><dc-import name="RollingNumber" value="{{ contributeurs }}" font-size="28" color="#FF3B1F" weight="700" hint-size="60px,32px"></dc-import><span style="font-size:14px;color:#8A8A93">soutiens</span></div></div>
+        <div style="padding:20px 22px"><div style="font-size:12px;color:#8A8A93;margin-bottom:6px">Défis honorés</div><div style="display:flex;align-items:baseline;gap:5px"><span style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:28px;color:#fff">3 / 3</span></div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:0">
+        <div style="padding:22px;border-right:1px solid #1E1E22">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px"><div style="font-weight:700;font-size:16px;color:#fff">Proposer un défi</div><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#FF3B1F;background:rgba(255,59,31,.12);border:1px solid rgba(255,59,31,.4);border-radius:999px;padding:5px 11px">✦ IA assist</span></div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <input value="Battre le boss final en moins de 2 vies" style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#fff;background:#0B0B0C;border:1px solid #2A2A30;border-radius:11px;padding:12px 14px;outline:none" style-focus="border-color:#FF3B1F">
+            <div style="display:flex;gap:10px">
+              <div style="flex:1;display:flex;align-items:center;gap:8px;background:#0B0B0C;border:1px solid #2A2A30;border-radius:11px;padding:0 14px"><span style="font-size:12px;color:#8A8A93">Cible</span><input value="250" style="flex:1;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff;background:transparent;border:none;padding:12px 0;outline:none"><span style="font-size:12px;color:#8A8A93">tok</span></div>
+              <select style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:#fff;background:#0B0B0C;border:1px solid #2A2A30;border-radius:11px;padding:0 12px;outline:none"><option>Épique · sub</option><option>Commun</option></select>
+            </div>
+            <button style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#D92C10;border:none;border-radius:11px;padding:12px;cursor:pointer" style-hover="background:#B8240C">Valider &amp; ouvrir au vote</button>
+          </div>
+        </div>
+        <div style="padding:22px">
+          <div style="font-weight:700;font-size:16px;color:#fff;margin-bottom:16px">File de validation</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;gap:12px;background:#0B0B0C;border:1px solid #2A2A30;border-radius:12px;padding:12px 14px"><div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Parler en anglais 10 min</div><div style="font-size:11px;color:#8A8A93">proposé par Maelyz</div></div><span style="font-size:11px;font-weight:700;color:#FF3B1F;background:rgba(255,59,31,.12);border-radius:7px;padding:4px 8px;flex:none">✓ modéré</span></div>
+            <div style="display:flex;align-items:center;gap:12px;background:#0B0B0C;border:1px solid #2A2A30;border-radius:12px;padding:12px 14px"><div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">No-hit jusqu'au check 3</div><div style="font-size:11px;color:#8A8A93">proposé par Vortakk</div></div><span style="font-size:11px;font-weight:700;color:#8A8A93;background:#1E1E22;border-radius:7px;padding:4px 8px;flex:none">en attente</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 3: RECHARGE (LIGHT) -->
+    <div id="s3" class="scr" data-screen-label="03 Recharge" style="margin-bottom:14px;display:flex;align-items:center;gap:10px">
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.16em;color:#FF3B1F">03 · RECHARGE</span>
+      <span style="font-size:12px;color:#8A8A93">thème clair · paiement rassurant</span>
+    </div>
+    <div style="position:relative;overflow:hidden;border:1px solid #E6E8F0;border-radius:20px;background:#F5F6FB;box-shadow:0 20px 60px rgba(0,0,0,.5);margin-bottom:48px;padding:44px 24px">
+      <div style="position:absolute;inset:0;background:radial-gradient(700px 360px at 86% -18%,rgba(255,59,31,.1),transparent 60%);pointer-events:none"></div>
+      <div style="position:relative;max-width:440px;margin:0 auto;background:#fff;border:1px solid #E6E8F0;border-radius:18px;box-shadow:0 12px 40px rgba(11,11,12,.1);overflow:hidden">
+        <div style="padding:24px 24px 18px;border-bottom:1px solid #E6E8F0">
+          <div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:22px;color:#0B0B0C;margin-bottom:4px">Recharge de tokens</div>
+          <div style="font-size:13px;color:#6B6B74">Paiement sécurisé via Stripe · 1 € = 10 tok</div>
+        </div>
+        <div style="padding:24px">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px">
+            <div style="border:1px solid #E6E8F0;border-radius:12px;padding:14px 8px;text-align:center"><div style="font-weight:800;font-size:17px;color:#0B0B0C">2 €</div><div style="font-size:11px;color:#6B6B74">20 tok</div></div>
+            <div style="border:1px solid #E6E8F0;border-radius:12px;padding:14px 8px;text-align:center"><div style="font-weight:800;font-size:17px;color:#0B0B0C">5 €</div><div style="font-size:11px;color:#6B6B74">50 tok</div></div>
+            <div style="border:2px solid #FF3B1F;border-radius:12px;padding:14px 8px;text-align:center;background:rgba(255,59,31,.06);position:relative"><span style="position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:800;letter-spacing:.05em;color:#fff;background:#D92C10;border-radius:999px;padding:2px 8px">POPULAIRE</span><div style="font-weight:800;font-size:17px;color:#0B0B0C">10 €</div><div style="font-size:11px;color:#0B0B0C;font-weight:700">100 tok</div></div>
+            <div style="border:1px solid #E6E8F0;border-radius:12px;padding:14px 8px;text-align:center"><div style="font-weight:800;font-size:17px;color:#0B0B0C">20 €</div><div style="font-size:11px;color:#6B6B74">200 tok</div></div>
+            <div style="border:1px solid #E6E8F0;border-radius:12px;padding:14px 8px;text-align:center"><div style="font-weight:800;font-size:17px;color:#0B0B0C">50 €</div><div style="font-size:11px;color:#6B6B74">500 tok</div></div>
+            <div style="border:1px solid #E6E8F0;border-radius:12px;padding:14px 8px;text-align:center"><div style="font-weight:800;font-size:17px;color:#0B0B0C">100 €</div><div style="font-size:11px;color:#6B6B74">1000 tok</div></div>
+          </div>
+          <button style="width:100%;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#fff;background:#D92C10;border:none;border-radius:11px;padding:14px;cursor:pointer;margin-bottom:10px" style-hover="background:#B8240C">Payer 10 € · Stripe</button>
+          <div style="text-align:center;font-size:12px;color:#6B6B74">🔒 Aucune notion de pari — seulement du soutien.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 4: SITE LANDING (LIGHT) -->
+    <div id="s4" class="scr" data-screen-label="04 Site" style="margin-bottom:14px;display:flex;align-items:center;gap:10px">
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.16em;color:#FF3B1F">04 · SITE</span>
+      <span style="font-size:12px;color:#8A8A93">thème clair · page d'accueil</span>
+    </div>
+    <div style="position:relative;overflow:hidden;border:1px solid #E6E8F0;border-radius:20px;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.5)">
+      <div style="position:absolute;inset:0;background:radial-gradient(820px 420px at 86% -14%,rgba(255,59,31,.12),transparent 60%);pointer-events:none"></div>
+      <div style="position:relative">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 28px;border-bottom:1px solid #E6E8F0">
+          <span style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:19px;color:#0B0B0C">Goal<span style="color:#FF3B1F">live</span></span>
+          <div style="display:flex;align-items:center;gap:18px">
+            <span style="font-size:13px;font-weight:600;color:#2A2A30">Comment ça marche</span>
+            <span style="font-size:13px;font-weight:600;color:#2A2A30">Créateurs</span>
+            <button style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;color:#fff;background:#0B0B0C;border:none;border-radius:10px;padding:9px 16px;cursor:pointer">Connexion Twitch</button>
+          </div>
+        </div>
+        <div style="padding:64px 28px 48px;text-align:center;max-width:780px;margin:0 auto">
+          <span style="display:inline-flex;align-items:center;gap:8px;padding:6px 13px;border:1px solid #E6E8F0;border-radius:999px;margin-bottom:24px"><span style="width:7px;height:7px;border-radius:999px;background:#FF3B1F;animation:glpulse 1.3s infinite"></span><span style="font-size:12px;font-weight:600;color:#6B6B74">La communauté décide. Le créateur exécute.</span></span>
+          <h1 style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:clamp(38px,6vw,68px);line-height:.96;letter-spacing:-.03em;margin:0 0 18px;color:#0B0B0C">Remplis le goal,<br>il passe en <span style="color:#FF3B1F">live</span>.</h1>
+          <p style="font-size:17px;line-height:1.55;color:#2A2A30;max-width:520px;margin:0 auto 28px">Votez, financez en tokens le défi gagnant, et regardez votre créateur le réaliser en direct. Du soutien, jamais du pari.</p>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><button style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#fff;background:#D92C10;border:none;border-radius:12px;padding:14px 24px;cursor:pointer" style-hover="background:#B8240C">Rejoindre un live</button><button style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#0B0B0C;background:#fff;border:1px solid #E6E8F0;border-radius:12px;padding:14px 24px;cursor:pointer">Je suis créateur</button></div>
+        </div>
+        <div style="position:relative;max-width:640px;margin:0 auto;padding:0 28px 56px">
+          <div style="background:#fff;border:1px solid #E6E8F0;border-radius:16px;box-shadow:0 12px 40px rgba(11,11,12,.08);padding:22px">
+            <dc-import name="GoalGauge" current="{{ demoCurrent }}" target="{{ demoTarget }}" label="EXEMPLE DE GOAL" caption="{{ challenge }}" theme="light" hint-size="100%,90px"></dc-import>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px">
+            <div><div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:19px;color:#FF3B1F;margin-bottom:4px">1</div><div style="font-size:13px;color:#2A2A30;line-height:1.4">Le créateur propose 2-3 défis</div></div>
+            <div><div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:19px;color:#FF3B1F;margin-bottom:4px">2</div><div style="font-size:13px;color:#2A2A30;line-height:1.4">La communauté vote et finance en tokens</div></div>
+            <div><div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:19px;color:#FF3B1F;margin-bottom:4px">3</div><div style="font-size:13px;color:#2A2A30;line-height:1.4">Goal atteint : go alive, en direct</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 5: CONNEXION TWITCH -->
+    <div id="s5" class="scr" data-screen-label="05 Connexion Twitch" style="margin-top:48px;margin-bottom:14px;display:flex;align-items:center;gap:10px">
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.16em;color:#FF3B1F">05 · CONNEXION TWITCH</span>
+      <span style="font-size:12px;color:#8A8A93">entrée · login Twitch obligatoire (viewer &amp; créateur)</span>
+    </div>
+    <div style="position:relative;overflow:hidden;border:1px solid #1E1E22;border-radius:20px;background:#0B0B0C;box-shadow:0 20px 60px rgba(0,0,0,.5);margin-bottom:48px;padding:56px 24px">
+      <div style="position:absolute;inset:0;background:radial-gradient(820px 420px at 84% -16%,rgba(255,59,31,.14),transparent 60%);pointer-events:none"></div>
+      <div style="position:relative;max-width:460px;margin:0 auto;text-align:center">
+        <span style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:30px;color:#fff">Goal<span style="color:#FF3B1F">live</span></span>
+        <h2 style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:24px;line-height:1.1;letter-spacing:-.01em;color:#fff;margin:22px 0 10px">Connecte-toi pour soutenir, voter et passer en live</h2>
+        <p style="font-size:14px;line-height:1.55;color:#8A8A93;margin:0 0 26px">Un seul login. Goallive ne publie jamais en ton nom — Twitch sert à vérifier ton identité et ton statut d'abonné.</p>
+        <button style="width:100%;display:flex;align-items:center;justify-content:center;gap:12px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#fff;background:#9146FF;border:none;border-radius:12px;padding:15px;cursor:pointer;transition:filter 150ms" style-hover="filter:brightness(1.1)"><span style="width:20px;height:20px;border-radius:5px;background:#fff;display:inline-flex;align-items:center;justify-content:center"><span style="width:6px;height:9px;background:#9146FF;border-radius:1px"></span></span>Se connecter avec Twitch</button>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px">
+          <span style="font-size:12px;font-weight:600;color:#E6E8F0;background:#1E1E22;border:1px solid #2A2A30;border-radius:999px;padding:6px 12px">Identité</span>
+          <span style="font-size:12px;font-weight:600;color:#E6E8F0;background:#1E1E22;border:1px solid #2A2A30;border-radius:999px;padding:6px 12px">Lecture des abonnés</span>
+          <span style="font-size:12px;font-weight:600;color:#8A8A93;background:#1E1E22;border:1px solid #2A2A30;border-radius:999px;padding:6px 12px">Sondages · optionnel</span>
+        </div>
+        <div style="font-size:12px;color:#8A8A93;margin-top:14px">Scopes demandés au créateur · le viewer n'accorde que son identité.</div>
+        <div style="height:1px;background:#1E1E22;margin:26px 0"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:left">
+          <div style="border:1px solid #2A2A30;border-radius:14px;padding:16px;background:#141417"><div style="font-weight:700;font-size:14px;color:#fff;margin-bottom:4px">Viewer</div><div style="font-size:12px;color:#8A8A93;line-height:1.4">Vote, soutiens en tokens, gagne des perks de sub.</div></div>
+          <div style="border:1px solid rgba(255,59,31,.4);border-radius:14px;padding:16px;background:rgba(255,59,31,.06)"><div style="font-weight:700;font-size:14px;color:#fff;margin-bottom:4px">Créateur</div><div style="font-size:12px;color:#8A8A93;line-height:1.4">Propose des défis, encaisse via Stripe.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 6: ONBOARDING CREATEUR (LIGHT) -->
+    <div id="s6" class="scr" data-screen-label="06 Onboarding créateur" style="margin-bottom:14px;display:flex;align-items:center;gap:10px">
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.16em;color:#FF3B1F">06 · ONBOARDING CRÉATEUR</span>
+      <span style="font-size:12px;color:#8A8A93">thème clair · Twitch → Stripe → réglages chaîne</span>
+    </div>
+    <div style="position:relative;overflow:hidden;border:1px solid #E6E8F0;border-radius:20px;background:#F5F6FB;box-shadow:0 20px 60px rgba(0,0,0,.5);margin-bottom:48px;padding:32px 24px">
+      <div style="position:absolute;inset:0;background:radial-gradient(700px 360px at 88% -18%,rgba(255,59,31,.09),transparent 60%);pointer-events:none"></div>
+      <div style="position:relative;max-width:620px;margin:0 auto">
+        <div style="display:flex;align-items:center;gap:0;margin-bottom:24px">
+          <div style="display:flex;align-items:center;gap:8px;flex:none"><span style="width:26px;height:26px;border-radius:999px;background:#D92C10;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px">✓</span><span style="font-size:13px;font-weight:700;color:#0B0B0C">Twitch</span></div>
+          <div style="flex:1;height:2px;background:#FF3B1F;margin:0 10px"></div>
+          <div style="display:flex;align-items:center;gap:8px;flex:none"><span style="width:26px;height:26px;border-radius:999px;background:#D92C10;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px">✓</span><span style="font-size:13px;font-weight:700;color:#0B0B0C">Paiement</span></div>
+          <div style="flex:1;height:2px;background:#FF3B1F;margin:0 10px"></div>
+          <div style="display:flex;align-items:center;gap:8px;flex:none"><span style="width:26px;height:26px;border-radius:999px;background:#0B0B0C;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px">3</span><span style="font-size:13px;font-weight:700;color:#0B0B0C">Réglages</span></div>
+        </div>
+
+        <div style="background:#fff;border:1px solid #E6E8F0;border-radius:14px;padding:16px 18px;margin-bottom:14px;display:flex;align-items:center;gap:14px">
+          <span style="width:38px;height:38px;border-radius:10px;background:rgba(255,59,31,.1);display:inline-flex;align-items:center;justify-content:center;font-size:16px;flex:none">💳</span>
+          <div style="flex:1"><div style="font-weight:700;font-size:14px;color:#0B0B0C">Compte Stripe Express vérifié</div><div style="font-size:12px;color:#6B6B74">KYC hébergé par Stripe · payout auto vers ta banque · split 80 % créateur / 20 % plateforme</div></div>
+          <span style="font-size:12px;font-weight:700;color:#1F8A3B;background:rgba(31,138,59,.1);border-radius:999px;padding:5px 11px;flex:none">Actif</span>
+        </div>
+
+        <div style="background:#fff;border:1px solid #E6E8F0;border-radius:16px;box-shadow:0 8px 24px rgba(11,11,12,.06);padding:22px">
+          <div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:19px;color:#0B0B0C;margin-bottom:18px">Réglages de chaîne</div>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div><div style="font-size:12px;font-weight:600;color:#6B6B74;margin-bottom:6px">Nom affiché</div><input value="Nyxoraa" style="width:100%;font-family:'Space Grotesk',sans-serif;font-size:14px;color:#0B0B0C;background:#F5F6FB;border:1px solid #E6E8F0;border-radius:11px;padding:12px 14px;outline:none" style-focus="border-color:#FF3B1F"></div>
+            <div style="display:flex;gap:14px;flex-wrap:wrap">
+              <div style="flex:1;min-width:160px"><div style="font-size:12px;font-weight:600;color:#6B6B74;margin-bottom:6px">Segment (auto · CCV)</div><div style="display:flex;align-items:center;justify-content:space-between;background:#F5F6FB;border:1px solid #E6E8F0;border-radius:11px;padding:12px 14px"><span style="font-size:14px;font-weight:700;color:#0B0B0C">Moyen</span><span style="font-size:12px;color:#6B6B74">K = 2.0</span></div></div>
+              <div style="flex:1;min-width:160px"><div style="font-size:12px;font-weight:600;color:#6B6B74;margin-bottom:6px">Cibles par défaut (CCV × K)</div><div style="display:flex;align-items:center;gap:8px;background:#F5F6FB;border:1px solid #E6E8F0;border-radius:11px;padding:12px 14px"><span style="font-size:13px;font-weight:700;color:#0B0B0C">Commun 100</span><span style="color:#E6E8F0">·</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#0B0B0C"><span style="width:7px;height:7px;border-radius:999px;background:#FF3B1F;flex:none"></span>Épique 300</span></div></div>
+            </div>
+            <div><div style="font-size:12px;font-weight:600;color:#6B6B74;margin-bottom:6px">URL d'overlay (secrète)</div><div style="display:flex;align-items:center;gap:8px;background:#F5F6FB;border:1px solid #E6E8F0;border-radius:11px;padding:6px 6px 6px 14px"><span style="flex:1;font-family:ui-monospace,monospace;font-size:12px;color:#2A2A30;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">goallive.gg/overlay/nyxoraa?token=ov_9f2a7c</span><button onClick="{{ copyUrl }}" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:12px;color:#fff;background:#0B0B0C;border:none;border-radius:8px;padding:8px 12px;cursor:pointer;flex:none">{{ copyLabel }}</button></div></div>
+          </div>
+          <button style="width:100%;margin-top:18px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#fff;background:#D92C10;border:none;border-radius:11px;padding:14px;cursor:pointer" style-hover="background:#B8240C">Lancer ma première session</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 7: ONBOARDING VIEWER (LIGHT) -->
+    <div id="s7" class="scr" data-screen-label="07 Onboarding viewer" style="margin-bottom:14px;display:flex;align-items:center;gap:10px">
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.16em;color:#FF3B1F">07 · ONBOARDING VIEWER</span>
+      <span style="font-size:12px;color:#8A8A93">thème clair · bienvenue &amp; première recharge</span>
+    </div>
+    <div style="position:relative;overflow:hidden;border:1px solid #E6E8F0;border-radius:20px;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.5);margin-bottom:48px">
+      <div style="position:absolute;inset:0;background:radial-gradient(700px 360px at 86% -18%,rgba(255,59,31,.08),transparent 60%);pointer-events:none"></div>
+      <div style="position:relative;display:grid;grid-template-columns:1fr 1fr;gap:0">
+        <div style="padding:34px 30px;border-right:1px solid #E6E8F0">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:22px"><span style="position:relative;width:46px;height:46px;border-radius:999px;background:linear-gradient(135deg,#2A2A30,#1E1E22);display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:17px">V<span style="position:absolute;right:-2px;bottom:-2px;width:16px;height:16px;border-radius:999px;background:#9146FF;border:2px solid #fff;display:inline-flex;align-items:center;justify-content:center"><span style="width:5px;height:7px;background:#fff;border-radius:1px"></span></span></span><div><div style="font-weight:700;font-size:16px;color:#0B0B0C">Bienvenue, Vortakk</div><div style="font-size:12px;color:#1F8A3B;font-weight:600">✓ Twitch connecté</div></div></div>
+          <div style="font-size:12px;font-weight:600;color:#6B6B74;margin-bottom:6px">Ton solde</div>
+          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:22px"><span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:44px;color:#0B0B0C;letter-spacing:-.02em">0</span><span style="font-size:15px;color:#6B6B74">tok</span></div>
+          <div style="background:#F5F6FB;border:1px solid #E6E8F0;border-radius:12px;padding:16px"><div style="font-weight:700;font-size:13px;color:#0B0B0C;margin-bottom:8px">Comment marchent les tokens</div><div style="font-size:12px;color:#2A2A30;line-height:1.6">1 € = 10 tokens · sans expiration · <span style="color:#0B0B0C;font-weight:700;text-decoration:underline;text-decoration-color:#FF3B1F;text-decoration-thickness:2px;text-underline-offset:3px">non convertibles en argent</span>. C'est du soutien à ton créateur, jamais un pari.</div></div>
+        </div>
+        <div style="padding:34px 30px">
+          <div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:20px;color:#0B0B0C;margin-bottom:6px">Première recharge</div>
+          <div style="font-size:13px;color:#6B6B74;margin-bottom:18px">Recharge une fois, puis soutiens en un clic pendant le live.</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px">
+            <div style="border:1px solid #E6E8F0;border-radius:12px;padding:14px 8px;text-align:center"><div style="font-weight:800;font-size:16px;color:#0B0B0C">2 €</div><div style="font-size:11px;color:#6B6B74">20 tok</div></div>
+            <div style="border:2px solid #FF3B1F;border-radius:12px;padding:14px 8px;text-align:center;background:rgba(255,59,31,.06)"><div style="font-weight:800;font-size:16px;color:#0B0B0C">5 €</div><div style="font-size:11px;color:#0B0B0C;font-weight:700">50 tok</div></div>
+            <div style="border:1px solid #E6E8F0;border-radius:12px;padding:14px 8px;text-align:center"><div style="font-weight:800;font-size:16px;color:#0B0B0C">10 €</div><div style="font-size:11px;color:#6B6B74">100 tok</div></div>
+          </div>
+          <button style="width:100%;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#fff;background:#D92C10;border:none;border-radius:11px;padding:14px;cursor:pointer;margin-bottom:10px" style-hover="background:#B8240C">Recharger 5 € · Stripe</button>
+          <div style="text-align:center;font-size:12px;color:#6B6B74">Tu pourras voter et soutenir dès ta première recharge.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 8: COMPOSER LES DEFIS -->
+    <div id="s8" class="scr" data-screen-label="08 Composer les défis" style="margin-bottom:14px;display:flex;align-items:center;gap:10px">
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.16em;color:#FF3B1F">08 · COMPOSER LES DÉFIS</span>
+      <span style="font-size:12px;color:#8A8A93">ouverture de session · jeu détecté + IA assist + modération</span>
+    </div>
+    <div style="border:1px solid #1E1E22;border-radius:20px;overflow:hidden;background:#0e0e10;box-shadow:0 20px 60px rgba(0,0,0,.5);margin-bottom:48px">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 22px;border-bottom:1px solid #1E1E22;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+          <span style="display:inline-flex;align-items:center;gap:8px;background:#1E1E22;border:1px solid #2A2A30;border-radius:10px;padding:8px 12px"><span style="font-size:12px;color:#8A8A93">Jeu détecté</span><span style="font-size:13px;font-weight:700;color:#fff">Elden Ring</span></span>
+          <span style="display:inline-flex;align-items:center;gap:8px;background:#1E1E22;border:1px solid #2A2A30;border-radius:10px;padding:8px 12px"><span style="font-size:12px;color:#8A8A93">CCV</span><dc-import name="RollingNumber" value="{{ viewers }}" font-size="13" color="#fff" weight="700" hint-size="46px,16px"></dc-import></span>
+          <span style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,59,31,.12);border:1px solid rgba(255,59,31,.4);border-radius:10px;padding:8px 12px"><span style="font-size:12px;color:#8A8A93">Cible suggérée</span><span style="font-size:13px;font-weight:700;color:#FF3B1F">CCV × 2.0</span></span>
+        </div>
+        <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#FF3B1F;background:rgba(255,59,31,.12);border:1px solid rgba(255,59,31,.4);border-radius:999px;padding:6px 12px">✦ IA assist · GPT-5 mini</span>
+      </div>
+      <div style="padding:22px">
+        <div style="font-size:13px;color:#8A8A93;margin-bottom:14px">Valide 2 à 3 défis. Chaque proposition (IA ou manuelle) passe la modération avant le vote.</div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;gap:14px;background:#0B0B0C;border:1px solid rgba(255,59,31,.4);border-radius:14px;padding:16px">
+            <span style="width:24px;height:24px;border-radius:7px;background:#D92C10;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:none">✓</span>
+            <div style="flex:1;min-width:0"><div style="font-weight:700;font-size:15px;color:#fff">Battre Margit sans soin</div><div style="font-size:12px;color:#8A8A93;margin-top:2px">Condition observable · IA ✦</div></div>
+            <span style="font-size:12px;color:#1F8A3B;font-weight:700;background:rgba(31,138,59,.12);border-radius:7px;padding:4px 9px;flex:none">✓ modéré</span>
+            <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff;flex:none">250 <span style="font-size:11px;color:#8A8A93">tok</span></span>
+            <span style="font-size:11px;font-weight:700;color:#FF3B1F;background:rgba(255,59,31,.12);border-radius:7px;padding:4px 9px;flex:none">Épique</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;background:#0B0B0C;border:1px solid rgba(255,59,31,.4);border-radius:14px;padding:16px">
+            <span style="width:24px;height:24px;border-radius:7px;background:#D92C10;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:none">✓</span>
+            <div style="flex:1;min-width:0"><div style="font-weight:700;font-size:15px;color:#fff">Finir le boss sans bouclier</div><div style="font-size:12px;color:#8A8A93;margin-top:2px">Condition observable · IA ✦</div></div>
+            <span style="font-size:12px;color:#1F8A3B;font-weight:700;background:rgba(31,138,59,.12);border-radius:7px;padding:4px 9px;flex:none">✓ modéré</span>
+            <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff;flex:none">150 <span style="font-size:11px;color:#8A8A93">tok</span></span>
+            <span style="font-size:11px;font-weight:700;color:#E6E8F0;background:#1E1E22;border-radius:7px;padding:4px 9px;flex:none">Commun</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;background:#0B0B0C;border:1px solid #2A2A30;border-radius:14px;padding:16px">
+            <span style="width:24px;height:24px;border-radius:7px;border:2px solid #2A2A30;flex:none"></span>
+            <input value="Run jusqu'au check 3 sans mourir" style="flex:1;min-width:0;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#fff;background:transparent;border:none;outline:none">
+            <span style="font-size:12px;color:#8A8A93;font-weight:700;background:#1E1E22;border-radius:7px;padding:4px 9px;flex:none">à modérer</span>
+            <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff;flex:none">100 <span style="font-size:11px;color:#8A8A93">tok</span></span>
+            <span style="font-size:11px;font-weight:700;color:#E6E8F0;background:#1E1E22;border-radius:7px;padding:4px 9px;flex:none">Commun</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">
+          <button style="flex:1;min-width:200px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#fff;background:#D92C10;border:none;border-radius:11px;padding:13px;cursor:pointer" style-hover="background:#B8240C">Valider &amp; ouvrir au vote</button>
+          <button style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#8A8A93;background:#1E1E22;border:1px solid #2A2A30;border-radius:11px;padding:13px 16px;cursor:pointer">+ Ajouter un défi</button>
+          <button style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#8A8A93;background:#1E1E22;border:1px solid #2A2A30;border-radius:11px;padding:13px 16px;cursor:pointer">↻ Suggérer (IA)</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 9: CYCLE DE VIE & SETTLEMENT -->
+    <div id="s9" class="scr" data-screen-label="09 Cycle de vie & litige" style="margin-bottom:14px;display:flex;align-items:center;gap:10px">
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.16em;color:#FF3B1F">09 · CYCLE DE VIE &amp; LITIGE</span>
+      <span style="font-size:12px;color:#8A8A93">machine à états · attestation honoré + fenêtre de signalement</span>
+    </div>
+    <div style="border:1px solid #1E1E22;border-radius:20px;overflow:hidden;background:#0e0e10;box-shadow:0 20px 60px rgba(0,0,0,.5);margin-bottom:48px">
+      <div style="padding:22px;border-bottom:1px solid #1E1E22;overflow-x:auto">
+        <div style="display:flex;align-items:center;gap:0;min-width:560px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:7px;flex:1"><span style="width:30px;height:30px;border-radius:999px;background:#1E1E22;border:1px solid #2A2A30;color:#8A8A93;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px">✓</span><span style="font-size:11px;font-weight:700;color:#8A8A93">Proposé</span></div>
+          <div style="flex:1;height:2px;background:#2A2A30"></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:7px;flex:1"><span style="width:30px;height:30px;border-radius:999px;background:#1E1E22;border:1px solid #2A2A30;color:#8A8A93;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px">✓</span><span style="font-size:11px;font-weight:700;color:#8A8A93">Au vote</span></div>
+          <div style="flex:1;height:2px;background:#2A2A30"></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:7px;flex:1"><span style="width:30px;height:30px;border-radius:999px;background:#1E1E22;border:1px solid #2A2A30;color:#8A8A93;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px">✓</span><span style="font-size:11px;font-weight:700;color:#8A8A93">Actif</span></div>
+          <div style="flex:1;height:2px;background:#FF3B1F"></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:7px;flex:1"><span style="width:30px;height:30px;border-radius:999px;background:#D92C10;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;box-shadow:0 0 0 5px rgba(255,59,31,.18)">●</span><span style="font-size:11px;font-weight:700;color:#fff">Financé</span></div>
+          <div style="flex:1;height:2px;background:#2A2A30"></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:7px;flex:1"><span style="width:30px;height:30px;border-radius:999px;background:#1E1E22;border:1px solid #2A2A30;color:#8A8A93;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px">5</span><span style="font-size:11px;font-weight:700;color:#8A8A93">Honoré</span></div>
+          <div style="flex:1;height:2px;background:#2A2A30"></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:7px;flex:1"><span style="width:30px;height:30px;border-radius:999px;background:#1E1E22;border:1px solid #2A2A30;color:#8A8A93;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px">6</span><span style="font-size:11px;font-weight:700;color:#8A8A93">Réglé</span></div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+        <div style="padding:22px;border-right:1px solid #1E1E22">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8A8A93;margin-bottom:14px">Settlement</div>
+          <sc-if value="{{ honored }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;align-items:center;gap:10px;background:rgba(255,59,31,.1);border:1px solid rgba(255,59,31,.4);border-radius:12px;padding:13px 15px;margin-bottom:14px;animation:glslidein .36s cubic-bezier(.3,.7,.2,1)"><span style="width:9px;height:9px;border-radius:999px;background:#FF3B1F;animation:glpulse 1.3s infinite"></span><span style="font-weight:700;font-size:14px;color:#fff">Attesté « honoré » par Nyxoraa</span></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px"><span style="font-size:13px;color:#E6E8F0">Fenêtre de litige</span><span style="font-family:ui-monospace,monospace;font-size:14px;font-weight:700;color:#fff">18:42</span></div>
+            <div style="height:8px;border-radius:999px;background:rgba(255,255,255,.07);overflow:hidden;margin-bottom:14px"><div style="width:62%;height:100%;background:#FF3B1F;border-radius:999px"></div></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px"><span style="font-size:13px;color:#E6E8F0">Signalements « non honoré »</span><span style="display:flex;align-items:baseline;gap:4px"><dc-import name="RollingNumber" value="{{ flags }}" font-size="16" color="#fff" weight="700" hint-size="26px,18px"></dc-import><span style="font-size:12px;color:#8A8A93">/ 26 · seuil 60%</span></span></div>
+            <div style="display:flex;gap:10px"><button onClick="{{ addFlag }}" style="flex:1;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;color:#fff;background:#1E1E22;border:1px solid #2A2A30;border-radius:10px;padding:11px;cursor:pointer" style-hover="border-color:#FF3B1F">Signaler non honoré</button><button onClick="{{ resetSettle }}" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;color:#8A8A93;background:transparent;border:none;cursor:pointer">↺ rejouer</button></div>
+          </sc-if>
+          <sc-if value="{{ notHonored }}" hint-placeholder-val="{{ true }}">
+            <div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:20px;color:#fff;margin-bottom:6px">Goal financé</div>
+            <div style="font-size:13px;color:#8A8A93;line-height:1.5;margin-bottom:18px">120 / 120 tok séquestrés. Nyxoraa réalise le défi en live, puis atteste qu'il a été honoré (la tentative publique, pas la réussite).</div>
+            <button onClick="{{ markHonored }}" style="width:100%;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#fff;background:#D92C10;border:none;border-radius:11px;padding:13px;cursor:pointer" style-hover="background:#B8240C">Marquer le défi honoré</button>
+          </sc-if>
+        </div>
+        <div style="padding:22px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8A8A93;margin-bottom:14px">Règlement · split</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 14px;background:#0B0B0C;border:1px solid #2A2A30;border-radius:11px"><span style="font-size:13px;color:#E6E8F0">120 tok séquestrés</span><span style="font-weight:700;font-size:14px;color:#fff">12,00 €</span></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 14px;background:#0B0B0C;border:1px solid rgba(255,59,31,.4);border-radius:11px"><span style="font-size:13px;color:#fff">Part créateur · 80 % HT</span><span style="font-weight:700;font-size:14px;color:#FF3B1F">9,60 €</span></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 14px;background:#0B0B0C;border:1px solid #2A2A30;border-radius:11px"><span style="font-size:13px;color:#E6E8F0">Commission plateforme · 20 %</span><span style="font-weight:700;font-size:14px;color:#fff">2,40 €</span></div>
+          </div>
+          <div style="margin-top:14px;font-size:12px;color:#8A8A93;line-height:1.6;background:#0B0B0C;border:1px solid #1E1E22;border-radius:11px;padding:13px">Sous le seuil → <span style="color:#1F8A3B;font-weight:700">libération auto</span> (Stripe Transfer + payout). Au-dessus → tokens recrédités. <span style="color:#E6E8F0">Défaut = libération · une voix par contributeur · plancher 5.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 10: SOLDE & HISTORIQUE -->
+    <div id="s10" class="scr" data-screen-label="10 Solde & historique" style="margin-bottom:14px;display:flex;align-items:center;gap:10px">
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.16em;color:#FF3B1F">10 · SOLDE &amp; HISTORIQUE</span>
+      <span style="font-size:12px;color:#8A8A93">thème clair · registre de tokens append-only</span>
+    </div>
+    <div style="border:1px solid #E6E8F0;border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.5);margin-bottom:48px">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:22px;border-bottom:1px solid #E6E8F0;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:12px"><span style="width:40px;height:40px;border-radius:999px;background:linear-gradient(135deg,#2A2A30,#1E1E22);display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:15px">V</span><div><div style="font-weight:700;font-size:15px;color:#0B0B0C">Vortakk</div><div style="font-size:12px;color:#6B6B74">Registre · non convertible</div></div></div>
+        <div style="text-align:right"><div style="font-size:12px;font-weight:600;color:#6B6B74;margin-bottom:2px">Solde actuel</div><div style="display:flex;align-items:baseline;gap:6px;justify-content:flex-end"><dc-import name="RollingNumber" value="{{ solde }}" font-size="30" color="#FF3B1F" weight="700" hint-size="90px,34px"></dc-import><span style="font-size:14px;color:#6B6B74">tok</span></div></div>
+      </div>
+      <div style="padding:10px 12px">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 14px;border-bottom:1px solid #F5F6FB"><div style="display:flex;align-items:center;gap:12px"><span style="width:30px;height:30px;border-radius:8px;background:rgba(31,138,59,.1);display:inline-flex;align-items:center;justify-content:center;color:#1F8A3B;font-weight:800;font-size:14px">+</span><div><div style="font-size:14px;font-weight:600;color:#0B0B0C">Recharge · Stripe</div><div style="font-size:11px;color:#6B6B74">aujourd'hui 21:04</div></div></div><div style="text-align:right"><div style="font-size:14px;font-weight:700;color:#1F8A3B">+100 tok</div><div style="font-size:11px;color:#6B6B74">solde 100</div></div></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 14px;border-bottom:1px solid #F5F6FB"><div style="display:flex;align-items:center;gap:12px"><span style="width:30px;height:30px;border-radius:8px;background:rgba(255,59,31,.1);display:inline-flex;align-items:center;justify-content:center;color:#FF3B1F;font-weight:800;font-size:14px">−</span><div><div style="font-size:14px;font-weight:600;color:#0B0B0C">Soutien · Speedrun World 1</div><div style="font-size:11px;color:#6B6B74">21:18</div></div></div><div style="text-align:right"><div style="font-size:14px;font-weight:700;color:#0B0B0C">−25 tok</div><div style="font-size:11px;color:#6B6B74">solde 75</div></div></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 14px;border-bottom:1px solid #F5F6FB"><div style="display:flex;align-items:center;gap:12px"><span style="width:30px;height:30px;border-radius:8px;background:rgba(255,59,31,.1);display:inline-flex;align-items:center;justify-content:center;color:#FF3B1F;font-weight:800;font-size:14px">−</span><div><div style="font-size:14px;font-weight:600;color:#0B0B0C">Soutien · Donjon sans mourir</div><div style="font-size:11px;color:#6B6B74">21:32</div></div></div><div style="text-align:right"><div style="font-size:14px;font-weight:700;color:#0B0B0C">−10 tok</div><div style="font-size:11px;color:#6B6B74">solde 65</div></div></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 14px;border-bottom:1px solid #F5F6FB"><div style="display:flex;align-items:center;gap:12px"><span style="width:30px;height:30px;border-radius:8px;background:rgba(31,138,59,.1);display:inline-flex;align-items:center;justify-content:center;color:#1F8A3B;font-weight:800;font-size:14px">↺</span><div><div style="font-size:14px;font-weight:600;color:#0B0B0C">Recrédit · goal non atteint</div><div style="font-size:11px;color:#6B6B74">21:40</div></div></div><div style="text-align:right"><div style="font-size:14px;font-weight:700;color:#1F8A3B">+10 tok</div><div style="font-size:11px;color:#6B6B74">solde 75</div></div></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 14px"><div style="display:flex;align-items:center;gap:12px"><span style="width:30px;height:30px;border-radius:8px;background:rgba(255,59,31,.1);display:inline-flex;align-items:center;justify-content:center;color:#FF3B1F;font-weight:800;font-size:14px">−</span><div><div style="font-size:14px;font-weight:600;color:#0B0B0C">Soutien · Nightmare sans checkpoint</div><div style="font-size:11px;color:#6B6B74">21:55</div></div></div><div style="text-align:right"><div style="font-size:14px;font-weight:700;color:#0B0B0C">−50 tok</div><div style="font-size:11px;color:#6B6B74">solde 25</div></div></div>
+      </div>
+    </div>
+
+    <!-- SCREEN 11: BACK-OFFICE -->
+    <div id="s11" class="scr" data-screen-label="11 Back-office" style="margin-bottom:14px;display:flex;align-items:center;gap:10px">
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.16em;color:#FF3B1F">11 · BACK-OFFICE</span>
+      <span style="font-size:12px;color:#8A8A93">thème clair · mesure du taux de participation (métrique n°1)</span>
+    </div>
+    <div style="border:1px solid #E6E8F0;border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.5)">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 22px;border-bottom:1px solid #E6E8F0">
+        <div style="font-weight:700;font-size:15px;color:#0B0B0C">Back-office · pilote Nyxoraa</div>
+        <span style="display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:#1F8A3B"><span style="width:7px;height:7px;border-radius:999px;background:#1F8A3B"></span>Sentry · sain</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-bottom:1px solid #E6E8F0">
+        <div style="padding:20px 22px;border-right:1px solid #E6E8F0"><div style="font-size:12px;color:#6B6B74;margin-bottom:6px">Taux de participation</div><div style="display:flex;align-items:baseline;gap:3px"><span style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:30px;color:#FF3B1F">72</span><span style="font-size:16px;font-weight:800;color:#FF3B1F">%</span></div></div>
+        <div style="padding:20px 22px;border-right:1px solid #E6E8F0"><div style="font-size:12px;color:#6B6B74;margin-bottom:6px">Contributeurs</div><div style="display:flex;align-items:baseline;gap:4px"><dc-import name="RollingNumber" value="{{ contributeurs }}" font-size="28" color="#0B0B0C" weight="700" hint-size="50px,32px"></dc-import></div></div>
+        <div style="padding:20px 22px;border-right:1px solid #E6E8F0"><div style="font-size:12px;color:#6B6B74;margin-bottom:6px">Goals honorés</div><div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:28px;color:#0B0B0C">14</div></div>
+        <div style="padding:20px 22px"><div style="font-size:12px;color:#6B6B74;margin-bottom:6px">Payouts</div><div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:28px;color:#0B0B0C">142 €</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:0">
+        <div style="padding:22px;border-right:1px solid #E6E8F0">
+          <div style="font-weight:700;font-size:14px;color:#0B0B0C;margin-bottom:14px">Participation · 7 dernières sessions</div>
+          <div style="display:flex;align-items:flex-end;gap:10px;height:120px">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end"><div style="width:100%;height:44%;background:#E6E8F0;border-radius:6px 6px 0 0"></div><span style="font-size:10px;color:#6B6B74">L</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end"><div style="width:100%;height:58%;background:#E6E8F0;border-radius:6px 6px 0 0"></div><span style="font-size:10px;color:#6B6B74">M</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end"><div style="width:100%;height:52%;background:#E6E8F0;border-radius:6px 6px 0 0"></div><span style="font-size:10px;color:#6B6B74">M</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end"><div style="width:100%;height:70%;background:#E6E8F0;border-radius:6px 6px 0 0"></div><span style="font-size:10px;color:#6B6B74">J</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end"><div style="width:100%;height:64%;background:#E6E8F0;border-radius:6px 6px 0 0"></div><span style="font-size:10px;color:#6B6B74">V</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end"><div style="width:100%;height:86%;background:#FF3B1F;border-radius:6px 6px 0 0"></div><span style="font-size:10px;color:#6B6B74">S</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end"><div style="width:100%;height:100%;background:#FF3B1F;border-radius:6px 6px 0 0"></div><span style="font-size:10px;color:#6B6B74">D</span></div>
+          </div>
+        </div>
+        <div style="padding:22px;display:flex;flex-direction:column;gap:16px">
+          <div>
+            <div style="font-weight:700;font-size:14px;color:#0B0B0C;margin-bottom:10px">Litige en cours</div>
+            <div style="background:#F5F6FB;border:1px solid #E6E8F0;border-radius:12px;padding:13px"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px"><span style="font-size:13px;color:#0B0B0C;font-weight:600">No-hit jusqu'au check 3</span><span style="font-size:12px;font-weight:700;color:#0B0B0C">18 / 26</span></div><div style="height:6px;border-radius:999px;background:#E6E8F0;overflow:hidden"><div style="width:69%;height:100%;background:#FF3B1F"></div></div></div>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:14px;color:#0B0B0C;margin-bottom:10px">Crédit manuel (support)</div>
+            <div style="display:flex;gap:8px"><input placeholder="@pseudo" style="flex:1;min-width:0;font-family:'Space Grotesk',sans-serif;font-size:13px;color:#0B0B0C;background:#F5F6FB;border:1px solid #E6E8F0;border-radius:10px;padding:10px 12px;outline:none"><input value="50" style="width:64px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;color:#0B0B0C;background:#F5F6FB;border:1px solid #E6E8F0;border-radius:10px;padding:10px 12px;outline:none"><button style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;color:#fff;background:#0B0B0C;border:none;border-radius:10px;padding:10px 14px;cursor:pointer">Créditer</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 12: VOTE EN DIRECT -->
+    <div id="s12" class="scr" data-screen-label="12 Vote en direct" style="margin-top:48px;margin-bottom:14px;display:flex;align-items:center;gap:10px">
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.16em;color:#FF3B1F">12 · VOTE EN DIRECT</span>
+      <span style="font-size:12px;color:#8A8A93">second écran · vote pondéré on-platform · une voix par identité Twitch</span>
+    </div>
+    <div style="border:1px solid #1E1E22;border-radius:20px;overflow:hidden;background:#0e0e10;box-shadow:0 20px 60px rgba(0,0,0,.5);margin-bottom:48px">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 22px;border-bottom:1px solid #1E1E22;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:12px">
+          <span style="width:34px;height:34px;border-radius:999px;background:linear-gradient(135deg,#D92C10,#FF3B1F);display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:14px;flex:none">N</span>
+          <div><div style="font-weight:700;font-size:15px;color:#fff">Quel défi Nyxoraa relève cette session ?</div><div style="font-size:12px;color:#8A8A93">3 défis modérés · le gagnant devient le goal actif</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;background:rgba(255,59,31,.12);border:1px solid rgba(255,59,31,.4)"><span style="width:8px;height:8px;border-radius:999px;background:#FF3B1F;animation:glpulse 1.3s infinite"></span><span style="font-size:12px;font-weight:700;color:#fff">VOTE OUVERT</span></span>
+          <span style="display:inline-flex;align-items:baseline;gap:4px;padding:7px 13px;border-radius:999px;border:1px solid #2A2A30"><dc-import name="RollingNumber" value="{{ countdown }}" font-size="13" color="#fff" weight="700" group="{{ false }}" hint-size="22px,16px"></dc-import><span style="font-size:12px;color:#8A8A93">s</span></span>
+        </div>
+      </div>
+      <div style="padding:22px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap"><span style="font-size:12px;font-weight:700;color:#FF3B1F;background:rgba(255,59,31,.12);border:1px solid rgba(255,59,31,.4);border-radius:999px;padding:5px 11px">Sub · ton vote compte ×2</span><span style="font-size:12px;color:#8A8A93">une voix par identité Twitch — anti multi-comptes</span></div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ voteOptions }}" as="o" hint-placeholder-count="3">
+            <div onClick="{{ o.pick }}" style="position:relative;overflow:hidden;border:{{ o.border }};border-radius:14px;padding:16px;background:#0B0B0C;cursor:pointer;transition:border-color 150ms">
+              <div style="position:absolute;left:0;top:0;bottom:0;width:{{ o.width }};background:{{ o.fillBg }};transition:width 700ms cubic-bezier(.3,.7,.2,1)"></div>
+              <div style="position:relative;display:flex;align-items:center;gap:12px">
+                <span style="width:18px;height:18px;border-radius:999px;border:2px solid {{ o.ringColor }};display:inline-flex;align-items:center;justify-content:center;flex:none"><span style="width:8px;height:8px;border-radius:999px;background:#FF3B1F;opacity:{{ o.dotOpacity }}"></span></span>
+                <div style="flex:1;min-width:0"><div style="font-size:15px;font-weight:700;color:#fff">{{ o.name }}</div><div style="font-size:12px;color:#8A8A93;margin-top:2px">{{ o.meta }}</div></div>
+                <span style="font-size:15px;font-weight:700;color:{{ o.pctColor }};flex:none">{{ o.pct }}%</span>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <sc-if value="{{ voted }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:14px;display:flex;align-items:center;gap:10px;background:rgba(31,138,59,.1);border:1px solid rgba(31,138,59,.4);border-radius:12px;padding:12px 15px;animation:glslidein .36s cubic-bezier(.3,.7,.2,1)"><span style="font-size:14px;color:#1F8A3B;font-weight:800">✓</span><span style="font-size:13px;font-weight:700;color:#fff">Vote enregistré · pondéré ×2 (sub)</span><span style="font-size:12px;color:#8A8A93">— résultat à la fin du minuteur</span></div>
+        </sc-if>
+        <sc-if value="{{ notVoted }}" hint-placeholder-val="{{ true }}">
+          <button onClick="{{ castVote }}" style="width:100%;margin-top:14px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#fff;background:#D92C10;border:none;border-radius:11px;padding:13px;cursor:pointer" style-hover="background:#B8240C">Voter · ×2</button>
+        </sc-if>
+      </div>
+    </div>
+
+    <!-- SCREEN 13: OVERLAY OBS -->
+    <div id="s13" class="scr" data-screen-label="13 Overlay OBS" style="margin-bottom:14px;display:flex;align-items:center;gap:10px">
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.16em;color:#FF3B1F">13 · OVERLAY OBS</span>
+      <span style="font-size:12px;color:#8A8A93">route /overlay/[channel]?token= · source navigateur 1920×1080 · fond transparent</span>
+    </div>
+    <div style="border:1px solid #1E1E22;border-radius:20px;overflow:hidden;background:#0B0B0C;box-shadow:0 20px 60px rgba(0,0,0,.5);margin-bottom:48px">
+      <div style="position:relative;background:repeating-linear-gradient(45deg,#0e0e10,#0e0e10 14px,#121214 14px,#121214 28px);min-height:400px">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#2A2A30;font-family:ui-monospace,monospace;font-size:13px">flux de jeu · l'overlay s'incruste par-dessus</div>
+        <div style="position:absolute;right:22px;top:22px;display:flex;flex-direction:column;gap:10px;align-items:flex-end">
+          <span style="display:inline-flex;align-items:center;gap:8px;background:rgba(11,11,12,.82);backdrop-filter:blur(8px);border:1px solid rgba(255,59,31,.4);border-radius:999px;padding:8px 14px"><span style="width:8px;height:8px;border-radius:999px;background:#FF3B1F;animation:glpulse 1.3s infinite"></span><span style="font-size:12px;font-weight:700;color:#fff">EN DIRECT</span></span>
+          <span style="display:inline-flex;align-items:center;gap:8px;background:rgba(11,11,12,.82);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:8px 14px"><span style="font-size:13px;color:#8A8A93">🎙 « plus 25 » · Korrigan_TV</span></span>
+        </div>
+        <sc-if value="{{ demoUnlocked }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;left:50%;top:22px;transform:translateX(-50%);display:flex;align-items:center;gap:10px;background:rgba(11,11,12,.86);backdrop-filter:blur(8px);border:1px solid rgba(255,59,31,.45);border-radius:12px;padding:11px 18px;animation:glslidein .36s cubic-bezier(.3,.7,.2,1)"><span style="width:9px;height:9px;border-radius:999px;background:#FF3B1F;animation:glpulse 1.3s infinite"></span><span style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:15px;color:#fff">GOAL UNLOCKED · <span style="color:#FF3B1F">GO ALIVE</span></span></div>
+        </sc-if>
+        <div style="position:absolute;left:22px;bottom:22px;background:rgba(11,11,12,.82);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px 18px;min-width:340px;max-width:460px">
+          <dc-import name="GoalGauge" current="{{ demoCurrent }}" target="{{ demoTarget }}" label="GOAL EN DIRECT" caption="{{ challenge }}" theme="dark" hint-size="100%,90px"></dc-import>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding:16px 22px;border-top:1px solid #1E1E22;flex-wrap:wrap">
+        <div style="flex:1;min-width:280px;display:flex;align-items:center;gap:8px;background:#141417;border:1px solid #2A2A30;border-radius:11px;padding:6px 6px 6px 14px"><span style="flex:1;font-family:ui-monospace,monospace;font-size:12px;color:#8A8A93;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">goallive.gg/overlay/nyxoraa?token=ov_9f2a7c</span><button onClick="{{ copyUrl }}" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:12px;color:#fff;background:#1E1E22;border:1px solid #2A2A30;border-radius:8px;padding:8px 12px;cursor:pointer;flex:none">{{ copyLabel }}</button></div>
+        <span style="font-size:12px;color:#8A8A93;line-height:1.5">URL secrète — un mauvais token ne reçoit rien · jauge throttlée : 1000 soutiens/s ≈ 10 snapshots diffusés</span>
+      </div>
+    </div>
+
+    <!-- SCREEN 14: MODERATION & RECREDIT -->
+    <div id="s14" class="scr" data-screen-label="14 Modération & recrédit" style="margin-bottom:14px;display:flex;align-items:center;gap:10px">
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.16em;color:#FF3B1F">14 · MODÉRATION &amp; RECRÉDIT</span>
+      <span style="font-size:12px;color:#8A8A93">garde-fous · modération LLM + validation créateur · goal non financé</span>
+    </div>
+    <div style="border:1px solid #1E1E22;border-radius:20px;overflow:hidden;background:#0e0e10;box-shadow:0 20px 60px rgba(0,0,0,.5)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0">
+        <div style="padding:22px;border-right:1px solid #1E1E22">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8A8A93;margin-bottom:14px">Bloqué automatiquement</div>
+          <div style="display:flex;align-items:center;gap:12px;background:#0B0B0C;border:1px dashed rgba(255,59,31,.5);border-radius:12px;padding:13px 15px;margin-bottom:12px">
+            <span style="flex:1;font-size:14px;font-weight:600;color:#8A8A93;text-decoration:line-through">Boire 10 shots cul sec</span>
+            <span style="font-size:11px;font-weight:700;color:#FF3B1F;background:rgba(255,59,31,.12);border-radius:7px;padding:4px 9px;flex:none">⛔ dangereux IRL</span>
+          </div>
+          <div style="font-size:12px;color:#8A8A93;line-height:1.6">Sexuel, illégal, haineux, dangereux, anti-ToS Twitch : bloqué par la modération LLM avant d'être visible. Jamais publié, jamais votable.</div>
+        </div>
+        <div style="padding:22px;border-right:1px solid #1E1E22">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8A8A93;margin-bottom:14px">Flou → critère observable</div>
+          <div style="display:flex;align-items:center;gap:12px;background:#0B0B0C;border:1px solid #2A2A30;border-radius:12px;padding:13px 15px;margin-bottom:10px">
+            <span style="flex:1;font-size:14px;font-weight:600;color:#8A8A93">« Sois drôle pendant 10 min »</span>
+            <span style="font-size:11px;font-weight:700;color:#8A8A93;background:#1E1E22;border-radius:7px;padding:4px 9px;flex:none">refusé · flou</span>
+          </div>
+          <div style="text-align:center;font-size:14px;color:#FF3B1F;margin:2px 0 10px">↓ reformulé</div>
+          <div style="display:flex;align-items:center;gap:12px;background:#0B0B0C;border:1px solid rgba(31,138,59,.4);border-radius:12px;padding:13px 15px;margin-bottom:12px">
+            <span style="flex:1;font-size:14px;font-weight:600;color:#fff">Faire rire le chat 3× (clips à l'appui)</span>
+            <span style="font-size:11px;font-weight:700;color:#1F8A3B;background:rgba(31,138,59,.12);border-radius:7px;padding:4px 9px;flex:none">✓ observable</span>
+          </div>
+          <div style="font-size:12px;color:#8A8A93;line-height:1.6">Condition d'accomplissement vérifiable à l'œil. Validation finale du créateur obligatoire avant le vote.</div>
+        </div>
+        <div style="padding:22px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8A8A93;margin-bottom:14px">Goal non financé → recrédit</div>
+          <div style="margin-bottom:12px">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;gap:8px"><span style="font-size:13px;color:#E6E8F0">46 / 120 tok · fenêtre expirée</span><span style="font-size:11px;font-weight:700;color:#8A8A93;background:#1E1E22;border-radius:7px;padding:4px 9px;flex:none">Non financé</span></div>
+            <div style="height:10px;border-radius:999px;background:rgba(255,255,255,.07);overflow:hidden"><div style="width:38%;height:100%;border-radius:999px;background:#2A2A30"></div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;background:#0B0B0C;border:1px solid rgba(31,138,59,.4);border-radius:12px;padding:13px 15px;margin-bottom:12px">
+            <span style="width:26px;height:26px;border-radius:8px;background:rgba(31,138,59,.12);color:#1F8A3B;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex:none">↺</span>
+            <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:700;color:#fff">+46 tok recrédités aux contributeurs</div><div style="font-size:11px;color:#8A8A93">écriture registre · aucun mouvement d'argent</div></div>
+          </div>
+          <div style="font-size:12px;color:#8A8A93;line-height:1.6">Les tokens reviennent sur le solde — <span style="color:#E6E8F0;font-weight:600">jamais d'argent</span>, conformément aux CGU (non remboursables, non convertibles).</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = {
+    solde: 1240, viewers: 3142, contributeurs: 87,
+    demoCurrent: 72, demoTarget: 120, demoUnlocked: false, floats: [],
+    challenge: 'Finir le Nightmare sans checkpoint',
+    honored: false, flags: 18, copied: false,
+    countdown: 24, votedFor: 0, voted: false
+  };
+  voteBase = [
+    { name: 'Battre Margit sans soin', meta: 'Épique · 250 tok · IA ✦', pct: 52 },
+    { name: 'Finir le boss sans bouclier', meta: 'Commun · 150 tok · IA ✦', pct: 33 },
+    { name: 'Run jusqu\'au check 3 sans mourir', meta: 'Commun · 100 tok', pct: 15 }
+  ];
+  challenges = [
+    'Finir le Nightmare sans checkpoint',
+    'Speedrun World 1 en moins de 4 min',
+    '1v5 clutch sur la prochaine ronde',
+    'Cuisiner les pâtes les yeux bandés'
+  ];
+  _fid = 0;
+  componentDidMount() {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    this.loop = setInterval(() => this.tick(), 2600);
+    this.cd = setInterval(() => this.setState(s => ({ countdown: s.countdown <= 0 ? 30 : s.countdown - 1 })), 1000);
+  }
+  componentWillUnmount() { clearInterval(this.loop); clearInterval(this.cd); clearTimeout(this._reset); }
+  tick() {
+    if (this.state.demoUnlocked) return;
+    const bids = [5, 10, 25, 50];
+    const bid = bids[Math.floor(Math.random() * bids.length)];
+    this.setState(s => {
+      let next = s.demoCurrent + bid;
+      if (next >= s.demoTarget) {
+        this._reset = setTimeout(() => {
+          const c = this.challenges[Math.floor(Math.random() * this.challenges.length)];
+          this.setState({ demoCurrent: Math.floor(Math.random() * 30) + 10, demoTarget: 100 + Math.floor(Math.random() * 4) * 20, challenge: c, demoUnlocked: false });
+        }, 3400);
+        return { demoCurrent: s.demoTarget, demoUnlocked: true, solde: s.solde + bid, contributeurs: s.contributeurs + 1, viewers: s.viewers + 14 };
+      }
+      return { demoCurrent: next, solde: s.solde + bid, viewers: Math.max(2800, s.viewers + Math.floor(Math.random() * 50) - 22), contributeurs: s.contributeurs + (Math.random() > .6 ? 1 : 0) };
+    });
+  }
+  placeBid(amt) {
+    const id = ++this._fid;
+    this.setState(s => {
+      let next = s.demoCurrent + amt; let unlocked = s.demoUnlocked;
+      if (next >= s.demoTarget) { next = s.demoTarget; unlocked = true; }
+      return { demoCurrent: next, demoUnlocked: unlocked, solde: s.solde + amt, floats: [...s.floats, { id, amt }] };
+    });
+    setTimeout(() => this.setState(s => ({ floats: s.floats.filter(f => f.id !== id) })), 900);
+  }
+  copyUrl() {
+    try { navigator.clipboard && navigator.clipboard.writeText('https://goallive.gg/overlay/nyxoraa?token=ov_9f2a7c'); } catch (e) {}
+    this.setState({ copied: true });
+    clearTimeout(this._ct); this._ct = setTimeout(() => this.setState({ copied: false }), 1600);
+  }
+  renderVals() {
+    return {
+      solde: this.state.solde, viewers: this.state.viewers, contributeurs: this.state.contributeurs,
+      demoCurrent: this.state.demoCurrent, demoTarget: this.state.demoTarget,
+      demoUnlocked: this.state.demoUnlocked, floats: this.state.floats, challenge: this.state.challenge,
+      bid5: () => this.placeBid(5), bid10: () => this.placeBid(10),
+      bid25: () => this.placeBid(25), bid50: () => this.placeBid(50),
+      honored: this.state.honored, notHonored: !this.state.honored, flags: this.state.flags, copied: this.state.copied,
+      copyLabel: this.state.copied ? '✓ Copié' : 'Copier',
+      markHonored: () => this.setState({ honored: true }),
+      resetSettle: () => this.setState({ honored: false, flags: 18 }),
+      addFlag: () => this.setState(s => ({ flags: s.flags + 1 })),
+      copyUrl: () => this.copyUrl(),
+      countdown: this.state.countdown,
+      voted: this.state.voted, notVoted: !this.state.voted,
+      castVote: () => this.setState({ voted: true }),
+      voteOptions: this.voteBase.map((o, i) => {
+        const sel = i === this.state.votedFor;
+        return {
+          name: o.name, meta: o.meta, pct: o.pct,
+          width: o.pct + '%',
+          fillBg: sel ? 'rgba(255,59,31,.12)' : 'rgba(255,255,255,.05)',
+          border: sel ? '1px solid rgba(255,59,31,.4)' : '1px solid #2A2A30',
+          ringColor: sel ? '#FF3B1F' : '#2A2A30',
+          dotOpacity: sel ? 1 : 0,
+          pctColor: sel ? '#FF3B1F' : '#8A8A93',
+          pick: () => this.setState({ votedFor: i, voted: false })
+        };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>
