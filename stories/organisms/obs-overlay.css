@@ -1,0 +1,92 @@
+/* OBSOverlay organism — see obs-overlay.js for the builder. Fully transparent
+   in production (composited over the game capture by OBS); this checker
+   pattern only stands in for the game feed inside Storybook. */
+
+.gl-obs-overlay {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--gl-radius-lg);
+  min-height: 360px;
+  background: repeating-linear-gradient(45deg, #0e0e10, #0e0e10 14px, #121214 14px, #121214 28px);
+}
+
+.gl-obs-overlay__bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gl-color-hairline-dark, #2a2a30);
+  font-family: var(--gl-font-mono);
+  font-size: 13px;
+}
+
+.gl-obs-overlay__bg::after {
+  content: 'flux de jeu · overlay incrusté par-dessus';
+}
+
+.gl-obs-overlay__top {
+  position: absolute;
+  right: 22px;
+  top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.gl-obs-overlay__live,
+.gl-obs-overlay__mic {
+  background: rgba(11, 11, 12, 0.82);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.gl-obs-overlay__mic {
+  border-color: rgba(255, 255, 255, 0.08);
+  color: var(--gl-color-text-muted-dark, #8a8a93);
+}
+
+.gl-obs-overlay__unlocked {
+  position: absolute;
+  left: 50%;
+  top: 22px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(11, 11, 12, 0.86);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 59, 31, 0.45);
+  border-radius: var(--gl-radius-md);
+  padding: 11px 18px;
+  animation: glslidein var(--gl-motion-base) var(--gl-motion-ease);
+  font-family: var(--gl-font-display);
+  font-weight: var(--gl-font-weight-extrabold);
+  font-size: 15px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.gl-obs-overlay__unlocked[hidden] {
+  display: none;
+}
+
+.gl-obs-overlay__unlocked-accent {
+  color: var(--gl-color-signal);
+}
+
+.gl-obs-overlay__gauge {
+  position: absolute;
+  left: 22px;
+  bottom: 22px;
+  background: rgba(11, 11, 12, 0.82);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--gl-radius-md);
+  padding: 16px 18px;
+  min-width: 320px;
+  max-width: 440px;
+}

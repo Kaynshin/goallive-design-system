@@ -1,0 +1,133 @@
+/* VotePanel organism — see vote-panel.js for the builder. */
+
+.gl-vote-panel {
+  font-family: var(--gl-font-sans);
+  border: 1px solid var(--gl-color-hairline);
+  border-radius: var(--gl-radius-lg);
+  background: var(--gl-color-surface);
+  padding: 20px;
+  max-width: 420px;
+}
+
+.gl-vote-panel__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.gl-vote-panel__question {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--gl-color-text);
+}
+
+.gl-vote-panel__timer {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gl-color-text);
+  flex: none;
+}
+
+.gl-vote-panel__hint {
+  font-size: 13px;
+  color: var(--gl-color-text-muted);
+  margin-bottom: 14px;
+}
+
+.gl-vote-panel__weight {
+  color: var(--gl-color-signal);
+  font-weight: 700;
+}
+
+.gl-vote-panel__options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gl-vote-panel__option {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--gl-color-hairline);
+  border-radius: var(--gl-radius-md);
+  padding: 14px 15px;
+  background: var(--gl-color-canvas);
+  cursor: pointer;
+  transition: border-color var(--gl-motion-fast) var(--gl-motion-ease);
+}
+
+.gl-vote-panel__option:focus-visible {
+  outline: 2px solid var(--gl-color-signal);
+  outline-offset: 2px;
+}
+
+.gl-vote-panel__option--selected {
+  border-color: rgba(255, 59, 31, 0.4);
+}
+
+.gl-vote-panel__fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0%;
+  background: rgba(255, 255, 255, 0.05);
+  transition: width var(--gl-motion-slow) var(--gl-motion-ease);
+}
+
+.gl-vote-panel__option--selected .gl-vote-panel__fill {
+  background: rgba(255, 59, 31, 0.12);
+}
+
+.gl-vote-panel__row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gl-vote-panel__label {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gl-color-text);
+}
+
+.gl-vote-panel__pct {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gl-color-text-muted);
+}
+
+.gl-vote-panel__option--selected .gl-vote-panel__pct {
+  color: var(--gl-color-signal);
+}
+
+.gl-vote-panel__submit {
+  width: 100%;
+  margin-top: 14px;
+}
+
+.gl-vote-panel__confirm {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(31, 138, 59, 0.1);
+  border: 1px solid rgba(31, 138, 59, 0.4);
+  border-radius: var(--gl-radius-md);
+  padding: 12px 15px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gl-color-text);
+  animation: glslidein var(--gl-motion-base) var(--gl-motion-ease);
+}
+
+.gl-vote-panel__confirm[hidden] {
+  display: none;
+}

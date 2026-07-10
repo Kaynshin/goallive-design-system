@@ -1,0 +1,67 @@
+/* BackofficeStats organism — see backoffice-stats.js for the builder. */
+
+.gl-backoffice-stats {
+  font-family: var(--gl-font-sans);
+  border: 1px solid var(--gl-color-hairline);
+  border-radius: var(--gl-radius-lg);
+  background: var(--gl-color-surface);
+  padding: 20px 22px;
+  max-width: 420px;
+}
+
+.gl-backoffice-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.gl-backoffice-stats__label {
+  font-size: 12px;
+  color: var(--gl-color-text-muted);
+  margin-bottom: 4px;
+}
+
+.gl-backoffice-stats__value {
+  font-family: var(--gl-font-display);
+  font-weight: var(--gl-font-weight-extrabold);
+  font-size: 26px;
+  color: var(--gl-color-text);
+}
+
+.gl-backoffice-stats__value--signal {
+  color: var(--gl-color-signal);
+}
+
+.gl-backoffice-stats__unit {
+  font-size: 16px;
+}
+
+.gl-backoffice-stats__divider {
+  height: 1px;
+  background: var(--gl-color-hairline);
+  margin: 16px 0;
+}
+
+.gl-backoffice-stats__chart-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gl-color-text-muted);
+  margin-bottom: 10px;
+}
+
+.gl-backoffice-stats__chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 64px;
+}
+
+.gl-backoffice-stats__bar {
+  flex: 1;
+  background: var(--gl-color-hairline);
+  border-radius: 5px 5px 0 0;
+}
+
+.gl-backoffice-stats__bar--peak {
+  background: var(--gl-color-signal);
+}
