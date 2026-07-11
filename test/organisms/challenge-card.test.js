@@ -22,8 +22,8 @@ describe('Organisms / Challenge Card — challenge-card.js', () => {
     const card = createChallengeCard({ current: 60, target: 200 });
     const gauge = card.querySelector('.gl-goalgauge');
     expect(gauge).not.toBeNull();
-    expect(gauge.querySelector('.gl-goalgauge__count-current').textContent).toBe('60');
-    expect(gauge.querySelector('.gl-goalgauge__count-target').textContent).toBe('200');
+    expect(gauge.querySelector('.gl-goalgauge__count-current').value).toBe(60);
+    expect(gauge.querySelector('.gl-goalgauge__count-target').textContent).toBe('/ 200 tok');
   });
 
   it('renders the support and share action buttons', () => {
