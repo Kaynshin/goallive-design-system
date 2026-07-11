@@ -1,5 +1,11 @@
 # goallive-design-system
 
+## 0.4.0
+
+### Minor Changes
+
+- d6c1af4: feat: GoalGauge matches Claude Design maquette (signal token count, caption, GOAL ATTEINT, bump)
+
 ## 0.3.0
 
 ### Minor Changes

@@ -1,6 +1,6 @@
 {
   "name": "goallive-design-system",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Goallive design system: framework-agnostic design tokens, CSS, and Tailwind preset. Zero runtime dependencies.",
   "type": "module",
   "license": "MIT",
