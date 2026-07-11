@@ -1,5 +1,11 @@
 # goallive-design-system
 
+## 0.3.0
+
+### Minor Changes
+
+- f1c1094: feat: distribute GoalGauge + RollingNumber (CSS in dist/goallive.css + vanilla builders `createGoalGauge`/`createRollingNumber` with types, exported via `./goal-gauge` and `./rolling-number`)
+
 ## 0.2.0
 
 ### Minor Changes
