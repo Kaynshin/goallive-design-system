@@ -199,9 +199,6 @@
 .gl-tag--soft { color: var(--gl-color-line); }
 .gl-tag--muted-bg { background: var(--gl-color-canvas); }
 
-/* ---------- Rolling number (compteur roulant, odomètre) ---------- */
-.gl-rolling-number { display: inline-flex; align-items: baseline; font-family: var(--gl-font-sans); line-height: 1; }
-.gl-rolling-number__col { display: inline-block; overflow: hidden; vertical-align: top; }
-.gl-rolling-number__track { display: block; will-change: transform; }
-.gl-rolling-number__digit { display: block; text-align: center; }
-.gl-rolling-number__sep { display: inline-block; }
+/* ---------- Rolling number (compteur roulant, odomètre) ----------
+   Centralized in build/components.css (compiled into dist/goallive.css,
+   loaded globally in .storybook/preview.js) — single source of truth. */

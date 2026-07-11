@@ -130,31 +130,13 @@
 }
 
 /* RollingNumber — signature odometer atom. See rolling-number.js for the
-   stateful builder. No dedicated .css file in the stories (all sizing is set
-   inline per-instance from fontSize); these rules only set the structural
-   layout that the builder's generated DOM relies on. */
+   stateful builder. Centralized from stories/atoms/atoms.css (single source
+   of truth); all sizing is set inline per-instance from fontSize, these
+   rules only set the structural layout that the builder's generated DOM
+   relies on. */
 
-.gl-rolling-number {
-  display: inline-flex;
-  overflow: hidden;
-}
-
-.gl-rolling-number__col {
-  display: inline-block;
-  overflow: hidden;
-}
-
-.gl-rolling-number__track {
-  display: flex;
-  flex-direction: column;
-}
-
-.gl-rolling-number__digit {
-  display: block;
-  text-align: center;
-}
-
-.gl-rolling-number__sep {
-  display: inline-block;
-  text-align: center;
-}
+.gl-rolling-number { display: inline-flex; align-items: baseline; font-family: var(--gl-font-sans); line-height: 1; }
+.gl-rolling-number__col { display: inline-block; overflow: hidden; vertical-align: top; }
+.gl-rolling-number__track { display: block; will-change: transform; }
+.gl-rolling-number__digit { display: block; text-align: center; }
+.gl-rolling-number__sep { display: inline-block; }
