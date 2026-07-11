@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { createGoalGauge } from '../../stories/molecules/goal-gauge.js';
+import { createGoalGauge } from '../../src/goal-gauge.js';
 
 describe('Molecules / Goal Gauge — goal-gauge.js', () => {
   it('renders the label, caption, and initial current/target counters', () => {

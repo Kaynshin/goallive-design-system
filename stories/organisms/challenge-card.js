@@ -5,7 +5,7 @@
  * share actions. Clicking "Soutenir" bids the configured `supportAmount`
  * straight onto the embedded gauge.
  */
-import { createGoalGauge } from '../molecules/goal-gauge.js';
+import { createGoalGauge } from '../../src/goal-gauge.js';
 
 function escapeHtml(str) {
   return String(str).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
