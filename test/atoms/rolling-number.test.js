@@ -1,5 +1,5 @@
 import { describe, it, expect, afterEach, vi } from 'vitest';
-import { createRollingNumber } from '../../stories/atoms/rolling-number.js';
+import { createRollingNumber } from '../../src/rolling-number.js';
 import RollingNumberMeta, { Playground, SoldeContributeursViewers } from '../../stories/atoms/RollingNumber.stories.js';
 
 function digitColumns(el) {

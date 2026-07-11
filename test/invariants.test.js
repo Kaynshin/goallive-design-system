@@ -143,7 +143,7 @@ describe('Cross-cutting invariants', () => {
   });
 
   it('the rolling-number odometer respects prefers-reduced-motion by snapping instantly (no stagger)', async () => {
-    const { createRollingNumber } = await import('../stories/atoms/rolling-number.js');
+    const { createRollingNumber } = await import('../src/rolling-number.js');
     const originalMatchMedia = window.matchMedia;
     window.matchMedia = (query) => ({ matches: true, media: query });
     try {

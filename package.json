@@ -24,6 +24,14 @@
     },
     "./css": "./dist/goallive.css",
     "./tailwind": "./dist/tailwind-preset.js",
+    "./goal-gauge": {
+      "types": "./dist/goal-gauge.d.ts",
+      "default": "./dist/goal-gauge.js"
+    },
+    "./rolling-number": {
+      "types": "./dist/rolling-number.d.ts",
+      "default": "./dist/rolling-number.js"
+    },
     "./fonts/*": "./dist/fonts/*"
   },
   "scripts": {

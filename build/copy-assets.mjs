@@ -4,6 +4,8 @@
 //  2. Copy the self-hosted Unbounded/Space Grotesk/Bricolage Grotesque woff2 files
 //     + OFL license into dist/fonts/.
 //  3. Copy the tailwind preset source into dist/.
+//  4. Copy the vanilla component builders (goal-gauge, rolling-number) + their
+//     .d.ts into dist/, so they're importable via package.json `exports`.
 import { readFile, writeFile, rm, mkdir, cp } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
@@ -43,7 +45,15 @@ async function copyTailwindPreset() {
   console.log('✔ dist/tailwind-preset.js');
 }
 
+async function copyComponents() {
+  for (const f of ['goal-gauge.js', 'rolling-number.js', 'goal-gauge.d.ts', 'rolling-number.d.ts']) {
+    await cp(path.join(root, 'src', f), path.join(dist, f));
+  }
+  console.log('✔ dist/ component builders');
+}
+
 await mkdir(dist, { recursive: true });
 await assembleCss();
 await copyFonts();
 await copyTailwindPreset();
+await copyComponents();

@@ -1,9 +1,9 @@
 import './atoms.css';
-import { createRollingNumber } from './rolling-number.js';
+import { createRollingNumber } from '../../src/rolling-number.js';
 
 /**
  * Atoms / RollingNumber — compteur roulant signature (odomètre vertical).
- * Chaque chiffre roule verticalement, stagger 28ms — voir stories/atoms/rolling-number.js.
+ * Chaque chiffre roule verticalement, stagger 28ms — voir src/rolling-number.js.
  * Respecte `prefers-reduced-motion` (état final instantané).
  *
  * L'animation ne se déclenche que via `.update(next)` sur une instance déjà montée

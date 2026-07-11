@@ -6,7 +6,7 @@
  * last-support badges, the GoalGauge, and the "GOAL UNLOCKED · GO ALIVE"
  * banner that appears once the embedded gauge crosses its target.
  */
-import { createGoalGauge } from '../molecules/goal-gauge.js';
+import { createGoalGauge } from '../../src/goal-gauge.js';
 
 function escapeHtml(str) {
   return String(str).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);

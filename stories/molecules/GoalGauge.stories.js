@@ -1,5 +1,5 @@
 import './goal-gauge.css';
-import { createGoalGauge } from './goal-gauge.js';
+import { createGoalGauge } from '../../src/goal-gauge.js';
 
 /**
  * Molecules / Goal Gauge — `.gl-goalgauge`, Goallive's signature component
