@@ -12,19 +12,20 @@ const root = path.resolve(fileURLToPath(new URL('.', import.meta.url)), '..');
 const dist = path.join(root, 'dist');
 
 async function assembleCss() {
-  const [fontface, tokens, primitives] = await Promise.all([
+  const [fontface, tokens, primitives, components] = await Promise.all([
     readFile(path.join(root, 'build/fontface.css'), 'utf8'),
     readFile(path.join(dist, '_gl-tokens.css'), 'utf8'),
     readFile(path.join(root, 'build/primitives.css'), 'utf8'),
+    readFile(path.join(root, 'build/components.css'), 'utf8'),
   ]);
 
   const banner = `/*!
  * goallive-design-system — dist/goallive.css
  * Generated file: fonts (build/fontface.css) + tokens (tokens/*.tokens.json via Style Dictionary)
- * + primitives (build/primitives.css). Do not edit directly.
+ * + primitives (build/primitives.css) + components (build/components.css). Do not edit directly.
  */\n`;
 
-  const css = [banner, fontface.trim(), '', tokens.trim(), '', primitives.trim(), ''].join('\n');
+  const css = [banner, fontface.trim(), '', tokens.trim(), '', primitives.trim(), '', components.trim(), ''].join('\n');
   await writeFile(path.join(dist, 'goallive.css'), css, 'utf8');
   await rm(path.join(dist, '_gl-tokens.css'));
   console.log('✔ dist/goallive.css assembled');
