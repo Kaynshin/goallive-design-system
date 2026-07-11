@@ -1,25 +1,36 @@
 /* GoalGauge — signature molecule. See goal-gauge.js for the stateful builder.
-   Wired to --gl-* tokens; rgba(255,59,31,…) below mirrors --gl-color-signal
-   (#FF3B1F) at the opacities used throughout the source bundle for hairlines/
-   fills that don't have a dedicated token (same approach as --gl-color-signal-soft
-   for backgrounds). */
+   Matches the "GoalGauge.dc.html" maquette 1:1. Wired to --gl-* tokens for the
+   two values that have a dedicated token (mutedColor -> --gl-color-text-muted,
+   countColor/fill -> --gl-color-signal — both theme-aware or brand-constant via
+   the token layer already). subColor/trackBg/unlockColor have no dedicated
+   token in the current token set, so they're set as theme-aware literals here,
+   scoped to the component's own `[data-theme]` (each GoalGauge instance carries
+   its own `theme` option, independent of the page theme). */
 
 .gl-goalgauge {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 100%;
   font-family: var(--gl-font-sans);
 }
 
 .gl-goalgauge__head {
   display: flex;
-  align-items: baseline;
+  align-items: flex-end;
   justify-content: space-between;
   gap: 12px;
 }
 
+.gl-goalgauge__head-left {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
 .gl-goalgauge__label {
-  font-family: var(--gl-font-mono);
+  font-family: var(--gl-font-sans);
   font-size: 11px;
   font-weight: var(--gl-font-weight-bold);
   letter-spacing: 0.14em;
@@ -34,99 +45,98 @@
   letter-spacing: 0;
 }
 
+.gl-goalgauge__caption {
+  margin: 0;
+  font-family: var(--gl-font-sans);
+  font-size: 15px;
+  font-weight: var(--gl-font-weight-medium);
+  color: rgba(255, 255, 255, 0.78);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gl-goalgauge[data-theme='light'] .gl-goalgauge__caption {
+  color: #2a2a30;
+}
+
 .gl-goalgauge__count {
-  font-size: 13px;
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  flex: none;
+}
+
+.gl-goalgauge__count-target {
+  font-family: var(--gl-font-sans);
+  font-size: 14px;
+  font-weight: var(--gl-font-weight-medium);
   color: var(--gl-color-text-muted);
   white-space: nowrap;
 }
 
-.gl-goalgauge__count-current {
-  font-family: var(--gl-font-display);
-  font-weight: var(--gl-font-weight-extrabold);
-  font-size: 16px;
-  color: var(--gl-color-text);
-}
-
 .gl-goalgauge__track {
   position: relative;
-  height: 16px;
+  width: 100%;
+  height: 18px;
   border-radius: var(--gl-radius-pill);
   background: rgba(255, 255, 255, 0.07);
   overflow: hidden;
-  transition: box-shadow var(--gl-motion-base) var(--gl-motion-ease);
+  transform: scale(1);
+  transition: transform 320ms cubic-bezier(0.3, 0.7, 0.2, 1);
 }
 
-[data-theme='light'] .gl-goalgauge__track {
-  background: rgba(11, 11, 12, 0.07);
-}
-
-.gl-goalgauge--near .gl-goalgauge__track {
-  box-shadow: var(--gl-effect-glow-signal);
+.gl-goalgauge[data-theme='light'] .gl-goalgauge__track {
+  background: #e6e8f0;
 }
 
 .gl-goalgauge__fill {
-  position: relative;
-  height: 100%;
+  position: absolute;
+  inset: 0;
   width: 0%;
   border-radius: var(--gl-radius-pill);
   background: linear-gradient(90deg, var(--gl-color-signal), #ff6a4d);
-  transition: width var(--gl-motion-slow) var(--gl-motion-ease);
-  transform-origin: center;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition:
+    width 700ms cubic-bezier(0.3, 0.7, 0.2, 1),
+    box-shadow 700ms cubic-bezier(0.3, 0.7, 0.2, 1);
+}
+
+.gl-goalgauge--near .gl-goalgauge__fill {
+  box-shadow: 0 0 22px rgba(255, 59, 31, 0.55);
 }
 
 .gl-goalgauge--failed .gl-goalgauge__fill {
   background: var(--gl-color-text-muted);
-}
-
-.gl-goalgauge__fill--bump {
-  animation: glgaugebump var(--gl-motion-slow) var(--gl-motion-ease);
-}
-
-@keyframes glgaugebump {
-  0% {
-    transform: scaleY(1);
-  }
-  45% {
-    transform: scaleY(1.5);
-  }
-  100% {
-    transform: scaleY(1);
-  }
-}
-
-.gl-goalgauge__caption {
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--gl-color-text-muted);
+  box-shadow: none;
 }
 
 .gl-goalgauge__unlocked {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-top: 2px;
-  padding: 12px 16px;
-  border-radius: var(--gl-radius-md);
-  background: var(--gl-color-signal-soft);
-  border: 1px solid rgba(255, 59, 31, 0.4);
-  animation: glslidein var(--gl-motion-base) var(--gl-motion-ease);
+  gap: 7px;
+  font-family: var(--gl-font-sans);
+  font-size: 12px;
+  font-weight: var(--gl-font-weight-bold);
+  letter-spacing: 0.1em;
+  color: var(--gl-color-signal);
+}
+
+.gl-goalgauge[data-theme='light'] .gl-goalgauge__unlocked {
+  color: #0b0b0c;
 }
 
 .gl-goalgauge__unlocked[hidden] {
   display: none;
 }
 
-.gl-goalgauge__unlocked-text {
-  font-family: var(--gl-font-display);
-  font-weight: var(--gl-font-weight-extrabold);
-  font-size: 14px;
-  letter-spacing: 0.01em;
-  color: var(--gl-color-text);
-}
-
-.gl-goalgauge__unlocked-accent {
-  color: var(--gl-color-signal);
+.gl-goalgauge__unlocked-dot {
+  width: 7px;
+  height: 7px;
+  flex: none;
+  border-radius: var(--gl-radius-pill);
+  background: var(--gl-color-signal);
+  box-shadow: 0 0 0 4px rgba(255, 59, 31, 0.18);
 }
 
 /* RollingNumber — signature odometer atom. See rolling-number.js for the
